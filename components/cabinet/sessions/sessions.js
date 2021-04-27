@@ -1,5 +1,5 @@
-import React from 'react';
-import { Element } from 'react-scroll';
+import React from "react";
+import { Element } from "react-scroll";
 
 const Sessions = () => (
   <>
@@ -7,7 +7,7 @@ const Sessions = () => (
       <h1>Sessions</h1>
 
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis
+        Lorem1 ipsum dolor sit amet, consectetur adipiscing elit. Aenean mattis
         justo id massa ullamcorper pellentesque. Mauris ultrices, diam eu
         eleifend dictum, magna ex viverra metus, vitae placerat turpis eros eu
         mauris. Nulla et lacus quis ante laoreet placerat ac at dui. Fusce a
