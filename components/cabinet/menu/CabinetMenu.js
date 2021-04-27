@@ -1,10 +1,10 @@
-import ActiveLink from "../../common/ActiveLink";
-import { Link } from "react-scroll";
-import * as Scroll from "react-scroll";
-import React, { useEffect } from "react";
+import { Link } from 'react-scroll';
+import * as Scroll from 'react-scroll';
+import React, { useEffect } from 'react';
+import ActiveLink from '../../common/ActiveLink';
 
 const CabinetMenu = () => {
-  let scrollSpy = Scroll.scrollSpy;
+  const { scrollSpy } = Scroll;
 
   useEffect(() => {
     scrollSpy.update();
@@ -14,16 +14,16 @@ const CabinetMenu = () => {
     <nav className="sticky top-0">
       <ul className="flex flex-row justify-between items-center bg-black text-white bg-opacity-70 h-10 px-5">
         <li>
-          <ActiveLink activeClassName="text-blue-300" href={"/"}>
-            <a>&spades;</a>
+          <ActiveLink activeClassName="text-blue-300" href="/">
+            <a href="/">&spades;</a>
           </ActiveLink>
         </li>
         <li className="cursor-pointer">
           <Link
             activeClass="text-pink-300"
             to="sessions"
-            spy={true}
-            smooth={true}
+            spy
+            smooth
             offset={-70}
             duration={500}
           >
@@ -34,8 +34,8 @@ const CabinetMenu = () => {
           <Link
             activeClass="text-pink-300"
             to="locations"
-            spy={true}
-            smooth={true}
+            spy
+            smooth
             offset={-70}
             duration={500}
           >
@@ -46,8 +46,8 @@ const CabinetMenu = () => {
           <Link
             activeClass="text-pink-300"
             to="shedule"
-            spy={true}
-            smooth={true}
+            spy
+            smooth
             offset={-70}
             duration={500}
           >
@@ -58,8 +58,8 @@ const CabinetMenu = () => {
           <Link
             activeClass="text-pink-300"
             to="accessories"
-            spy={true}
-            smooth={true}
+            spy
+            smooth
             offset={-70}
             duration={500}
           >
@@ -68,7 +68,7 @@ const CabinetMenu = () => {
         </li>
         <li>
           <ActiveLink activeClassName="text-blue-300" href="/profile">
-            <a>&hearts;</a>
+            <a href="/profile">&hearts;</a>
           </ActiveLink>
         </li>
       </ul>
