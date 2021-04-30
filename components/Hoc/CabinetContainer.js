@@ -2,6 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import CabinetMenu from '../cabinet/menu/CabinetMenu';
+import CabinetHeader from '../cabinet/CabinetHeader/CabinetHeader';
 
 const CabinetContainer = ({ children, keywords, title }) => (
   <>
@@ -10,7 +11,7 @@ const CabinetContainer = ({ children, keywords, title }) => (
       <title>{title}</title>
     </Head>
     <div className="mx-auto">
-      <div className="h-96 bg-pink-300">header</div>
+      <CabinetHeader />
       <CabinetMenu />
       <div>{children}</div>
     </div>
