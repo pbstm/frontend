@@ -2,6 +2,7 @@ import { Link } from 'react-scroll';
 import * as Scroll from 'react-scroll';
 import React, { useEffect } from 'react';
 import ActiveLink from '../../common/ActiveLink';
+import classes from '../../../styles/CabinetMenu.module.scss';
 
 const CabinetMenu = () => {
   const { scrollSpy } = Scroll;
@@ -11,16 +12,17 @@ const CabinetMenu = () => {
   });
 
   return (
-    <nav className="sticky top-0">
-      <ul className="flex flex-row justify-between items-center bg-black text-white bg-opacity-70 h-10 px-5">
-        <li>
-          <ActiveLink activeClassName="text-blue-300" href="/">
-            <a href="/">&spades;</a>
-          </ActiveLink>
-        </li>
-        <li className="cursor-pointer">
+    <nav className={classes.Nav}>
+      <div className="justify-self-start self-center px-5">
+        <ActiveLink activeClassName="" href="/">
+          <a href="/">&spades;</a>
+        </ActiveLink>
+      </div>
+
+      <ul className={classes.Sections}>
+        <li className={classes.Section}>
           <Link
-            activeClass="text-pink-300"
+            activeClass="text-yellow-400"
             to="sessions"
             spy
             smooth
@@ -30,9 +32,9 @@ const CabinetMenu = () => {
             PHOTOSESSIONS
           </Link>
         </li>
-        <li className="cursor-pointer">
+        <li className={classes.Section}>
           <Link
-            activeClass="text-pink-300"
+            activeClass="text-yellow-400"
             to="locations"
             spy
             smooth
@@ -42,9 +44,9 @@ const CabinetMenu = () => {
             LOCATIONS
           </Link>
         </li>
-        <li className="cursor-pointer">
+        <li className={classes.Section}>
           <Link
-            activeClass="text-pink-300"
+            activeClass="text-yellow-400"
             to="shedule"
             spy
             smooth
@@ -54,9 +56,9 @@ const CabinetMenu = () => {
             SHEDULE
           </Link>
         </li>
-        <li className="cursor-pointer">
+        <li className={classes.Section}>
           <Link
-            activeClass="text-pink-300"
+            activeClass="text-yellow-400"
             to="accessories"
             spy
             smooth
@@ -66,12 +68,13 @@ const CabinetMenu = () => {
             ACCESSORIES
           </Link>
         </li>
-        <li>
-          <ActiveLink activeClassName="text-blue-300" href="/profile">
-            <a href="/profile">&hearts;</a>
-          </ActiveLink>
-        </li>
       </ul>
+
+      <div className="justify-self-end self-center px-5">
+        <ActiveLink activeClassName="" href="/profile">
+          <a href="/profile">&hearts;</a>
+        </ActiveLink>
+      </div>
     </nav>
   );
 };
