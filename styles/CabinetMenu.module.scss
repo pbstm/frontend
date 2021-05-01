@@ -1,0 +1,25 @@
+.Nav {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.65);
+  height: 40px;
+  display: grid;
+  grid-template-columns: 70px 1fr 70px;
+  position: sticky;
+  top: 0;
+}
+
+.Sections {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Section {
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.15rem;
+
+  &:hover {
+    color: lighten(orange, 10%);
+  }
+}
