@@ -1,5 +1,5 @@
-import React from 'react';
-import { Element } from 'react-scroll';
+import React from 'react'
+import { Element } from 'react-scroll'
 
 const Locations = () => (
   <>
@@ -204,6 +204,6 @@ const Locations = () => (
       </p>
     </Element>
   </>
-);
+)
 
-export default Locations;
+export default Locations

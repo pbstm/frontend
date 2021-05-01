@@ -1,15 +1,15 @@
-import { Link } from 'react-scroll';
-import * as Scroll from 'react-scroll';
-import React, { useEffect } from 'react';
-import ActiveLink from '../../common/ActiveLink';
-import classes from '../../../styles/CabinetMenu.module.scss';
+import { Link } from 'react-scroll'
+import * as Scroll from 'react-scroll'
+import React, { useEffect } from 'react'
+import ActiveLink from '../../common/ActiveLink'
+import classes from '../../../styles/CabinetMenu.module.scss'
 
 const CabinetMenu = () => {
-  const { scrollSpy } = Scroll;
+  const { scrollSpy } = Scroll
 
   useEffect(() => {
-    scrollSpy.update();
-  });
+    scrollSpy.update()
+  })
 
   return (
     <nav className={classes.Nav}>
@@ -47,13 +47,13 @@ const CabinetMenu = () => {
         <li className={classes.Section}>
           <Link
             activeClass="text-yellow-400"
-            to="shedule"
+            to="schedule"
             spy
             smooth
             offset={-70}
             duration={500}
           >
-            SHEDULE
+            SCHEDULE
           </Link>
         </li>
         <li className={classes.Section}>
@@ -76,7 +76,7 @@ const CabinetMenu = () => {
         </ActiveLink>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default CabinetMenu;
+export default CabinetMenu

@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react';
-import classNames from 'classnames';
-import { Link } from 'react-scroll';
-import * as Scroll from 'react-scroll';
-import classes from '../../../styles/CabinetHeader.module.scss';
+import React, { useEffect } from 'react'
+import classNames from 'classnames'
+import { Link } from 'react-scroll'
+import * as Scroll from 'react-scroll'
+import classes from '../../../styles/CabinetHeader.module.scss'
 
 const CabinetHeader = () => {
-  const { scrollSpy } = Scroll;
+  const { scrollSpy } = Scroll
 
   useEffect(() => {
-    scrollSpy.update();
-  });
+    scrollSpy.update()
+  })
   return (
     <>
       <div className={classes.Header}>
@@ -19,7 +19,9 @@ const CabinetHeader = () => {
               <p>
                 <span className={classes.BigText}>Create</span>
                 <br />
-                and management your
+                and manage
+                <br />
+                your
                 <span className={classes.MidText}> photo sessions</span>
               </p>
             </div>
@@ -42,18 +44,18 @@ const CabinetHeader = () => {
           </div>
         </Link>
 
-        <Link to="shedule" spy smooth offset={-70} duration={500}>
-          <div className={classNames(classes.Card, classes.Shedule)}>
+        <Link to="schedule" spy smooth offset={-70} duration={500}>
+          <div className={classNames(classes.Card, classes.Schedule)}>
             <div className={classes.Darker}>
               <p>
                 Manage your
                 <br />
-                <span className={classes.BigText}>shedule</span>
+                <span className={classes.BigText}>schedule</span>
                 <br />
                 and
                 <span className={classes.MidText}> cell tickets</span>
                 <br />
-                to photo session
+                to a photo session
               </p>
             </div>
           </div>
@@ -76,7 +78,7 @@ const CabinetHeader = () => {
         </Link>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default CabinetHeader;
+export default CabinetHeader

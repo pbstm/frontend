@@ -1,5 +1,5 @@
-import React from 'react';
-import { Element } from 'react-scroll';
+import React from 'react'
+import { Element } from 'react-scroll'
 
 const Sessions = () => (
   <>
@@ -204,6 +204,6 @@ const Sessions = () => (
       </p>
     </Element>
   </>
-);
+)
 
-export default Sessions;
+export default Sessions

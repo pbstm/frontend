@@ -1,7 +1,7 @@
-import React from 'react';
-import Head from 'next/head';
-import PropTypes from 'prop-types';
-import ActiveLink from '../common/ActiveLink';
+import React from 'react'
+import Head from 'next/head'
+import PropTypes from 'prop-types'
+import ActiveLink from '../common/ActiveLink'
 
 const MainContainer = ({ children, keywords, title }) => (
   <>
@@ -37,9 +37,9 @@ const MainContainer = ({ children, keywords, title }) => (
 
     <div>{children}</div>
   </>
-);
+)
 
-export default MainContainer;
+export default MainContainer
 
 MainContainer.propTypes = {
   children: PropTypes.oneOfType([
@@ -48,4 +48,4 @@ MainContainer.propTypes = {
   ]).isRequired,
   keywords: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-};
+}
