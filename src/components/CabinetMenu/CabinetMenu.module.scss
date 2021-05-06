@@ -1,0 +1,47 @@
+@import '../../scss/vars.scss';
+
+.Nav {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.65);
+  height: 40px;
+  display: grid;
+  grid-template-columns: 70px 1fr 70px;
+  position: sticky;
+  top: 0;
+}
+
+.Link {
+  color: white;
+}
+
+.MainLink {
+  justify-self: start;
+  align-self: center;
+  padding-left: 1rem;
+}
+
+.ProfileLink {
+  justify-self: end;
+  align-self: center;
+  padding-right: 1rem;
+}
+
+.ScrollLink {
+  color: $color-main;
+}
+
+.Sections {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.Section {
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.15rem;
+
+  &:hover {
+    color: lighten($color-main, 10%);
+  }
+}
