@@ -39,6 +39,7 @@
             "specialLink": [ "to" ]
           }],
         "semi": 0,
-        "quotes": [0, "single"]
+        "quotes": [0, "single"],
+        "arrow-body-style": ["error", "always"]
     }
 }
