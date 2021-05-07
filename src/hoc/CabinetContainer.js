@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import CabinetMenu from '../components/CabinetMenu'
+import CabinetMenu from '../pages/Cabinet/CabinetMenu'
+import CabinetHeader from '../pages/Cabinet/CabinetHeader'
 
 const CabinetContainer = ({ children }) => {
   return (
     <div>
+      <CabinetHeader />
       <CabinetMenu />
       <div>{children}</div>
     </div>

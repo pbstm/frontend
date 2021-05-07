@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import MainMenu from '../components/MainMenu'
+import MainMenu from '../pages/Main/MainMenu'
 
 const MainContainer = ({ children }) => {
   return (
