@@ -1,5 +1,3 @@
-# README
-
 # FRONTEND
 
 ## Requirements
@@ -8,7 +6,7 @@
 
 ## Installation & using
 
-First, need [install yarn] (https://classic.yarnpkg.com/en/docs/getting-started) 
+First, need [install yarn] (https://classic.yarnpkg.com/en/docs/getting-started)
 
 Second, In `terminal` clone 'frontend' project:
 
@@ -27,16 +25,9 @@ $ yarn install
 Third, run the development server:
 
 ```bash
-$ npm run dev
+$ npm start
 # or
-$ yarn dev
+$ yarn start
 ```
 
 Then open `http://localhost:3000` at your web-browser.
-
-
-
-
-
-
-
