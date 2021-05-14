@@ -5,11 +5,13 @@ import { compose } from 'redux'
 import store from './redux/redux-store'
 import Main from './pages/Main'
 import Cabinet from './pages/Cabinet'
+import Login from './pages/Login'
 
 const App = () => (
   <>
     <Switch>
       <Route path="/cabinet" component={Cabinet} />
+      <Route path="/login" component={Login} />
       <Route path="/" component={Main} />
     </Switch>
   </>

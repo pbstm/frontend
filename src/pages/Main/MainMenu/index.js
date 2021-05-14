@@ -9,6 +9,9 @@ const MainMenu = () => (
     <NavLink to="/cabinet">
       <span>Cabinet</span>
     </NavLink>
+    <NavLink to="/login">
+      <span>Login</span>
+    </NavLink>
   </nav>
 )
 
