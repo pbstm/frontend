@@ -12,6 +12,9 @@ const MainMenu = () => (
     <NavLink to="/login">
       <span>Login</span>
     </NavLink>
+    <NavLink to="/register">
+      <span>Register</span>
+    </NavLink>
   </nav>
 )
 

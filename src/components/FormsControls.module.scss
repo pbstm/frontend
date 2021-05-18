@@ -1,11 +1,13 @@
+@import '../scss/vars.scss';
+
 .formsControls.error input {
-  border: 1px solid red;
+  border: 1px solid $color-error;
 }
 
 .formsControls.error span {
-  color: red;
+  color: $color-error;
 }
 
 .formSummaryError {
-  color: red;
+  color: $color-error;
 }

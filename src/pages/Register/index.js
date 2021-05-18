@@ -7,15 +7,21 @@ import { createField, Input } from '../../components/FormsControls'
 import { required, maxLengthCreator } from '../../components/validators'
 import { login } from '../../redux/authReducer'
 import styles from '../../components/FormsControls.module.scss'
-import classes from './Login.module.scss'
+import classes from './Register.module.scss'
 
 const maxLength30 = maxLengthCreator(30)
 
-const LoginForm = ({ handleSubmit, error }) => (
+const RegisterForm = ({ handleSubmit, error }) => (
   <form className={classes.Form} onSubmit={handleSubmit}>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your email: </div>
       {createField('Email', 'email', [required, maxLength30], Input)}
+    </div>
+    <div className={classes.FieldContainer}>
+      <div className={classes.FieldTitle}>Enter your password: </div>
+      {createField('Password', 'password', [required, maxLength30], Input, {
+        type: 'password'
+      })}
     </div>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your password: </div>
@@ -29,11 +35,11 @@ const LoginForm = ({ handleSubmit, error }) => (
   </form>
 )
 
-const LoginReduxForm = reduxForm({
-  form: 'login'
-})(LoginForm)
+const RegisterReduxForm = reduxForm({
+  form: 'register'
+})(RegisterForm)
 
-const Login = () => {
+const Register = () => {
   const isAuth = useSelector((state) => state.auth.isAuth)
   const dispatch = useDispatch()
 
@@ -45,21 +51,21 @@ const Login = () => {
 
   return (
     <div className={classes.Container}>
-      <LoginReduxForm onSubmit={onSubmit} />
-      <NavLink to="/register">
-        <span>Register</span>
+      <RegisterReduxForm onSubmit={onSubmit} />
+      <NavLink to="/login">
+        <span>Login</span>
       </NavLink>
     </div>
   )
 }
 
-export default Login
+export default Register
 
-LoginForm.propTypes = {
+RegisterForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   error: PropTypes.string
 }
 
-LoginForm.defaultProps = {
+RegisterForm.defaultProps = {
   error: ''
 }

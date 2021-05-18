@@ -48,6 +48,7 @@
             "ExportDeclaration": { "multiline": true, "minProperties": 3 }
         }],
         "comma-dangle": ["error", "never"],
-        "operator-linebreak": ["error", "after"]
+        "operator-linebreak": ["error", "after"],
+        "import/prefer-default-export": 0
     }
 }
