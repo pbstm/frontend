@@ -1,11 +1,30 @@
 @import '../scss/vars.scss';
 
+.formsControls.error {
+  text-align: center;
+}
+
+.formsControls input {
+  padding: 0.5rem 1rem;
+  border: 2px solid #fff;
+  border-radius: 20px;
+  text-align: center;
+  outline: none;
+  transition: box-shadow 0.5s ease;
+  &:focus {
+    box-shadow: 0px 0px 3px 1px $color-main;
+  }
+}
+
 .formsControls.error input {
-  border: 1px solid $color-error;
+  box-shadow: 0px 0px 3px 1px $color-error;
+  margin-bottom: 5px;
 }
 
 .formsControls.error span {
   color: $color-error;
+  padding-top: 10px;
+  font-size: 0.9rem;
 }
 
 .formSummaryError {

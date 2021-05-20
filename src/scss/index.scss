@@ -27,6 +27,10 @@ code {
 
 a {
   text-decoration: none;
+  color: darken($color-main, 15%);
+  &:hover {
+    color: darken($color-main, 10%);
+  }
 }
 
 ul,

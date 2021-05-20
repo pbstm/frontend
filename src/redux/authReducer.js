@@ -58,6 +58,27 @@ export const login = (email, password) => async (dispatch) => {
   }
 }
 
+export const register =
+  (email, password, passwordConfirm) => async (dispatch) => {
+    const registerData = await authAPI.register(
+      email,
+      password,
+      passwordConfirm
+    )
+    if (registerData.resultCode === 0) {
+      localStorage.setItem('token', registerData.jwt)
+      dispatch(getAuthUserData())
+    } else {
+      const message =
+        registerData.messages.length > 0 ? registerData.messages[0] : 'Error'
+      dispatch(
+        stopSubmit('register', {
+          _error: message
+        })
+      )
+    }
+  }
+
 export const logout = () => async (dispatch) => {
   const logoutData = await authAPI.logout()
   if (logoutData.resultCode === 0) {

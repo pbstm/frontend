@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { createField, Input } from '../../components/FormsControls'
-import { required, maxLengthCreator } from '../../components/validators'
+import { required, maxLengthCreator, email } from '../../components/validators'
 import { login } from '../../redux/authReducer'
 import styles from '../../components/FormsControls.module.scss'
 import classes from './Login.module.scss'
+import { Button } from '../../components/Button'
 
 const maxLength30 = maxLengthCreator(30)
 
@@ -15,7 +16,9 @@ const LoginForm = ({ handleSubmit, error }) => (
   <form className={classes.Form} onSubmit={handleSubmit}>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your email: </div>
-      {createField('Email', 'email', [required, maxLength30], Input)}
+      {createField('Email', 'email', [required, maxLength30, email], Input, {
+        type: 'email'
+      })}
     </div>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your password: </div>
@@ -25,7 +28,7 @@ const LoginForm = ({ handleSubmit, error }) => (
     </div>
 
     {error && <div className={styles.formSummaryError}>{error}</div>}
-    <button type="submit">Login</button>
+    <Button text="Sign in" type="submit" />
   </form>
 )
 
@@ -45,10 +48,17 @@ const Login = () => {
 
   return (
     <div className={classes.Container}>
+      <div className={classes.Logo}>
+        <NavLink to="/">LOGO</NavLink>
+      </div>
+      <div className={classes.Title}>Sign in to Photobooking system</div>
       <LoginReduxForm onSubmit={onSubmit} />
-      <NavLink to="/register">
-        <span>Register</span>
-      </NavLink>
+      <div className={classes.RegBlock}>
+        <div>Dont have an account yet?</div>
+        <NavLink to="/register">
+          <span>Sign up</span>
+        </NavLink>
+      </div>
     </div>
   )
 }

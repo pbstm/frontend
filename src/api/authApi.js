@@ -13,6 +13,15 @@ const authAPI = {
       })
       .then((response) => response.data)
   },
+  register(email, password, passwordConfirm) {
+    return instance
+      .post(`/token`, {
+        email,
+        password,
+        passwordConfirm
+      })
+      .then((response) => response.data)
+  },
   logout() {
     return instance.delete(`auth/login`).then((response) => response.data)
   },
