@@ -49,6 +49,7 @@
         }],
         "comma-dangle": ["error", "never"],
         "operator-linebreak": ["error", "after"],
-        "import/prefer-default-export": 0
+        "import/prefer-default-export": 0,
+        "react/button-has-type": 0
     }
 }

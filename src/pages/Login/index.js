@@ -28,7 +28,7 @@ const LoginForm = ({ handleSubmit, error }) => (
     </div>
 
     {error && <div className={styles.formSummaryError}>{error}</div>}
-    <Button text="Sign in" type="submit" />
+    <Button text="Sign in" type="submit" stylish="Primary" />
   </form>
 )
 
@@ -42,6 +42,7 @@ const Login = () => {
 
   const onSubmit = (formData) => {
     dispatch(login(formData.email, formData.password))
+    console.log('all ok')
   }
 
   if (isAuth) <Redirect to="/cabinet" />

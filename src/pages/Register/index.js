@@ -42,9 +42,8 @@ const RegisterForm = ({ handleSubmit, error }) => (
         }
       )}
     </div>
-
     {error && <div className={styles.formSummaryError}>{error}</div>}
-    <Button text="Sign up" type="submit" />
+    <Button text="Sign in" type="submit" stylish="Primary" />
   </form>
 )
 
@@ -57,9 +56,14 @@ const Register = () => {
   const dispatch = useDispatch()
 
   const onSubmit = (formData) => {
-    dispatch(
-      register(formData.email, formData.password, formData.passwordConfirm)
-    )
+    if (formData.password === formData.passwordConfirm) {
+      dispatch(
+        register(formData.email, formData.password, formData.passwordConfirm)
+      )
+      console.log('all ok')
+    } else {
+      console.log('wrong pass')
+    }
   }
 
   if (isAuth) <Redirect to="/cabinet" />

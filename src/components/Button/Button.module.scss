@@ -6,9 +6,12 @@
   border: none;
   border-radius: 20px;
   padding: 10px;
-  background-color: $color-main;
   font-size: 1.3rem;
   transition: all 0.5s ease;
+}
+
+.Primary {
+  background-color: $color-main;
 
   &:hover {
     background-color: lighten($color-main, 15%);
@@ -16,5 +19,17 @@
 
   &:active {
     background-color: darken($color-main, 3%);
+  }
+}
+
+.Secondary {
+  background-color: $color-secondary;
+
+  &:hover {
+    background-color: lighten($color-secondary, 15%);
+  }
+
+  &:active {
+    background-color: darken($color-secondary, 3%);
   }
 }
