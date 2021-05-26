@@ -4,13 +4,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { createField, Input } from '../../components/FormsControls'
-import { required, maxLengthCreator, email } from '../../components/validators'
+// prettier-ignore
+import { required, maxLengthCreator, minLengthCreator, email, matchPassword } from '../../components/validators'
 import { register } from '../../redux/authReducer'
 import styles from '../../components/FormsControls.module.scss'
 import classes from './Register.module.scss'
 import { Button } from '../../components/Button'
 
 const maxLength30 = maxLengthCreator(30)
+const minLength6 = minLengthCreator(6)
 
 const RegisterForm = ({ handleSubmit, error }) => (
   <form className={classes.Form} onSubmit={handleSubmit}>
@@ -26,16 +28,22 @@ const RegisterForm = ({ handleSubmit, error }) => (
     </div>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your password: </div>
-      {createField('Password', 'password', [required, maxLength30], Input, {
-        type: 'password'
-      })}
+      {createField(
+        'Password',
+        'password',
+        [required, maxLength30, minLength6],
+        Input,
+        {
+          type: 'password'
+        }
+      )}
     </div>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Confirm your password: </div>
       {createField(
         'Password',
         'passwordConfirm',
-        [required, maxLength30],
+        [required, maxLength30, minLength6, matchPassword],
         Input,
         {
           type: 'password'
@@ -43,7 +51,7 @@ const RegisterForm = ({ handleSubmit, error }) => (
       )}
     </div>
     {error && <div className={styles.formSummaryError}>{error}</div>}
-    <Button text="Sign in" type="submit" stylish="Primary" />
+    <Button text="Sign up" type="submit" stylish="Primary" />
   </form>
 )
 
@@ -56,14 +64,9 @@ const Register = () => {
   const dispatch = useDispatch()
 
   const onSubmit = (formData) => {
-    if (formData.password === formData.passwordConfirm) {
-      dispatch(
-        register(formData.email, formData.password, formData.passwordConfirm)
-      )
-      console.log('all ok')
-    } else {
-      console.log('wrong pass')
-    }
+    dispatch(
+      register(formData.email, formData.password, formData.passwordConfirm)
+    )
   }
 
   if (isAuth) <Redirect to="/cabinet" />

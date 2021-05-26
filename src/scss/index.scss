@@ -27,9 +27,9 @@ code {
 
 a {
   text-decoration: none;
-  color: darken($color-main, 15%);
+  color: $color-main;
   &:hover {
-    color: darken($color-main, 10%);
+    color: lighten($color-main, 10%);
   }
 }
 

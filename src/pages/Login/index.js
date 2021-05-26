@@ -7,7 +7,7 @@ import { createField, Input } from '../../components/FormsControls'
 import { required, maxLengthCreator, email } from '../../components/validators'
 import { login } from '../../redux/authReducer'
 import styles from '../../components/FormsControls.module.scss'
-import classes from './Login.module.scss'
+import classes from '../Register/Register.module.scss'
 import { Button } from '../../components/Button'
 
 const maxLength30 = maxLengthCreator(30)
@@ -28,6 +28,7 @@ const LoginForm = ({ handleSubmit, error }) => (
     </div>
 
     {error && <div className={styles.formSummaryError}>{error}</div>}
+
     <Button text="Sign in" type="submit" stylish="Primary" />
   </form>
 )
@@ -42,7 +43,6 @@ const Login = () => {
 
   const onSubmit = (formData) => {
     dispatch(login(formData.email, formData.password))
-    console.log('all ok')
   }
 
   if (isAuth) <Redirect to="/cabinet" />

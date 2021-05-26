@@ -14,7 +14,13 @@ const FormControl = ({ meta, children }) => {
       )}
     >
       <div>{children}</div>
-      {hasError && <span>{meta.error}</span>}
+      {hasError && (
+        <div>
+          <div className={classes.warning} tooltip={meta.error}>
+            !
+          </div>
+        </div>
+      )}
     </div>
   )
 }
