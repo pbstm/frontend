@@ -1,4 +1,4 @@
-import { getAuthUserData } from './authReducer'
+import { getProfileData } from './authReducer'
 
 const initialState = {
   initialized: false
@@ -24,7 +24,7 @@ export const actions = {
 }
 
 export const initializeApp = () => (dispatch) => {
-  const promise = dispatch(getAuthUserData())
+  const promise = dispatch(getProfileData())
 
   Promise.all([promise]).then(() => {
     dispatch(actions.initializedSuccess())

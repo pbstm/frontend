@@ -1,15 +1,24 @@
 import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 import { Link } from 'react-scroll'
 import * as Scroll from 'react-scroll'
-import { NavLink } from 'react-router-dom'
 import classes from './CabinetMenu.module.scss'
+import { selectName } from '../../../redux/authSelectors'
+import { logout } from '../../../redux/authReducer'
 
 const CabinetMenu = () => {
   const { scrollSpy } = Scroll
+  const name = useSelector(selectName)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     scrollSpy.update()
   })
+
+  const logoutCallback = () => {
+    dispatch(logout())
+  }
 
   return (
     <nav className={classes.Nav}>
@@ -70,10 +79,9 @@ const CabinetMenu = () => {
         </li>
       </ul>
 
-      <div className={classes.ProfileLink}>
-        <NavLink to="/profile" className={classes.Link}>
-          <span>&hearts;</span>
-        </NavLink>
+      <div>
+        <div>{name}</div>
+        <button onClick={logoutCallback}>logout</button>
       </div>
     </nav>
   )

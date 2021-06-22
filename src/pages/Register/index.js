@@ -1,5 +1,5 @@
 import React from 'react'
-import { reduxForm } from 'redux-form'
+import { reduxForm, Field } from 'redux-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -42,7 +42,7 @@ const RegisterForm = ({ handleSubmit, error }) => (
       <div className={classes.FieldTitle}>Confirm your password: </div>
       {createField(
         'Password',
-        'passwordConfirm',
+        'passwordConfirmation',
         [required, maxLength30, minLength6, matchPassword],
         Input,
         {
@@ -50,6 +50,34 @@ const RegisterForm = ({ handleSubmit, error }) => (
         }
       )}
     </div>
+
+    <div className={classes.FieldContainer}>
+      <div className={classes.FieldTitle}>Registering as: </div>
+      <div className={classes.FieldTitle}>Customer</div>
+      <label htmlFor="Customer">
+        <Field
+          name="type"
+          component="input"
+          type="radio"
+          value="Customer"
+          id="Customer"
+          checked
+        />
+        <span />
+      </label>
+      <div className={classes.FieldTitle}>Photographer</div>
+      <label htmlFor="Photographer">
+        <Field
+          name="type"
+          component="input"
+          type="radio"
+          value="Photographer"
+          id="Photographer"
+        />
+        <span />
+      </label>
+    </div>
+
     {error && <div className={styles.formSummaryError}>{error}</div>}
     <Button text="Sign up" type="submit" stylish="Primary" />
   </form>
@@ -64,8 +92,15 @@ const Register = () => {
   const dispatch = useDispatch()
 
   const onSubmit = (formData) => {
+    console.log('type: ', formData.type)
     dispatch(
-      register(formData.email, formData.password, formData.passwordConfirm)
+      register(
+        formData.name,
+        formData.email,
+        formData.password,
+        formData.passwordConfirmation,
+        formData.type
+      )
     )
   }
 

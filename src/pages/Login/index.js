@@ -6,6 +6,7 @@ import PropTypes from 'prop-types'
 import { createField, Input } from '../../components/FormsControls'
 import { required, maxLengthCreator, email } from '../../components/validators'
 import { login } from '../../redux/authReducer'
+import { selectIsAuth } from "../../redux/authSelectors";
 import styles from '../../components/FormsControls.module.scss'
 import classes from '../Register/Register.module.scss'
 import { Button } from '../../components/Button'
@@ -38,14 +39,17 @@ const LoginReduxForm = reduxForm({
 })(LoginForm)
 
 const Login = () => {
-  const isAuth = useSelector((state) => state.auth.isAuth)
+  const isAuth = useSelector(selectIsAuth)
   const dispatch = useDispatch()
 
   const onSubmit = (formData) => {
     dispatch(login(formData.email, formData.password))
   }
 
-  if (isAuth) <Redirect to="/cabinet" />
+  if (isAuth) {
+    console.log('isauth : ', isAuth)
+    return <Redirect to="/cabinet" />
+  }
 
   return (
     <div className={classes.Container}>

@@ -1,12 +1,43 @@
 import axios from 'axios'
+/* eslint-disable camelcase */
+
+const getAccessToken = () => {
+  const token = localStorage.getItem('token')
+  console.log('from api, token: ', token)
+  return token
+}
 
 const instance = axios.create({
-  withCredentials: true,
-  baseURL: 'http://localhost:3001/api',
+  baseURL: 'http://localhost:3010/api/v1',
   headers: {
-    Accept: 'application/json'
-    // "Authorization" : "Bearer d0b49a2aa6192225dff1a20ec24a3a245d56893433d8fd5a119b10e9be9292b4"
+    Accept: 'application/json',
+    Authorization: getAccessToken()
   }
 })
 
-export default instance
+const Api = {
+  getProfile() {
+    return instance.get(`profile/show`).then((response) => response.data)
+  },
+  login(email, password) {
+    return instance
+      .post(`/sign_in`, {
+        email,
+        password
+      })
+      .then((response) => response.data)
+  },
+  register(name, email, password, password_confirmation, type) {
+    return instance
+      .post(`/sign_up`, {
+        name,
+        email,
+        password,
+        password_confirmation,
+        type
+      })
+      .then((response) => response.data)
+  }
+}
+
+export default Api

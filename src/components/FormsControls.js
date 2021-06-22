@@ -13,7 +13,7 @@ const FormControl = ({ meta, children }) => {
         hasError ? classes.error : ''
       )}
     >
-      <div>{children}</div>
+      {children}
       {hasError && (
         <div>
           <div className={classes.warning} tooltip={meta.error}>
@@ -35,14 +35,7 @@ export const Input = (props) => {
   )
 }
 
-export function createField(
-  placeholder,
-  name,
-  validators,
-  component,
-  props,
-  text = ''
-) {
+export function createField(placeholder, name, validators, component, props) {
   return (
     <>
       <Field
@@ -52,7 +45,6 @@ export function createField(
         component={component}
         {...props}
       />
-      {text}
     </>
   )
 }
