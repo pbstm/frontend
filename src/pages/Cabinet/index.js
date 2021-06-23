@@ -1,5 +1,6 @@
 import React from 'react'
-import { Redirect } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
+import { compose } from "redux";
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/authSelectors'
 import CabinetContainer from '../../hoc/CabinetContainer'
@@ -23,4 +24,4 @@ const Cabinet = () => {
   )
 }
 
-export default Cabinet
+export default compose(withRouter)(Cabinet)

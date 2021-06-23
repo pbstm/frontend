@@ -44,6 +44,7 @@ const Login = () => {
 
   const onSubmit = (formData) => {
     dispatch(login(formData.email, formData.password))
+    return <Redirect to="/cabinet" />
   }
 
   if (isAuth) {

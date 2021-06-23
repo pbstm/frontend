@@ -51,16 +51,14 @@ export const getProfileData = () => async (dispatch) => {
   await Api.getProfile()
     .then((response) => {
       if (response.success === true) {
-        const { id, name, email, createdAt, updatedAt, avatarUrl } =
-        response.user
         dispatch(
           actions.setProfileData(
-            id,
-            name,
-            email,
-            createdAt,
-            updatedAt,
-            avatarUrl,
+            response.user.id,
+            response.user.name,
+            response.user.email,
+            response.user.createdAt,
+            response.user.updatedAt,
+            response.user.avatarUrl,
             true
           )
         )
@@ -80,8 +78,8 @@ export const login = (email, password) => async (dispatch) => {
       console.log('login thunk: ', response)
     })
     .then(() => {
-      console.log('login thunk: getdata')
       dispatch(getProfileData())
+      console.log('login thunk: getdata')
     })
     .catch((error) => {
       const formError = error.response.data.errors[0].messages[0]
@@ -97,7 +95,20 @@ export const register =
   (name, email, password, passwordConfirmation, type) => async (dispatch) => {
     await Api.register(name, email, password, passwordConfirmation, type)
       .then((response) => {
-        console.log('register true ', response)
+        if (response.success === true) {
+          dispatch(
+            actions.setProfileData(
+              response.user.id,
+              response.user.name,
+              response.user.email,
+              response.user.createdAt,
+              response.user.updatedAt,
+              response.user.avatarUrl,
+              true
+            )
+          )
+          console.log('register thunk ok: ', response)
+        }
       })
       .catch((error) => {
         const formError = error.response.data.errors[0].messages[0]
