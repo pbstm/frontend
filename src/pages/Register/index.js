@@ -61,7 +61,6 @@ const RegisterForm = ({ handleSubmit, error }) => (
           type="radio"
           value="Customer"
           id="Customer"
-          checked
         />
         <span />
       </label>
@@ -92,7 +91,6 @@ const Register = () => {
   const dispatch = useDispatch()
 
   const onSubmit = (formData) => {
-    console.log('type: ', formData.type)
     dispatch(
       register(
         formData.name,

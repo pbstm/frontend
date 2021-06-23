@@ -62,12 +62,12 @@ export const getProfileData = () => async (dispatch) => {
             true
           )
         )
-        console.log('get profile thunk ok: ', response)
       }
     })
-    .catch((error) => {
-      dispatch(actions.setProfileData(null, null, null, null, null, null, false))
-      console.log('get profile thunk error', error)
+    .catch(() => {
+      dispatch(
+        actions.setProfileData(null, null, null, null, null, null, false)
+      )
     })
 }
 
@@ -75,11 +75,9 @@ export const login = (email, password) => async (dispatch) => {
   await Api.login(email, password)
     .then((response) => {
       localStorage.setItem('token', response.token)
-      console.log('login thunk: ', response)
     })
     .then(() => {
       dispatch(getProfileData())
-      console.log('login thunk: getdata')
     })
     .catch((error) => {
       const formError = error.response.data.errors[0].messages[0]
@@ -96,23 +94,11 @@ export const register =
     await Api.register(name, email, password, passwordConfirmation, type)
       .then((response) => {
         if (response.success === true) {
-          dispatch(
-            actions.setProfileData(
-              response.user.id,
-              response.user.name,
-              response.user.email,
-              response.user.createdAt,
-              response.user.updatedAt,
-              response.user.avatarUrl,
-              true
-            )
-          )
-          console.log('register thunk ok: ', response)
+          console.log('register ok')
         }
       })
       .catch((error) => {
         const formError = error.response.data.errors[0].messages[0]
-        console.log('register error ', error.response)
         dispatch(
           stopSubmit('register', {
             _error: formError

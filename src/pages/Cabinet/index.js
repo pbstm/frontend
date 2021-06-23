@@ -11,7 +11,6 @@ const Cabinet = () => {
   const isAuth = useSelector(selectIsAuth)
 
   if (!isAuth) {
-    console.log('auth from cabinet: ', isAuth)
     return <Redirect to="/login" />
   }
 
