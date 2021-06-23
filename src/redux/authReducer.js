@@ -94,6 +94,7 @@ export const register =
     await Api.register(name, email, password, passwordConfirmation, type)
       .then((response) => {
         if (response.success === true) {
+          // eslint-disable-next-line no-console
           console.log('register ok')
         }
       })
