@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect, NavLink } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { createField, Input } from '../../components/FormsControls'
 import { required, maxLengthCreator, email } from '../../components/validators'
@@ -47,8 +47,8 @@ const Login = () => {
   }
 
   if (isAuth) {
-    console.log('isauth : ', isAuth)
-    return <Redirect to="/cabinet" />
+    console.log('auth from login : ', isAuth)
+    return <Redirect to="/cabinet" />;
   }
 
   return (

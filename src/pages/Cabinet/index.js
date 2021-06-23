@@ -7,8 +7,10 @@ import Sessions from './Sessions'
 import Locations from './Locations'
 
 const Cabinet = () => {
-  const auth = useSelector(selectIsAuth)
-  if (!auth) {
+  const isAuth = useSelector(selectIsAuth)
+
+  if (!isAuth) {
+    console.log('auth from cabinet: ', isAuth)
     return <Redirect to="/login" />
   }
 

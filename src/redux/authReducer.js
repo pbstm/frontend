@@ -50,22 +50,25 @@ export const actions = {
 export const getProfileData = () => async (dispatch) => {
   await Api.getProfile()
     .then((response) => {
-      const { id, name, email, createdAt, updatedAt, avatarUrl } =
-      response.user
-      dispatch(
-        actions.setProfileData(
-          id,
-          name,
-          email,
-          createdAt,
-          updatedAt,
-          avatarUrl,
-          true
+      if (response.success === true) {
+        const { id, name, email, createdAt, updatedAt, avatarUrl } =
+        response.user
+        dispatch(
+          actions.setProfileData(
+            id,
+            name,
+            email,
+            createdAt,
+            updatedAt,
+            avatarUrl,
+            true
+          )
         )
-      )
-      console.log('get profile thunk: ', response)
+        console.log('get profile thunk ok: ', response)
+      }
     })
     .catch((error) => {
+      dispatch(actions.setProfileData(null, null, null, null, null, null, false))
       console.log('get profile thunk error', error)
     })
 }
@@ -74,8 +77,11 @@ export const login = (email, password) => async (dispatch) => {
   await Api.login(email, password)
     .then((response) => {
       localStorage.setItem('token', response.token)
-      dispatch(getProfileData())
       console.log('login thunk: ', response)
+    })
+    .then(() => {
+      console.log('login thunk: getdata')
+      dispatch(getProfileData())
     })
     .catch((error) => {
       const formError = error.response.data.errors[0].messages[0]

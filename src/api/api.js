@@ -1,7 +1,7 @@
 import axios from 'axios'
 /* eslint-disable camelcase */
 
-const getAccessToken = () => {
+export const getAccessToken = () => {
   const token = localStorage.getItem('token')
   console.log('from api, token: ', token)
   return token

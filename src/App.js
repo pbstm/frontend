@@ -1,25 +1,27 @@
 import React, { useEffect } from 'react'
 // prettier-ignore
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
-import { Provider, useDispatch, useSelector } from 'react-redux'
+import { Provider, useDispatch } from 'react-redux'
 import { compose } from 'redux'
 import store from './redux/redux-store'
-import { initializeApp } from './redux/initializeReducer'
-import { selectIsInitialized } from "./redux/initializeSelectors";
+import { getProfileData } from './redux/authReducer'
+import { getAccessToken } from './api/api'
 import Main from './pages/Main'
 import Cabinet from './pages/Cabinet'
 import Login from './pages/Login'
 import Register from './pages/Register'
 
 const App = () => {
-  const initialized = useSelector(selectIsInitialized);
   const dispatch = useDispatch()
+  const token = getAccessToken()
 
   useEffect(() => {
-    dispatch(initializeApp())
-    console.log('dispatched initializeapp', initialized)
+    if (token !== null) {
+      dispatch(getProfileData())
+      console.log('dispatched getdata')
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectIsInitialized])
+  }, [token])
 
   return (
     <Switch>
