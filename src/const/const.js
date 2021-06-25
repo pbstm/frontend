@@ -1,5 +1,4 @@
 import axios from 'axios'
-/* eslint-disable camelcase */
 
 export const getAccessToken = () => {
   const token = localStorage.getItem('token')

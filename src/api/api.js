@@ -1,4 +1,5 @@
 import { instance } from '../const/const'
+/* eslint-disable camelcase */
 
 const Api = {
   getProfile() {
