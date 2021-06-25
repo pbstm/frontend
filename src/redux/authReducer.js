@@ -8,12 +8,18 @@ const initialState = {
   createdAt: null,
   updatedAt: null,
   avatarUrl: null,
-  isAuth: false
+  isAuth: false,
+  isLoggedIn: false
 }
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case 'SET_PROFILE_DATA':
+      return {
+        ...state,
+        ...action.payload
+      }
+    case 'SET_IS_LOGGED_IN':
       return {
         ...state,
         ...action.payload
@@ -32,7 +38,8 @@ export const actions = {
     createdAt,
     updatedAt,
     avatarUrl,
-    isAuth
+    isAuth,
+    isLoggedIn
   ) => ({
     type: 'SET_PROFILE_DATA',
     payload: {
@@ -42,7 +49,14 @@ export const actions = {
       createdAt,
       updatedAt,
       avatarUrl,
-      isAuth
+      isAuth,
+      isLoggedIn
+    }
+  }),
+  setIsLoggedIn: (isLoggedIn) => ({
+    type: 'SET_IS_LOGGED_IN',
+    payload: {
+      isLoggedIn
     }
   })
 }
@@ -59,6 +73,7 @@ export const getProfileData = () => async (dispatch) => {
             response.user.createdAt,
             response.user.updatedAt,
             response.user.avatarUrl,
+            true,
             true
           )
         )
@@ -66,7 +81,7 @@ export const getProfileData = () => async (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        actions.setProfileData(null, null, null, null, null, null, false)
+        actions.setProfileData(null, null, null, null, null, null, false, true)
       )
     })
 }
@@ -75,6 +90,7 @@ export const login = (email, password) => async (dispatch) => {
   await Api.login(email, password)
     .then((response) => {
       localStorage.setItem('token', response.token)
+      dispatch(actions.setIsLoggedIn(true))
     })
     .then(() => {
       dispatch(getProfileData())
@@ -110,7 +126,9 @@ export const register =
 
 export const logout = () => async (dispatch) => {
   localStorage.removeItem('token')
-  dispatch(actions.setProfileData(null, null, null, null, null, null, false))
+  dispatch(
+    actions.setProfileData(null, null, null, null, null, null, false, false)
+  )
 }
 
 export default authReducer
