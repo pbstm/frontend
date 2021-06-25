@@ -111,7 +111,7 @@ export const register =
       .then((response) => {
         if (response.success === true) {
           // eslint-disable-next-line no-console
-          console.log('register ok')
+          console.log(response.user)
         }
       })
       .catch((error) => {
