@@ -16,7 +16,7 @@ const App = () => {
   const token = getAccessToken()
 
   useEffect(() => {
-    if (token !== null) {
+    if (token !== null && token !== undefined) {
       dispatch(getProfileData())
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
