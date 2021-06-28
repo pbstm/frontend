@@ -1,5 +1,5 @@
 import React from 'react'
-import { reduxForm, Field } from 'redux-form'
+import { reduxForm } from 'redux-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
@@ -51,32 +51,6 @@ const RegisterForm = ({ handleSubmit, error }) => (
       )}
     </div>
 
-    <div className={classes.FieldContainer}>
-      <div className={classes.FieldTitle}>Registering as: </div>
-      <div className={classes.FieldTitle}>Customer</div>
-      <label htmlFor="Customer">
-        <Field
-          name="type"
-          component="input"
-          type="radio"
-          value="Customer"
-          id="Customer"
-        />
-        <span />
-      </label>
-      <div className={classes.FieldTitle}>Photographer</div>
-      <label htmlFor="Photographer">
-        <Field
-          name="type"
-          component="input"
-          type="radio"
-          value="Photographer"
-          id="Photographer"
-        />
-        <span />
-      </label>
-    </div>
-
     {error && <div className={styles.formSummaryError}>{error}</div>}
     <Button text="Sign up" type="submit" stylish="Primary" />
   </form>
@@ -96,8 +70,7 @@ const Register = () => {
         formData.name,
         formData.email,
         formData.password,
-        formData.passwordConfirmation,
-        formData.type
+        formData.passwordConfirmation
       )
     )
   }

@@ -3,10 +3,10 @@ import { reduxForm } from 'redux-form'
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, Redirect } from 'react-router-dom'
 import PropTypes from 'prop-types'
-import { createField, Input } from '../../components/FormsControls'
+import { createField, Input, Checkbox } from '../../components/FormsControls'
 import { required, maxLengthCreator, email } from '../../components/validators'
 import { login } from '../../redux/authReducer'
-import { selectIsAuth } from "../../redux/authSelectors";
+import { selectIsAuth } from '../../redux/authSelectors'
 import styles from '../../components/FormsControls.module.scss'
 import classes from '../Register/Register.module.scss'
 import { Button } from '../../components/Button'
@@ -28,6 +28,11 @@ const LoginForm = ({ handleSubmit, error }) => (
       })}
     </div>
 
+    <div className={classes.FieldContainer}>
+      <div className={classes.FieldTitle}>Sign in as photographer: </div>
+      {createField(undefined, 'type', [], Checkbox)}
+    </div>
+
     {error && <div className={styles.formSummaryError}>{error}</div>}
 
     <Button text="Sign in" type="submit" stylish="Primary" />
@@ -43,11 +48,16 @@ const Login = () => {
   const dispatch = useDispatch()
 
   const onSubmit = (formData) => {
-    dispatch(login(formData.email, formData.password))
+    if (formData.type === true) {
+      const type = 'Photographer'
+      dispatch(login(formData.email, formData.password, type))
+    } else {
+      dispatch(login(formData.email, formData.password, formData.type))
+    }
   }
 
   if (isAuth) {
-    return <Redirect to="/cabinet" />;
+    return <Redirect to="/cabinet" />
   }
 
   return (

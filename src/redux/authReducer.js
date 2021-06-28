@@ -86,8 +86,8 @@ export const getProfileData = () => async (dispatch) => {
     })
 }
 
-export const login = (email, password) => async (dispatch) => {
-  await Api.login(email, password)
+export const login = (email, password, type) => async (dispatch) => {
+  await Api.login(email, password, type)
     .then((response) => {
       localStorage.setItem('token', response.token)
       dispatch(actions.setIsLoggedIn(true))
@@ -106,8 +106,8 @@ export const login = (email, password) => async (dispatch) => {
 }
 
 export const register =
-  (name, email, password, passwordConfirmation, type) => async (dispatch) => {
-    await Api.register(name, email, password, passwordConfirmation, type)
+  (name, email, password, passwordConfirmation) => async (dispatch) => {
+    await Api.register(name, email, password, passwordConfirmation)
       .then((response) => {
         if (response.success === true) {
           // eslint-disable-next-line no-console

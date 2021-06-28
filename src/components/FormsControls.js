@@ -35,6 +35,20 @@ export const Input = (props) => {
   )
 }
 
+/* eslint-disable */
+export const Checkbox = (props) => {
+  const { input, meta, ...restProps } = props
+  return (
+    <FormControl {...props}>
+      <label>
+        <input type="checkbox" {...input} {...restProps} />
+        <span />
+      </label>
+    </FormControl>
+  )
+}
+/* eslint-enable */
+
 export function createField(placeholder, name, validators, component, props) {
   return (
     <>
@@ -58,6 +72,11 @@ FormControl.propTypes = {
 }
 
 Input.propTypes = {
+  meta: PropTypes.instanceOf(Object).isRequired,
+  input: PropTypes.instanceOf(Object).isRequired
+}
+
+Checkbox.propTypes = {
   meta: PropTypes.instanceOf(Object).isRequired,
   input: PropTypes.instanceOf(Object).isRequired
 }

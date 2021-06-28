@@ -5,22 +5,22 @@ const Api = {
   getProfile() {
     return instance.get(`profile/show`).then((response) => response.data)
   },
-  login(email, password) {
+  login(email, password, type) {
     return instance
       .post(`/sign_in`, {
         email,
-        password
+        password,
+        type
       })
       .then((response) => response.data)
   },
-  register(name, email, password, password_confirmation, type) {
+  register(name, email, password, password_confirmation) {
     return instance
       .post(`/sign_up`, {
         name,
         email,
         password,
-        password_confirmation,
-        type
+        password_confirmation
       })
       .then((response) => response.data)
   }
