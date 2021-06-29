@@ -8,8 +8,7 @@ const initialState = {
   createdAt: null,
   updatedAt: null,
   avatarUrl: null,
-  isAuth: false,
-  isLoggedIn: false
+  isAuth: false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -19,12 +18,6 @@ const authReducer = (state = initialState, action) => {
         ...state,
         ...action.payload
       }
-    case 'SET_IS_LOGGED_IN':
-      return {
-        ...state,
-        ...action.payload
-      }
-
     default:
       return state
   }
@@ -38,8 +31,7 @@ export const actions = {
     createdAt,
     updatedAt,
     avatarUrl,
-    isAuth,
-    isLoggedIn
+    isAuth
   ) => ({
     type: 'SET_PROFILE_DATA',
     payload: {
@@ -49,14 +41,7 @@ export const actions = {
       createdAt,
       updatedAt,
       avatarUrl,
-      isAuth,
-      isLoggedIn
-    }
-  }),
-  setIsLoggedIn: (isLoggedIn) => ({
-    type: 'SET_IS_LOGGED_IN',
-    payload: {
-      isLoggedIn
+      isAuth
     }
   })
 }
@@ -73,7 +58,6 @@ export const getProfileData = () => async (dispatch) => {
             response.user.createdAt,
             response.user.updatedAt,
             response.user.avatarUrl,
-            true,
             true
           )
         )
@@ -81,7 +65,7 @@ export const getProfileData = () => async (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        actions.setProfileData(null, null, null, null, null, null, false, true)
+        actions.setProfileData(null, null, null, null, null, null, false)
       )
     })
 }
@@ -90,10 +74,9 @@ export const login = (email, password, type) => async (dispatch) => {
   await Api.login(email, password, type)
     .then((response) => {
       localStorage.setItem('token', response.token)
-      dispatch(actions.setIsLoggedIn(true))
     })
     .then(() => {
-      dispatch(getProfileData())
+      window.location.replace('./cabinet')
     })
     .catch((error) => {
       const formError = error.response.data.errors[0].messages[0]
@@ -127,7 +110,7 @@ export const register =
 export const logout = () => async (dispatch) => {
   localStorage.removeItem('token')
   dispatch(
-    actions.setProfileData(null, null, null, null, null, null, false, false)
+    actions.setProfileData(null, null, null, null, null, null, false)
   )
 }
 
