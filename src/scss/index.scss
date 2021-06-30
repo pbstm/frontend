@@ -27,9 +27,14 @@ code {
 
 a {
   text-decoration: none;
+  color: $color-main;
+  &:hover {
+    color: lighten($color-main, 10%);
+  }
 }
 
 ul,
 li {
   list-style-type: none;
 }
+

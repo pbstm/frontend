@@ -1,0 +1,50 @@
+.Container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+  background-image: url('../../assets/img/reg_bgr.jpg');
+  background-position: top;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-color: black;
+  min-height: 100vh;
+}
+
+.Logo {
+  padding-top: 5rem;
+}
+
+.Title {
+  padding: 2rem 0;
+  color: #eee;
+}
+
+.RegBlock {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #eee;
+  & div {
+    padding-bottom: 0.5rem;
+  }
+}
+.Form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.FieldContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.FieldTitle {
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #eee;
+}
