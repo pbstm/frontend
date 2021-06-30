@@ -31,13 +31,13 @@ const LoginForm = ({ handleSubmit, error }) => (
     {error && <div className={styles.formSummaryError}>{error}</div>}
 
     <Button
-      onClick={(customer) => handleSubmit(e, customer)}
+      onClick={(customer) => handleSubmit(customer)}
       text="Sign in as customer"
       type="submit"
       stylish="Primary"
     />
     <Button
-      onClick={(photographer) => handleSubmit(e, photographer)}
+      onClick={(photographer) => handleSubmit(photographer)}
       text="Sign in as photographer"
       type="submit"
       stylish="Primary"
@@ -53,12 +53,14 @@ const Login = () => {
   const isAuth = useSelector(selectIsAuth)
   const dispatch = useDispatch()
 
-  const onSubmit = (formData, e) => {
+  const onSubmit = (formData, customer, photographer) => {
     if (photographer) {
       const type = 'Photographer'
+      console.log(type)
       dispatch(login(formData.email, formData.password, type))
     } else if (customer) {
       const type = 'Customer'
+      console.log(type)
       dispatch(login(formData.email, formData.password, type))
     }
   }
