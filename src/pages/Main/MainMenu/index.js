@@ -1,12 +1,14 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { selectName, selectIsAuth } from '../../../redux/authSelectors'
+// prettier-ignore
+import { selectName, selectIsAuth, selectType } from '../../../redux/authSelectors'
 import { logout } from '../../../redux/authReducer'
 
 const MainMenu = () => {
   const name = useSelector(selectName)
   const auth = useSelector(selectIsAuth)
+  const userType = useSelector(selectType)
   const dispatch = useDispatch()
 
   const logoutCallback = () => {
@@ -22,11 +24,18 @@ const MainMenu = () => {
       {auth ? (
         <div>
           тут залогинен:
-          {name}
-          <NavLink to="/cabinet">
-            <span>Cabinet</span>
-          </NavLink>
+          <div>{name}</div>
+          <div>{userType}</div>
           <button onClick={logoutCallback}>logout</button>
+          {userType === 'Customer' ? (
+            <NavLink to="/customercabinet">
+              <span>Cabinet</span>
+            </NavLink>
+          ) : (
+            <NavLink to="/cabinet">
+              <span>Cabinet</span>
+            </NavLink>
+          )}
         </div>
       ) : (
         <div>

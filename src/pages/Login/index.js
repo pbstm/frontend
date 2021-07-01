@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { createField, Input, Checkbox } from '../../components/FormsControls'
 import { required, maxLengthCreator, email } from '../../components/validators'
 import { login } from '../../redux/authReducer'
-import { selectIsAuth } from '../../redux/authSelectors'
+import { selectIsAuth, selectType } from '../../redux/authSelectors'
 import styles from '../../components/FormsControls.module.scss'
 import classes from '../Register/Register.module.scss'
 import { Button } from '../../components/Button'
@@ -44,6 +44,7 @@ const LoginReduxForm = reduxForm({
 
 const Login = () => {
   const isAuth = useSelector(selectIsAuth)
+  const userType = useSelector(selectType)
   const dispatch = useDispatch()
 
   const onSubmit = (formData) => {
@@ -56,7 +57,10 @@ const Login = () => {
   }
 
   if (isAuth) {
-    return <Redirect to="/cabinet" />
+    if (userType === 'Photographer') {
+      return <Redirect to="/cabinet" />
+    }
+    return <Redirect to="/customercabinet" />
   }
 
   return (

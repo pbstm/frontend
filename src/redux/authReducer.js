@@ -8,6 +8,7 @@ const initialState = {
   createdAt: null,
   updatedAt: null,
   avatarUrl: null,
+  type: null,
   isAuth: false
 }
 
@@ -31,6 +32,7 @@ export const actions = {
     createdAt,
     updatedAt,
     avatarUrl,
+    type,
     isAuth
   ) => ({
     type: 'SET_PROFILE_DATA',
@@ -41,6 +43,7 @@ export const actions = {
       createdAt,
       updatedAt,
       avatarUrl,
+      type,
       isAuth
     }
   })
@@ -58,6 +61,7 @@ export const getProfileData = () => async (dispatch) => {
             response.user.createdAt,
             response.user.updatedAt,
             response.user.avatarUrl,
+            response.user.type,
             true
           )
         )
@@ -65,7 +69,7 @@ export const getProfileData = () => async (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        actions.setProfileData(null, null, null, null, null, null, false)
+        actions.setProfileData(null, null, null, null, null, null, null, false)
       )
     })
 }
@@ -109,9 +113,7 @@ export const register =
 
 export const logout = () => async (dispatch) => {
   localStorage.removeItem('token')
-  dispatch(
-    actions.setProfileData(null, null, null, null, null, null, false)
-  )
+  dispatch(actions.setProfileData(null, null, null, null, null, null, false))
 }
 
 export default authReducer

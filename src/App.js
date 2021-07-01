@@ -8,6 +8,7 @@ import { getProfileData } from './redux/authReducer'
 import { getAccessToken } from './const/const'
 import Main from './pages/Main'
 import Cabinet from './pages/Cabinet'
+import CustomerCabinet from './pages/CustomerCabinet'
 import Login from './pages/Login'
 import Register from './pages/Register'
 
@@ -25,6 +26,7 @@ const App = () => {
   return (
     <Switch>
       <Route path="/cabinet" component={Cabinet} />
+      <Route path="/customercabinet" component={CustomerCabinet} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
       <Route path="/" component={Main} />
