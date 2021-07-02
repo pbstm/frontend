@@ -11,6 +11,7 @@ import Cabinet from './pages/Cabinet'
 import CustomerCabinet from './pages/CustomerCabinet'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Profile from './pages/Profile'
 
 const App = () => {
   const dispatch = useDispatch()
@@ -29,6 +30,7 @@ const App = () => {
       <Route path="/customercabinet" component={CustomerCabinet} />
       <Route path="/login" component={Login} />
       <Route path="/register" component={Register} />
+      <Route path="/profile" component={Profile} />
       <Route path="/" component={Main} />
     </Switch>
   )

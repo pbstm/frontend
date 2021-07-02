@@ -10,6 +10,7 @@ import { register } from '../../redux/authReducer'
 import styles from '../../components/FormsControls.module.scss'
 import classes from './Register.module.scss'
 import { Button } from '../../components/Button'
+import { loginLink } from '../../const/Url'
 
 const maxLength30 = maxLengthCreator(30)
 const minLength6 = minLengthCreator(6)
@@ -86,9 +87,7 @@ const Register = () => {
       <RegisterReduxForm onSubmit={onSubmit} />
       <div className={classes.RegBlock}>
         <div>Already have an account?</div>
-        <NavLink to="/login">
-          <span>Sign in</span>
-        </NavLink>
+        {loginLink}
       </div>
     </div>
   )

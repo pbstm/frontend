@@ -1,9 +1,10 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { NavLink } from 'react-router-dom'
 // prettier-ignore
 import { selectName, selectIsAuth, selectType } from '../../../redux/authSelectors'
 import { logout } from '../../../redux/authReducer'
+// prettier-ignore
+import { mainLink, cabinetLink, customerCabinetLink, profileLink, loginLink, registerLink } from '../../../const/Url'
 
 const MainMenu = () => {
   const name = useSelector(selectName)
@@ -15,38 +16,40 @@ const MainMenu = () => {
     dispatch(logout())
   }
 
-  return (
-    <nav>
-      <NavLink to="/">
-        <span>Main</span>
-      </NavLink>
+  const CabinetLinksBlock = () => {
+    if (userType === 'Customer') {
+      return customerCabinetLink
+    }
+    return cabinetLink
+  }
 
-      {auth ? (
+  const LoginBlock = () => {
+    if (auth) {
+      return (
         <div>
           тут залогинен:
           <div>{name}</div>
           <div>{userType}</div>
           <button onClick={logoutCallback}>logout</button>
-          {userType === 'Customer' ? (
-            <NavLink to="/customercabinet">
-              <span>Cabinet</span>
-            </NavLink>
-          ) : (
-            <NavLink to="/cabinet">
-              <span>Cabinet</span>
-            </NavLink>
-          )}
+          {profileLink}
+          <CabinetLinksBlock />
         </div>
-      ) : (
-        <div>
-          <NavLink to="/login">
-            <span>Login</span>
-          </NavLink>
-          <NavLink to="/register">
-            <span>Register</span>
-          </NavLink>
-        </div>
-      )}
+      )
+    }
+    return (
+      <div>
+        {loginLink}
+        {registerLink}
+      </div>
+    )
+  }
+
+  // const mainLink = <div>Hello</div>
+
+  return (
+    <nav>
+      {mainLink}
+      <LoginBlock />
     </nav>
   )
 }
