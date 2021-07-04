@@ -44,8 +44,6 @@ const MainMenu = () => {
     )
   }
 
-  // const mainLink = <div>Hello</div>
-
   return (
     <nav>
       {mainLink}
