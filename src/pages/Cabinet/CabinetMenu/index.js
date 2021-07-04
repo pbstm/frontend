@@ -6,6 +6,7 @@ import * as Scroll from 'react-scroll'
 import classes from './CabinetMenu.module.scss'
 import { selectName } from '../../../redux/authSelectors'
 import { logout } from '../../../redux/authReducer'
+import { profileLink } from '../../../const/Url'
 
 const CabinetMenu = () => {
   const { scrollSpy } = Scroll
@@ -24,7 +25,7 @@ const CabinetMenu = () => {
     <nav className={classes.Nav}>
       <div className={classes.MainLink}>
         <NavLink to="/" className={classes.Link}>
-          <span>&spades;</span>
+          <span>LOGO</span>
         </NavLink>
       </div>
 
@@ -83,6 +84,7 @@ const CabinetMenu = () => {
         <div>{name}</div>
         <button onClick={logoutCallback}>logout</button>
       </div>
+      {profileLink}
     </nav>
   )
 }

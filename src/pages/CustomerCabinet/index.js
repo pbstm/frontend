@@ -1,9 +1,10 @@
 import React from 'react'
-import { Redirect, withRouter, NavLink } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectIsAuth, selectName } from '../../redux/authSelectors'
 import { logout } from '../../redux/authReducer'
+import { mainLink, profileLink } from '../../const/Url'
 
 const CustomerCabinet = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -25,9 +26,8 @@ const CustomerCabinet = () => {
         <div>{name}</div>
         <button onClick={logoutCallback}>logout</button>
       </div>
-      <NavLink to="/">
-        <span>Main</span>
-      </NavLink>
+      {profileLink}
+      {mainLink}
     </>
   )
 }

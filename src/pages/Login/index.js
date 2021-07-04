@@ -1,7 +1,7 @@
 import React from 'react'
 import { reduxForm } from 'redux-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { createField, Input, Checkbox } from '../../components/FormsControls'
 import { required, maxLengthCreator, email } from '../../components/validators'
@@ -10,6 +10,7 @@ import { selectIsAuth, selectType } from '../../redux/authSelectors'
 import styles from '../../components/FormsControls.module.scss'
 import classes from '../Register/Register.module.scss'
 import { Button } from '../../components/Button'
+import { registerLink } from '../../const/Url'
 
 const maxLength30 = maxLengthCreator(30)
 
@@ -72,9 +73,7 @@ const Login = () => {
       <LoginReduxForm onSubmit={onSubmit} />
       <div className={classes.RegBlock}>
         <div>Dont have an account yet?</div>
-        <NavLink to="/register">
-          <span>Sign up</span>
-        </NavLink>
+        {registerLink}
       </div>
     </div>
   )

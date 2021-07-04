@@ -69,7 +69,9 @@ export const getProfileData = () => async (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        actions.setProfileData(null, null, null, null, null, null, null, false)
+        actions.setProfileData(null, null, null, null, null, null, null, false),
+        localStorage.removeItem('token'),
+        window.location.replace('./login')
       )
     })
 }
@@ -114,6 +116,7 @@ export const register =
 export const logout = () => async (dispatch) => {
   localStorage.removeItem('token')
   dispatch(actions.setProfileData(null, null, null, null, null, null, false))
+  window.location.replace('./login')
 }
 
 export default authReducer
