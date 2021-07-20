@@ -5,7 +5,7 @@ import { Redirect, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { createField, Input } from '../../components/FormsControls'
 // prettier-ignore
-import { required, maxLengthCreator, minLengthCreator, email, matchPassword } from '../../components/validators'
+import { required, maxLengthCreator, minLengthCreator, validEmail, matchPassword } from '../../components/validators'
 import { register } from '../../redux/authReducer'
 import styles from '../../components/FormsControls.module.scss'
 import classes from './Register.module.scss'
@@ -23,7 +23,7 @@ const RegisterForm = ({ handleSubmit, error }) => (
     </div>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your email: </div>
-      {createField('Email', 'email', [required, maxLength30, email], Input, {
+      {createField('Email', 'email', [required, maxLength30, validEmail], Input, {
         type: 'email'
       })}
     </div>

@@ -10,7 +10,7 @@
 
 .formsControls input {
   padding: 0.5rem 1rem;
-  border: 1px solid #fff;
+  border: 1px solid #ddd;
   border-radius: 20px;
   text-align: center;
   outline: none;
@@ -49,6 +49,12 @@
   padding: 0.5rem;
   font-size: 0.9em;
   border-radius: 0.1rem;
+  margin-bottom: 1rem;
+}
+
+.formSummarySuccess {
+  color: $color-success;
+  font-size: 0.8em;
   margin-bottom: 1rem;
 }
 

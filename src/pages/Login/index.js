@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { createField, Input, Checkbox } from '../../components/FormsControls'
-import { required, maxLengthCreator, email } from '../../components/validators'
+// prettier-ignore
+import { required, maxLengthCreator, validEmail } from '../../components/validators'
 import { login } from '../../redux/authReducer'
 import { selectIsAuth, selectType } from '../../redux/authSelectors'
 import styles from '../../components/FormsControls.module.scss'
@@ -18,9 +19,15 @@ const LoginForm = ({ handleSubmit, error }) => (
   <form className={classes.Form} onSubmit={handleSubmit}>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your email: </div>
-      {createField('Email', 'email', [required, maxLength30, email], Input, {
-        type: 'email'
-      })}
+      {createField(
+        'Email',
+        'email',
+        [required, maxLength30, validEmail],
+        Input,
+        {
+          type: 'email'
+        }
+      )}
     </div>
     <div className={classes.FieldContainer}>
       <div className={classes.FieldTitle}>Enter your password: </div>

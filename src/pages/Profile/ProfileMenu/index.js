@@ -1,12 +1,13 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { selectName, selectType } from '../../../redux/authSelectors'
+import { selectName, selectType, selectEmail } from '../../../redux/authSelectors'
 import { logout } from '../../../redux/authReducer'
 import { mainLink, cabinetLink, customerCabinetLink } from '../../../const/Url'
 
 const ProfileMenu = () => {
   const name = useSelector(selectName)
   const userType = useSelector(selectType)
+  const email = useSelector(selectEmail)
   const dispatch = useDispatch()
 
   const logoutCallback = () => {
@@ -28,6 +29,7 @@ const ProfileMenu = () => {
         Профиль пользователя:
         <div>{name}</div>
         <div>{userType}</div>
+        <div>{email}</div>
         <button onClick={logoutCallback}>logout</button>
       </div>
       <CabinetLinksBlock />
