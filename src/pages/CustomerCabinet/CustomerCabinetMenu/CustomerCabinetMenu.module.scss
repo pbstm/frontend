@@ -1,0 +1,13 @@
+@import '../../../scss/vars.scss';
+
+.Nav {
+  color: $color-white;
+  background-color: $color-black-transparent-07;
+  height: 40px;
+  padding: 0px 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+}

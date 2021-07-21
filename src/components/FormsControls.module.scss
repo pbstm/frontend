@@ -10,7 +10,7 @@
 
 .formsControls input {
   padding: 0.5rem 1rem;
-  border: 1px solid #ddd;
+  border: 1px solid $color-gray-light;
   border-radius: 20px;
   text-align: center;
   outline: none;
@@ -29,7 +29,7 @@
 
 .formsControls.error .warning {
   background-color: $color-error;
-  color: white;
+  color: $color-white;
   font-size: 0.9rem;
   font-weight: 700;
   position: absolute;
@@ -45,7 +45,7 @@
 
 .formSummaryError {
   background-color: $color-error;
-  color: white;
+  color: $color-white;
   padding: 0.5rem;
   font-size: 0.9em;
   border-radius: 0.1rem;
@@ -89,9 +89,9 @@
   text-overflow: ellipsis;
   padding: 0.5rem;
   border-radius: 0.1rem;
-  box-shadow: 0 1em 2em -0.5em rgba(0, 0, 0, 0.35);
+  box-shadow: 0 1em 2em -0.5em $color-black-transparent-03;
   background: $color-error;
-  color: #fff;
+  color: $color-white;
   z-index: 1000;
 
   top: 50%;
@@ -132,7 +132,7 @@ label input[type='radio'] + span:after {
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background-color: white;
+  background-color: $color-white;
 }
 
 label input[type='radio'] + span:before {
@@ -160,7 +160,7 @@ label input[type='checkbox'] + span:after {
   content: '\2714';
   display: inline-block;
   color: transparent;
-  background-color: white;
+  background-color: $color-white;
   font-size: 1.5rem;
   font-weight: 900;
   line-height: 22px;
