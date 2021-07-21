@@ -28,6 +28,13 @@ const UserInfoBlock = () => {
     dispatch(logout())
   }
 
+  const NameInAva = () => {
+    if (userName) {
+      return userName.charAt(0)
+    }
+    return null
+  }
+
   return (
     <div className={classes.UserBlock}>
       <div
@@ -62,7 +69,7 @@ const UserInfoBlock = () => {
         {avatarUrl !== null ? (
           <img src={avatarUrl} alt="" />
         ) : (
-          <div className={classes.NoAva}>{userName.charAt(0)}</div>
+          <div className={classes.NoAva}><NameInAva /></div>
         )}
       </div>
       {isMenuOpen ? (
