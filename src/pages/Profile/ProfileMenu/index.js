@@ -1,18 +1,12 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
-import { selectName, selectType, selectEmail } from '../../../redux/authSelectors'
-import { logout } from '../../../redux/authReducer'
+import { useSelector } from 'react-redux'
+import { selectType } from '../../../redux/authSelectors'
 import { mainLink, cabinetLink, customerCabinetLink } from '../../../const/Url'
+import UserInfoBlock from '../../../components/UserInfoBlock'
+import classes from './ProfileMenu.module.scss'
 
 const ProfileMenu = () => {
-  const name = useSelector(selectName)
   const userType = useSelector(selectType)
-  const email = useSelector(selectEmail)
-  const dispatch = useDispatch()
-
-  const logoutCallback = () => {
-    dispatch(logout())
-  }
 
   const CabinetLinksBlock = () => {
     if (userType === 'Customer') {
@@ -22,17 +16,14 @@ const ProfileMenu = () => {
   }
 
   return (
-    <nav>
+    <nav className={classes.Nav}>
       {mainLink}
-
-      <div>
-        Профиль пользователя:
-        <div>{name}</div>
-        <div>{userType}</div>
-        <div>{email}</div>
-        <button onClick={logoutCallback}>logout</button>
+      <div className={classes.UserBlock}>
+        <CabinetLinksBlock />
+        <div className={classes.UserInfoBlock}>
+          <UserInfoBlock />
+        </div>
       </div>
-      <CabinetLinksBlock />
     </nav>
   )
 }
