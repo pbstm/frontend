@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
-import { reduxForm } from 'redux-form'
-import { createField, Input } from '../../../components/FormsControls'
-import { required, validEmail } from '../../../components/validators'
 import { Button } from '../../../components/Button'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
 
-const EmailForm = ({ handleSubmit, error, userEmail, changeEmailSuccess }) => {
+const EmailForm = ({
+  onSubmitEmail,
+  userEmail,
+  changeEmailSuccess,
+  changeEmailError
+}) => {
   const [editMode, setEditMode] = useState(false)
 
   const activateEditMode = () => {
@@ -22,13 +24,13 @@ const EmailForm = ({ handleSubmit, error, userEmail, changeEmailSuccess }) => {
   }, [userEmail])
 
   return (
-    <form onSubmit={handleSubmit} className={classes.Form}>
+    <form onSubmit={onSubmitEmail} className={classes.Form}>
       <div className={classes.FieldContainer}>
         <div className={classes.FieldTitle}>Email:</div>
-        {createField(userEmail, 'email', [validEmail], Input, {
-          type: 'email',
-          onChange: activateEditMode
-        })}
+        <div className={styles.formsControls}>
+          <input onChange={activateEditMode} defaultValue={userEmail} />
+        </div>
+
       </div>
       {!editMode && changeEmailSuccess && (
         <div className={styles.formSummarySuccess}>{changeEmailSuccess}</div>
@@ -37,13 +39,13 @@ const EmailForm = ({ handleSubmit, error, userEmail, changeEmailSuccess }) => {
         <div className={classes.Form}>
           <div className={classes.FieldContainer}>
             <div className={classes.FieldTitle}>Enter your password: </div>
-            {createField('Password', 'current_password', [required], Input, {
-              type: 'password'
-            })}
+            <div className={styles.formsControls}>
+              <input type="password" placeholder="Password" />
+            </div>
           </div>
-
-          {error && <div className={styles.formSummaryError}>{error}</div>}
-
+          {changeEmailError && (
+            <div className={styles.formSummaryError}>{changeEmailError}</div>
+          )}
           <Button text="Update email" type="submit" stylish="Primary" />
         </div>
       )}
@@ -51,21 +53,18 @@ const EmailForm = ({ handleSubmit, error, userEmail, changeEmailSuccess }) => {
   )
 }
 
-const EmailReduxForm = reduxForm({
-  form: 'email'
-})(EmailForm)
-
-export default EmailReduxForm
+export default EmailForm
 
 EmailForm.propTypes = {
-  handleSubmit: PropTypes.func.isRequired,
+  onSubmitEmail: PropTypes.func,
   userEmail: PropTypes.string,
-  error: PropTypes.string,
-  changeEmailSuccess: PropTypes.string
+  changeEmailSuccess: PropTypes.string,
+  changeEmailError: PropTypes.string
 }
 
 EmailForm.defaultProps = {
+  onSubmitEmail: PropTypes.func,
   userEmail: PropTypes.string,
-  error: '',
-  changeEmailSuccess: ''
+  changeEmailSuccess: '',
+  changeEmailError: ''
 }

@@ -2,16 +2,16 @@ import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { compose } from 'redux'
-// import { change } from 'redux-form'
 import ProfileContainer from '../../hoc/ProfileContainer'
 import { getAccessToken } from '../../const/const'
 // prettier-ignore
 import { updateNameData, updateEmailData, updatePasswordData, updatePhotoData } from '../../redux/changeProfileReducer'
 // prettier-ignore
 import { selectName, selectEmail, selectAvatarUrl } from '../../redux/authSelectors'
-import { selectChangePasswordError, selectChangePasswordSuccess, selectChangeEmailSuccess } from '../../redux/changeProfileSelectors'
+// prettier-ignore
+import { selectChangePasswordError, selectChangePasswordSuccess, selectChangeEmailError, selectChangeEmailSuccess } from '../../redux/changeProfileSelectors'
 import NameForm from './NameForm'
-import EmailReduxForm from './EmailForm'
+import EmailForm from './EmailForm'
 import PasswordForm from './PasswordForm'
 import PhotoForm from './PhotoForm'
 import classes from './Profile.module.scss'
@@ -23,6 +23,7 @@ const Profile = () => {
   const avatarUrl = useSelector(selectAvatarUrl)
   const changePasswordError = useSelector(selectChangePasswordError)
   const changePasswordSuccess = useSelector(selectChangePasswordSuccess)
+  const changeEmailError = useSelector(selectChangeEmailError)
   const changeEmailSuccess = useSelector(selectChangeEmailSuccess)
   const dispatch = useDispatch()
 
@@ -43,8 +44,9 @@ const Profile = () => {
     }
   }
 
-  const onSubmitEmail = (formData) => {
-    dispatch(updateEmailData(formData.email, formData.current_password))
+  const onSubmitEmail = (event) => {
+    event.preventDefault()
+    dispatch(updateEmailData(event.target[0].value, event.target[1].value))
   }
 
   const onSubmitPassword = (values, { setSubmitting, resetForm }) => {
@@ -65,13 +67,11 @@ const Profile = () => {
         <PhotoForm avatarUrl={avatarUrl} onSubmitPhoto={onSubmitPhoto} />
         <div>
           <NameForm onSubmitName={onSubmitName} userName={userName} />
-          <EmailReduxForm
-            onSubmit={onSubmitEmail}
+          <EmailForm
+            onSubmitEmail={onSubmitEmail}
             userEmail={userEmail}
+            changeEmailError={changeEmailError}
             changeEmailSuccess={changeEmailSuccess}
-            initialValues={{
-              email: `${userEmail}`
-            }}
           />
           <PasswordForm
             onSubmit={onSubmitPassword}

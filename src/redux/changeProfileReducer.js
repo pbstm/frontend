@@ -1,4 +1,3 @@
-import { stopSubmit, change, untouch } from 'redux-form'
 import Api from '../api/api'
 import { getProfileData } from './authReducer'
 
@@ -6,6 +5,7 @@ import { getProfileData } from './authReducer'
 const initialState = {
   changePasswordError: '',
   changePasswordSuccess: '',
+  changeEmailError: '',
   changeEmailSuccess: ''
 }
 
@@ -20,6 +20,11 @@ const changeProfileReducer = (state = initialState, action) => {
       return {
         ...state,
         changePasswordSuccess: action.changePasswordSuccess
+      }
+    case 'SET_CHANGE_EMAIL_ERROR':
+      return {
+        ...state,
+        changeEmailError: action.changeEmailError
       }
     case 'SET_CHANGE_EMAIL_SUCCESS':
       return {
@@ -39,6 +44,10 @@ export const actions = {
   setChangePasswordSuccess: (changePasswordSuccess) => ({
     type: 'SET_CHANGE_PASSWORD_SUCCESS',
     changePasswordSuccess
+  }),
+  setChangeEmailError: (changeEmailError) => ({
+    type: 'SET_CHANGE_EMAIL_ERROR',
+    changeEmailError
   }),
   setChangeEmailSuccess: (changeEmailSuccess) => ({
     type: 'SET_CHANGE_EMAIL_SUCCESS',
@@ -65,18 +74,13 @@ export const updateEmailData =
       .then((response) => {
         if (response.success === true) {
           dispatch(getProfileData())
+          dispatch(actions.setChangeEmailError(''))
           dispatch(actions.setChangeEmailSuccess('Email changed successful'))
-          dispatch(change('email', 'current_password', ''))
-          dispatch(untouch('email', 'current_password'))
         }
       })
       .catch((error) => {
         const formError = error.response.data.errors[0].messages[0]
-        dispatch(
-          stopSubmit('email', {
-            _error: formError
-          })
-        )
+        dispatch(actions.setChangeEmailError(formError))
         dispatch(actions.setChangeEmailSuccess(''))
       })
   }
