@@ -30,3 +30,19 @@ export const matchPassword = (value, allValues) => {
   }
   return undefined
 }
+
+// for simple input
+const validEmailRequired = (email) => {
+  if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+    return null;
+  }
+  if (email.trim() === '') {
+    return 'Field is required';
+  }
+  return 'Invalid email address';
+};
+
+export const validate = {
+  email: validEmailRequired,
+  password: required
+};
