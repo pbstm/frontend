@@ -1,20 +1,15 @@
 import React from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useSelector } from 'react-redux'
 // prettier-ignore
-import { selectName, selectIsAuth, selectType } from '../../../redux/authSelectors'
-import { logout } from '../../../redux/authReducer'
+import { selectIsAuth, selectType } from '../../../redux/authSelectors'
 // prettier-ignore
-import { mainLink, cabinetLink, customerCabinetLink, profileLink, loginLink, registerLink } from '../../../const/Url'
+import { mainLink, cabinetLink, customerCabinetLink, loginLink, registerLink } from '../../../const/Url'
+import UserInfoBlock from '../../../components/UserInfoBlock'
+import classes from './MainMenu.module.scss'
 
 const MainMenu = () => {
-  const name = useSelector(selectName)
   const auth = useSelector(selectIsAuth)
   const userType = useSelector(selectType)
-  const dispatch = useDispatch()
-
-  const logoutCallback = () => {
-    dispatch(logout())
-  }
 
   const CabinetLinksBlock = () => {
     if (userType === 'Customer') {
@@ -26,13 +21,11 @@ const MainMenu = () => {
   const LoginBlock = () => {
     if (auth) {
       return (
-        <div>
-          тут залогинен:
-          <div>{name}</div>
-          <div>{userType}</div>
-          <button onClick={logoutCallback}>logout</button>
-          {profileLink}
+        <div className={classes.UserBlock}>
           <CabinetLinksBlock />
+          <div className={classes.UserInfoBlock}>
+            <UserInfoBlock />
+          </div>
         </div>
       )
     }
@@ -45,7 +38,7 @@ const MainMenu = () => {
   }
 
   return (
-    <nav>
+    <nav className={classes.Nav}>
       {mainLink}
       <LoginBlock />
     </nav>

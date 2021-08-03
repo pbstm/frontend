@@ -1,0 +1,93 @@
+@import '../../scss/vars.scss';
+
+.Link {
+  color: $color-main;
+  cursor: pointer;
+  &:hover {
+    color: lighten($color-main, 10%);
+  }
+}
+
+.UserBlock {
+  display: flex;
+  align-items: center;
+}
+
+.Dropdown {
+  position: relative;
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 15px solid $color-main;
+  cursor: pointer;
+  transition: 0.5s ease;
+
+  & ul {
+    display: none;
+  }
+}
+
+.Open {
+  z-index: 3;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 15px solid $color-main;
+  border-top: none;
+
+  & ul {
+    display: block;
+    position: absolute;
+    right: -60px;
+    top: 35px;
+    padding: 20px;
+    border-radius: 0.5rem;
+    background-color: $color-black-transparent-07;
+    color: $color-white;
+    text-align: right;
+
+    & li {
+      padding: 5px;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+.LoggedAs {
+  font-size: 0.8rem;
+  color: $color-gray-light;
+}
+
+.Ava {
+  margin-left: 8px;
+
+  & img {
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+  }
+}
+
+.NoAva {
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: $color-main;
+  color: $color-white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Backdrop {
+  z-index: 2;
+  background: $color-black-transparent-0;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}

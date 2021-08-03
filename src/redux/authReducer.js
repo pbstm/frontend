@@ -1,6 +1,7 @@
 import { stopSubmit } from 'redux-form'
 import Api from '../api/api'
 
+/* eslint-disable camelcase */
 const initialState = {
   id: null,
   name: null,
@@ -58,9 +59,9 @@ export const getProfileData = () => async (dispatch) => {
             response.user.id,
             response.user.name,
             response.user.email,
-            response.user.createdAt,
-            response.user.updatedAt,
-            response.user.avatarUrl,
+            response.user.created_at,
+            response.user.updated_at,
+            response.user.avatar_url,
             response.user.type,
             true
           )

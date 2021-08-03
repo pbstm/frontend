@@ -1,0 +1,75 @@
+@import '../../scss/vars.scss';
+
+.Container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 5rem;
+}
+
+.AvatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.FieldContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5rem;
+}
+
+.FieldTitle {
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.Link {
+  color: $color-main;
+  cursor: pointer;
+  padding-bottom: 1.5rem;
+  &:hover {
+    color: lighten($color-main, 10%);
+  }
+}
+
+.Arrow {
+  &::after {
+    content: '';
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 10px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    cursor: pointer;
+    transition: 0.5s ease;
+  }
+}
+
+.Up {
+  &::after {
+    border-bottom: 15px solid $color-main;
+  }
+}
+
+.Down {
+  &::after {
+    border-top: 15px solid $color-main;
+  }
+}
+
+.InputFile {
+  display: none;
+}
