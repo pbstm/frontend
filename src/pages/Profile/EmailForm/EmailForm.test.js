@@ -40,6 +40,12 @@ describe('EmailForm component', () => {
       userEmail
     )
   })
+  test('after change email value to incorrect div-wrapper should have class .error', () => {
+    const emailInput = component.find({ name: 'email' })
+    emailInput.instance().value = 'vasyamail.ru'
+    emailInput.simulate('change').simulate('blur')
+    expect(component.find('.formsControls').at(0).hasClass('error')).toBe(true)
+  })
 })
 
 describe('Incorrect initial email', () => {
