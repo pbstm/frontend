@@ -46,6 +46,11 @@ describe('EmailForm component', () => {
     emailInput.simulate('change').simulate('blur')
     expect(component.find('.formsControls').at(0).hasClass('error')).toBe(true)
   })
+  test('div-wrapper of blank password input after onBlur should have class .error', () => {
+    component.find({ name: 'email' }).simulate('change')
+    component.find({ name: 'password' }).simulate('blur')
+    expect(component.find('.formsControls').at(1).hasClass('error')).toBe(true)
+  })
 })
 
 describe('Incorrect initial email', () => {
