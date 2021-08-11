@@ -2,14 +2,15 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import { Button } from './index.js'
 
-let component, mockCallback, text;
+let component, mockCallback, text, stylish;
 
 describe('Button tests', () => {
     beforeEach(
       () => (
         (text = 'testText'),
+        (stylish = 'testClass'),
         (mockCallback = jest.fn()),
-        (component = shallow(<Button onClick={mockCallback} text={text}></Button>))
+        (component = shallow(<Button onClick={mockCallback} text={text} stylish={stylish}></Button>))
       )
     )
     test('Callback should be called', () => {
@@ -20,4 +21,9 @@ describe('Button tests', () => {
         expect(component.find('button')).toHaveLength(1);
         expect(component.text()).toEqual('testText');
     });
+    test('styles applied correctly', () => {
+        expect(component.find('button').hasClass('Button')).toBe(true)
+        expect(component.find('button').hasClass('testClass')).toBe(true)
+    });
   })
+
