@@ -38,10 +38,8 @@ const Profile = () => {
     dispatch(updatePhotoData(file))
   }
 
-  const onSubmitName = (formData) => {
-    if (userName !== formData.target.value) {
-      dispatch(updateNameData(formData.target.value))
-    }
+  const onSubmitName = (name) => {
+    dispatch(updateNameData(name))
   }
 
   const onSubmitEmail = (event) => {

@@ -27,8 +27,13 @@ describe('NameForm component', () => {
   test('defaultValue of input equal to userName', () => {
     expect(component.find('input').prop('defaultValue')).toEqual(userName)
   })
-  test('after onBlur callback should be called', () => {
-    component.find('input').simulate('blur')
+  test('after change name and onBlur callback should be called', () => {
+    component.find('input').instance().value = 'Petya'
+    component.find('input').simulate('change').simulate('blur')
     expect(mockCallback).toHaveBeenCalledTimes(1)
+  })
+  test('after onBlur without change name callback should not be called', () => {
+    component.find('input').simulate('blur')
+    expect(mockCallback).toHaveBeenCalledTimes(0)
   })
 })
