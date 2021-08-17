@@ -42,9 +42,8 @@ const Profile = () => {
     dispatch(updateNameData(name))
   }
 
-  const onSubmitEmail = (event) => {
-    event.preventDefault()
-    dispatch(updateEmailData(event.target[0].value, event.target[1].value))
+  const onSubmitEmail = (values) => {
+    dispatch(updateEmailData(values.email, values.password))
   }
 
   const onSubmitPassword = (values, { setSubmitting, resetForm }) => {
