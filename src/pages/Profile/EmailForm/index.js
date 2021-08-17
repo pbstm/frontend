@@ -33,8 +33,8 @@ const EmailForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEmail])
 
-  const handleChange = (evt) => {
-    const { name, value } = evt.target
+  const handleChange = (event) => {
+    const { name, value } = event.target
 
     setValues({
       ...values,
@@ -44,11 +44,9 @@ const EmailForm = ({
     setEditMode(true)
   }
 
-  const handleBlur = (evt) => {
-    const { name, value } = evt.target
-
+  const handleBlur = (event) => {
+    const { name, value } = event.target
     const error = validate[name](value)
-
     const { [name]: oldError, ...rest } = errors
 
     setErrors({
@@ -59,8 +57,13 @@ const EmailForm = ({
     })
   }
 
+  const handleSumbit = (event) => {
+    event.preventDefault()
+    onSubmitEmail(values)
+  }
+
   return (
-    <form onSubmit={onSubmitEmail} className={classes.Form}>
+    <form onSubmit={handleSumbit} className={classes.Form}>
       <div className={classes.FieldContainer}>
         <div className={classes.FieldTitle}>Email:</div>
         <div

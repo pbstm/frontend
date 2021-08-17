@@ -123,4 +123,19 @@ describe('Callback tests', () => {
     component.find('form').simulate('submit', {})
     expect(mockCallback).toHaveBeenCalledTimes(1)
   })
+  test('Callback should be called with input values', () => {
+    const emailInput = component.find({ name: 'email' })
+    emailInput.simulate('change', {
+      target: { name: 'email', value: 'petya@mail.ru' }
+    })
+    const passwordInput = component.find({ name: 'password' })
+    passwordInput.simulate('change', {
+      target: { name: 'password', value: 'testpass' }
+    })
+    component.find('form').simulate('submit', {})
+    expect(mockCallback).toHaveBeenCalledWith({
+      email: 'petya@mail.ru',
+      password: 'testpass'
+    })
+  })
 })
