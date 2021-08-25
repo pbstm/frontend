@@ -62,13 +62,14 @@ const PasswordForm = ({
           onSubmit={onSubmit}
           validationSchema={validationsSchema}
         >
-          <Form className={classes.Form}>
+          <Form className={classes.Form} data-testid="form">
             <div className={classes.FieldContainer}>
               <div className={classes.FieldTitle}>Enter current password: </div>
               <FormikInput
                 name="current_password"
                 type="password"
                 placeholder="Current password"
+                data-testid="current_password"
               />
             </div>
             <div className={classes.FieldContainer}>
@@ -77,6 +78,7 @@ const PasswordForm = ({
                 name="password"
                 type="password"
                 placeholder="New password"
+                data-testid="password"
               />
             </div>
             <div className={classes.FieldContainer}>
@@ -85,6 +87,7 @@ const PasswordForm = ({
                 name="password_confirmation"
                 type="password"
                 placeholder="New password"
+                data-testid="password_confirmation"
               />
             </div>
             {changePasswordError && (
