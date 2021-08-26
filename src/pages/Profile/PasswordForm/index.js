@@ -59,7 +59,9 @@ const PasswordForm = ({
         <Formik
           initialValues={initialValues}
           validateOnBlur
-          onSubmit={onSubmit}
+          onSubmit={(values) => {
+            onSubmit(values)
+          }}
           validationSchema={validationsSchema}
         >
           <Form className={classes.Form} data-testid="form">
