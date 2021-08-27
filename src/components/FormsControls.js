@@ -48,6 +48,16 @@ export const FormikInput = ({ ...props }) => {
   )
 }
 
+export const FormikCheckbox = ({ ...props }) => {
+  const [field] = useField(props)
+  return (
+    <label>
+      <input type="checkbox" {...field} {...props} />
+      <span />
+    </label>
+  )
+}
+
 export const Input = (props) => {
   const { input, meta, ...restProps } = props
   return (
