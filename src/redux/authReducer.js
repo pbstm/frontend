@@ -10,7 +10,8 @@ const initialState = {
   updatedAt: null,
   avatarUrl: null,
   type: null,
-  isAuth: false
+  isAuth: false,
+  loginError: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -19,6 +20,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.payload
+      }
+    case 'SET_LOGIN_ERROR':
+      return {
+        ...state,
+        loginError: action.loginError
       }
     default:
       return state
@@ -47,6 +53,10 @@ export const actions = {
       type,
       isAuth
     }
+  }),
+  setLoginError: (loginError) => ({
+    type: 'SET_LOGIN_ERROR',
+    loginError
   })
 }
 
@@ -77,23 +87,21 @@ export const getProfileData = () => async (dispatch) => {
     })
 }
 
-export const login = (email, password, type) => async (dispatch) => {
-  await Api.login(email, password, type)
-    .then((response) => {
-      localStorage.setItem('token', response.token)
-    })
-    .then(() => {
-      window.location.replace('./cabinet')
-    })
-    .catch((error) => {
-      const formError = error.response.data.errors[0].messages[0]
-      dispatch(
-        stopSubmit('login', {
-          _error: formError
-        })
-      )
-    })
-}
+export const login =
+  (email, password, type) => async (dispatch) => {
+    await Api.login(email, password, type)
+      .then((response) => {
+        localStorage.setItem('token', response.token)
+        dispatch(actions.setLoginError(''))
+      })
+      .then(() => {
+        window.location.replace('./cabinet')
+      })
+      .catch((error) => {
+        const formError = error.response.data.errors[0].messages[0]
+        dispatch(actions.setLoginError(formError))
+      })
+  }
 
 export const register =
   (name, email, password, passwordConfirmation) => async (dispatch) => {
