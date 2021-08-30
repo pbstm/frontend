@@ -9,3 +9,5 @@ export const selectEmail = (state) => state.auth.email
 export const selectAvatarUrl = (state) => state.auth.avatarUrl
 
 export const selectLoginError = (state) => state.auth.loginError
+
+export const selectRegisterError = (state) => state.auth.registerError

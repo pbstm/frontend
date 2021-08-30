@@ -1,4 +1,3 @@
-import { stopSubmit } from 'redux-form'
 import Api from '../api/api'
 
 /* eslint-disable camelcase */
@@ -11,7 +10,8 @@ const initialState = {
   avatarUrl: null,
   type: null,
   isAuth: false,
-  loginError: ''
+  loginError: '',
+  registerError: ''
 }
 
 const authReducer = (state = initialState, action) => {
@@ -25,6 +25,11 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         loginError: action.loginError
+      }
+    case 'SET_REGISTER_ERROR':
+      return {
+        ...state,
+        registerError: action.registerError
       }
     default:
       return state
@@ -57,6 +62,10 @@ export const actions = {
   setLoginError: (loginError) => ({
     type: 'SET_LOGIN_ERROR',
     loginError
+  }),
+  setRegisterError: (registerError) => ({
+    type: 'SET_REGISTER_ERROR',
+    registerError
   })
 }
 
@@ -87,38 +96,35 @@ export const getProfileData = () => async (dispatch) => {
     })
 }
 
-export const login =
-  (email, password, type) => async (dispatch) => {
-    await Api.login(email, password, type)
-      .then((response) => {
-        localStorage.setItem('token', response.token)
-        dispatch(actions.setLoginError(''))
-      })
-      .then(() => {
-        window.location.replace('./cabinet')
-      })
-      .catch((error) => {
-        const formError = error.response.data.errors[0].messages[0]
-        dispatch(actions.setLoginError(formError))
-      })
-  }
+export const login = (email, password, type) => async (dispatch) => {
+  await Api.login(email, password, type)
+    .then((response) => {
+      localStorage.setItem('token', response.token)
+      dispatch(actions.setLoginError(''))
+    })
+    .then(() => {
+      window.location.replace('./cabinet')
+    })
+    .catch((error) => {
+      const formError = error.response.data.errors[0].messages[0]
+      dispatch(actions.setLoginError(formError))
+    })
+}
 
 export const register =
   (name, email, password, passwordConfirmation) => async (dispatch) => {
     await Api.register(name, email, password, passwordConfirmation)
       .then((response) => {
         if (response.success === true) {
+          dispatch(actions.setRegisterError(''))
           // eslint-disable-next-line no-console
           console.log(response.user)
+          window.location.replace('./login')
         }
       })
       .catch((error) => {
         const formError = error.response.data.errors[0].messages[0]
-        dispatch(
-          stopSubmit('register', {
-            _error: formError
-          })
-        )
+        dispatch(actions.setRegisterError(formError))
       })
   }
 
