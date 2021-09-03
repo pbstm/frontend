@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const mainUrl = '/'
 const cabinetUrl = '/cabinet'
@@ -8,38 +9,56 @@ const profileUrl = '/profile'
 const loginUrl = '/login'
 const registerUrl = '/register'
 
-export const mainLink = (
-  <NavLink to={mainUrl}>
-    <span>Main</span>
-  </NavLink>
-)
+export const MainLink = () => {
+  const { t } = useTranslation()
+  return (
+    <NavLink to={mainUrl}>
+      <span>{t('components.links.main')}</span>
+    </NavLink>
+  )
+}
 
-export const cabinetLink = (
-  <NavLink to={cabinetUrl}>
-    <span>Cabinet</span>
-  </NavLink>
-)
+export const СabinetLink = () => {
+  const { t } = useTranslation()
+  return (
+    <NavLink to={cabinetUrl}>
+      <span>{t('components.links.cabinet')}</span>
+    </NavLink>
+  )
+}
 
-export const customerCabinetLink = (
-  <NavLink to={customerCabinetUrl}>
-    <span>Cabinet</span>
-  </NavLink>
-)
+export const СustomerCabinetLink = () => {
+  const { t } = useTranslation()
+  return (
+    <NavLink to={customerCabinetUrl}>
+      <span>{t('components.links.customerCabinet')}</span>
+    </NavLink>
+  )
+}
 
-export const profileLink = (
-  <NavLink to={profileUrl}>
-    <span>Profile</span>
-  </NavLink>
-)
+export const ProfileLink = () => {
+  const { t } = useTranslation()
+  return (
+    <NavLink to={profileUrl}>
+      <span>{t('components.links.profile')}</span>
+    </NavLink>
+  )
+}
 
-export const loginLink = (
-  <NavLink to={loginUrl}>
-    <span>Sign in</span>
-  </NavLink>
-)
+export const LoginLink = () => {
+  const { t } = useTranslation()
+  return (
+    <NavLink to={loginUrl}>
+      <span>{t('components.links.login')}</span>
+    </NavLink>
+  )
+}
 
-export const registerLink = (
-  <NavLink to={registerUrl}>
-    <span>Sign up</span>
-  </NavLink>
-)
+export const RegisterLink = () => {
+  const { t } = useTranslation()
+  return (
+    <NavLink to={registerUrl}>
+      <span>{t('components.links.register')}</span>
+    </NavLink>
+  )
+}

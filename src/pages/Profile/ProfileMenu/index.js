@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import { selectType } from '../../../redux/authSelectors'
-import { mainLink, cabinetLink, customerCabinetLink } from '../../../const/Url'
+import { MainLink, СabinetLink, СustomerCabinetLink } from '../../../const/Url'
 import UserInfoBlock from '../../../components/UserInfoBlock'
 import classes from './ProfileMenu.module.scss'
 
@@ -10,14 +10,14 @@ const ProfileMenu = () => {
 
   const CabinetLinksBlock = () => {
     if (userType === 'Customer') {
-      return customerCabinetLink
+      return <СustomerCabinetLink />
     }
-    return cabinetLink
+    return <СabinetLink />
   }
 
   return (
     <nav className={classes.Nav}>
-      {mainLink}
+      <MainLink />
       <div className={classes.UserBlock}>
         <CabinetLinksBlock />
         <div className={classes.UserInfoBlock}>

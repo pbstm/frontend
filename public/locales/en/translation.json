@@ -5,5 +5,15 @@
       "part1": "Photobooking system",
       "part2": "Create your photosessions"
     }
+  },
+  "components": {
+    "links": {
+      "main": "Main",
+      "cabinet": "Cabinet",
+      "customerCabinet": "Cabinet",
+      "profile": "Profile",
+      "login": "Sign in",
+      "register": "Sign up"
+    }
   }
 }

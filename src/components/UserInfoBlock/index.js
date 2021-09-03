@@ -4,7 +4,7 @@ import classNames from 'classnames'
 // prettier-ignore
 import { selectName, selectType, selectEmail, selectAvatarUrl } from '../../redux/authSelectors'
 import { logout } from '../../redux/authReducer'
-import { profileLink } from '../../const/Url'
+import { ProfileLink } from '../../const/Url'
 import classes from './UserInfoBlock.module.scss'
 
 const UserInfoBlock = () => {
@@ -51,7 +51,9 @@ const UserInfoBlock = () => {
             <span className={classes.LoggedAs}>logged as: </span>
             <span>{userType}</span>
           </li>
-          <li>{profileLink}</li>
+          <li>
+            <ProfileLink />
+          </li>
           <li>
             <div
               className={classes.Link}
