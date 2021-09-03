@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 // prettier-ignore
 import { selectName, selectType, selectEmail, selectAvatarUrl } from '../../redux/authSelectors'
@@ -8,6 +9,7 @@ import { ProfileLink } from '../../const/Url'
 import classes from './UserInfoBlock.module.scss'
 
 const UserInfoBlock = () => {
+  const { t } = useTranslation()
   const userType = useSelector(selectType)
   const userName = useSelector(selectName)
   const userEmail = useSelector(selectEmail)
@@ -48,7 +50,9 @@ const UserInfoBlock = () => {
           <li>{userName}</li>
           <li>{userEmail}</li>
           <li>
-            <span className={classes.LoggedAs}>logged as: </span>
+            <span className={classes.LoggedAs}>
+              {t('components.userInfoBlock.loggedAs')}
+            </span>
             <span>{userType}</span>
           </li>
           <li>
@@ -62,7 +66,7 @@ const UserInfoBlock = () => {
               role="link"
               tabIndex={0}
             >
-              logout
+              {t('components.userInfoBlock.logout')}
             </div>
           </li>
         </ul>
