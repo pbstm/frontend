@@ -1,9 +1,8 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-// prettier-ignore
 import { selectIsAuth, selectType } from '../../../redux/authSelectors'
 // prettier-ignore
-import { mainLink, cabinetLink, customerCabinetLink, loginLink, registerLink } from '../../../const/Url'
+import { MainLink, СabinetLink, СustomerCabinetLink, LoginLink, RegisterLink } from '../../../const/Url'
 import UserInfoBlock from '../../../components/UserInfoBlock'
 import ChangeLanguageBlock from '../../../components/ChangeLanguageBlock'
 import classes from './MainMenu.module.scss'
@@ -14,9 +13,9 @@ const MainMenu = () => {
 
   const CabinetLinksBlock = () => {
     if (userType === 'Customer') {
-      return customerCabinetLink
+      return <СustomerCabinetLink />
     }
-    return cabinetLink
+    return <СabinetLink />
   }
 
   const LoginBlock = () => {
@@ -32,15 +31,15 @@ const MainMenu = () => {
     }
     return (
       <div>
-        {loginLink}
-        {registerLink}
+        <LoginLink />
+        <RegisterLink />
       </div>
     )
   }
 
   return (
     <nav className={classes.Nav}>
-      {mainLink}
+      <MainLink />
       <div className={classes.RightBlock}>
         <LoginBlock />
         <ChangeLanguageBlock />

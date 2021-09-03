@@ -4,7 +4,7 @@ import { Redirect, NavLink } from 'react-router-dom'
 import { register } from '../../redux/authReducer'
 import { selectIsAuth, selectRegisterError } from '../../redux/authSelectors'
 import classes from './Register.module.scss'
-import { loginLink } from '../../const/Url'
+import { LoginLink } from '../../const/Url'
 import RegisterForm from './RegisterForm'
 
 const Register = () => {
@@ -34,7 +34,7 @@ const Register = () => {
       <RegisterForm onSubmit={onSubmit} registerError={registerError} />
       <div className={classes.RegBlock}>
         <div>Already have an account?</div>
-        {loginLink}
+        <LoginLink />
       </div>
     </div>
   )

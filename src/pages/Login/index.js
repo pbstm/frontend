@@ -2,9 +2,10 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 import { login } from '../../redux/authReducer'
+// prettier-ignore
 import { selectIsAuth, selectType, selectLoginError } from '../../redux/authSelectors'
 import classes from '../Register/Register.module.scss'
-import { registerLink } from '../../const/Url'
+import { RegisterLink } from '../../const/Url'
 import LoginForm from './LoginForm'
 
 const Login = () => {
@@ -39,7 +40,7 @@ const Login = () => {
       <LoginForm onSubmit={onSubmit} loginError={loginError} />
       <div className={classes.RegBlock}>
         <div>Dont have an account yet?</div>
-        {registerLink}
+        <RegisterLink />
       </div>
     </div>
   )
