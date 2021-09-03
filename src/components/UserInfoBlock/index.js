@@ -69,7 +69,9 @@ const UserInfoBlock = () => {
         {avatarUrl !== null ? (
           <img src={avatarUrl} alt="" />
         ) : (
-          <div className={classes.NoAva}><NameInAva /></div>
+          <div className={classes.NoAva}>
+            <NameInAva />
+          </div>
         )}
       </div>
       {isMenuOpen ? (

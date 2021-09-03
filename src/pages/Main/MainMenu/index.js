@@ -5,6 +5,7 @@ import { selectIsAuth, selectType } from '../../../redux/authSelectors'
 // prettier-ignore
 import { mainLink, cabinetLink, customerCabinetLink, loginLink, registerLink } from '../../../const/Url'
 import UserInfoBlock from '../../../components/UserInfoBlock'
+import ChangeLanguageBlock from '../../../components/ChangeLanguageBlock'
 import classes from './MainMenu.module.scss'
 
 const MainMenu = () => {
@@ -40,7 +41,10 @@ const MainMenu = () => {
   return (
     <nav className={classes.Nav}>
       {mainLink}
-      <LoginBlock />
+      <div className={classes.RightBlock}>
+        <LoginBlock />
+        <ChangeLanguageBlock />
+      </div>
     </nav>
   )
 }
