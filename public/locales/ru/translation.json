@@ -6,6 +6,14 @@
       "part2": "Создавай свои фотосессии"
     }
   },
+  "login": {
+    "title": "Войти в Фотобукинг",
+    "accountQuestion": "Еще нет аккаунта?"
+  },
+  "register": {
+    "title": "Зарегистрироваться в системе Фотобукинг",
+    "accountQuestion": "Уже есть аккаунт?"
+  },
   "components": {
     "links": {
       "main": "Главная",
@@ -18,6 +26,33 @@
     "userInfoBlock": {
       "loggedAs": "Зарегистрирован как: ",
       "logout": "Выйти"
+    }
+  },
+  "forms": {
+    "titles": {
+      "nameEnter": "Введите ваше имя: ",
+      "emailEnter": "Введите ваш email: ",
+      "passwordEnter": "Введите ваш пароль: ",
+      "passwordConfirm": "Подтвердите пароль: ",
+      "loginCheckbox": "Войти как фотограф: "
+    },
+    "placeholders": {
+      "name": "Имя",
+      "email": "Email",
+      "password": "Пароль"
+    },
+    "validators": {
+      "nameRequired": "Имя обязательно для заполнения",
+      "emailRequired": "Email обязателен для заполнения",
+      "emailInvalid": "Неверный формат email",
+      "passwordRequired": "Пароль обязателен для заполнения",
+      "passwordConfirmRequired": "Подтверждение пароля обязательно для заполнения",
+      "passwordLength": "Длина пароля должна быть не менее 6 и не более 30 символов",
+      "passwordUnequal": "Введенные пароли должны совпадать"
+    },
+    "buttons": {
+      "singIn": "Войти",
+      "singUp": "Зарегистрироваться"
     }
   }
 }

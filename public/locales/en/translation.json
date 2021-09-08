@@ -6,6 +6,14 @@
       "part2": "Create your photosessions"
     }
   },
+  "login": {
+    "title": "Sign in to Photobooking system",
+    "accountQuestion": "Dont have an account yet?"
+  },
+  "register": {
+    "title": "Sign up to Photobooking system",
+    "accountQuestion": "Already have an account?"
+  },
   "components": {
     "links": {
       "main": "Main",
@@ -18,6 +26,33 @@
     "userInfoBlock": {
       "loggedAs": "Logged as: ",
       "logout": "Log out"
+    }
+  },
+  "forms": {
+    "titles": {
+      "nameEnter": "Enter your name: ",
+      "emailEnter": "Enter your email: ",
+      "passwordEnter": "Enter your password: ",
+      "passwordConfirm": "Confirm password: ",
+      "loginCheckbox": "Sign in as photographer: "
+    },
+    "placeholders": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "validators": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email address",
+      "passwordRequired": "Password is required",
+      "passwordConfirmRequired": "Password confirmation is required",
+      "passwordLength": "Password must be at least 6 and no more than 30 characters",
+      "passwordUnequal": "Passwords must be equal"
+    },
+    "buttons": {
+      "singIn": "Sing in",
+      "singUp": "Sing up"
     }
   }
 }
