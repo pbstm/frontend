@@ -27,5 +27,23 @@
       "loggedAs": "Logged as: ",
       "logout": "Log out"
     }
+  },
+  "forms": {
+    "titles": {
+      "nameEnter": "Enter your name: ",
+      "emailEnter": "Enter your email: ",
+      "passwordEnter": "Enter your password: ",
+      "passwordConfirm": "Confirm password: ",
+      "loginCheckbox": "Sign in as photographer: "
+    },
+    "placeholders": {
+      "name": "Name",
+      "email": "Email",
+      "password": "Password"
+    },
+    "buttons": {
+      "singIn": "Sing in",
+      "singUp": "Sing up"
+    }
   }
 }

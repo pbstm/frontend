@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import { FormikInput, FormikCheckbox } from '../../../components/FormsControls'
@@ -8,6 +9,8 @@ import styles from '../../../components/FormsControls.module.scss'
 import classes from '../../Register/Register.module.scss'
 
 const LoginForm = ({ onSubmit, loginError }) => {
+  const { t } = useTranslation()
+
   const initialValues = {
     email: '',
     password: '',
@@ -42,32 +45,42 @@ const LoginForm = ({ onSubmit, loginError }) => {
       >
         <Form className={classes.Form} data-testid="form">
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Enter your email: </div>
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.emailEnter')}
+            </div>
             <FormikInput
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={t('forms.placeholders.email')}
               data-testid="email"
             />
           </div>
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Enter your password: </div>
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.passwordEnter')}
+            </div>
             <FormikInput
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder={t('forms.placeholders.password')}
               data-testid="password"
             />
           </div>
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Sign in as photographer: </div>
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.loginCheckbox')}
+            </div>
             <FormikCheckbox name="type" data-testid="checkbox" />
           </div>
           {loginError && (
             <div className={styles.formSummaryError}>{loginError}</div>
           )}
 
-          <Button text="Sign in" type="submit" stylish="Primary" />
+          <Button
+            text={t('forms.buttons.singIn')}
+            type="submit"
+            stylish="Primary"
+          />
         </Form>
       </Formik>
     </div>

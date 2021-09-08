@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import { FormikInput } from '../../../components/FormsControls'
@@ -8,6 +9,8 @@ import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Register.module.scss'
 
 const RegisterForm = ({ onSubmit, registerError }) => {
+  const { t } = useTranslation()
+
   const initialValues = {
     name: '',
     email: '',
@@ -54,33 +57,45 @@ const RegisterForm = ({ onSubmit, registerError }) => {
       >
         <Form className={classes.Form} data-testid="form">
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Enter your name: </div>
-            <FormikInput name="name" placeholder="Name" data-testid="name" />
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.nameEnter')}
+            </div>
+            <FormikInput
+              name="name"
+              placeholder={t('forms.placeholders.name')}
+              data-testid="name"
+            />
           </div>
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Enter your email: </div>
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.emailEnter')}
+            </div>
             <FormikInput
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder={t('forms.placeholders.email')}
               data-testid="email"
             />
           </div>
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Enter your password: </div>
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.passwordEnter')}
+            </div>
             <FormikInput
               name="password"
               type="password"
-              placeholder="Password"
+              placeholder={t('forms.placeholders.password')}
               data-testid="password"
             />
           </div>
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Confirm password: </div>
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.passwordConfirm')}
+            </div>
             <FormikInput
               name="password_confirmation"
               type="password"
-              placeholder="Password"
+              placeholder={t('forms.placeholders.password')}
               data-testid="password_confirmation"
             />
           </div>
@@ -88,7 +103,7 @@ const RegisterForm = ({ onSubmit, registerError }) => {
             <div className={styles.formSummaryError}>{registerError}</div>
           )}
 
-          <Button text="Sign in" type="submit" stylish="Primary" />
+          <Button text={t('forms.buttons.singUp')} type="submit" stylish="Primary" />
         </Form>
       </Formik>
     </div>

@@ -27,5 +27,23 @@
       "loggedAs": "Зарегистрирован как: ",
       "logout": "Выйти"
     }
+  },
+  "forms": {
+    "titles": {
+      "nameEnter": "Введите ваше имя: ",
+      "emailEnter": "Введите ваш email: ",
+      "passwordEnter": "Введите ваш пароль: ",
+      "passwordConfirm": "Подтвердите пароль: ",
+      "loginCheckbox": "Войти как фотограф: "
+    },
+    "placeholders": {
+      "name": "Имя",
+      "email": "Email",
+      "password": "Пароль"
+    },
+    "buttons": {
+      "singIn": "Войти",
+      "singUp": "Зарегистрироваться"
+    }
   }
 }
