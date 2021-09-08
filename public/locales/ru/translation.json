@@ -41,6 +41,15 @@
       "email": "Email",
       "password": "Пароль"
     },
+    "validators": {
+      "nameRequired": "Имя обязательно для заполнения",
+      "emailRequired": "Email обязателен для заполнения",
+      "emailInvalid": "Неверный формат email",
+      "passwordRequired": "Пароль обязателен для заполнения",
+      "passwordConfirmRequired": "Подтверждение пароля обязательно для заполнения",
+      "passwordLength": "Длина пароля должна быть не менее 6 и не более 30 символов",
+      "passwordUnequal": "Введенные пароли должны совпадать"
+    },
     "buttons": {
       "singIn": "Войти",
       "singUp": "Зарегистрироваться"

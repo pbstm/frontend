@@ -41,6 +41,15 @@
       "email": "Email",
       "password": "Password"
     },
+    "validators": {
+      "nameRequired": "Name is required",
+      "emailRequired": "Email is required",
+      "emailInvalid": "Invalid email address",
+      "passwordRequired": "Password is required",
+      "passwordConfirmRequired": "Password confirmation is required",
+      "passwordLength": "Password must be at least 6 and no more than 30 characters",
+      "passwordUnequal": "Passwords must be equal"
+    },
     "buttons": {
       "singIn": "Sing in",
       "singUp": "Sing up"

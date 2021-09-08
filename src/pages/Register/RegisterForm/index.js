@@ -21,29 +21,29 @@ const RegisterForm = ({ onSubmit, registerError }) => {
   const validationsSchema = yup.object().shape({
     name: yup
       .string()
-      .required('Name is required')
+      .required(t('forms.validators.nameRequired'))
       .matches(
         /^[\s\S]{3,30}$/,
         'Name must be at least 3 and no more than 30 characters'
       ),
     email: yup
       .string()
-      .required('Email is required')
+      .required(t('forms.validators.emailRequired'))
       .matches(
         /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-        'Invalid email address'
+        t('forms.validators.emailInvalid')
       ),
     password: yup
       .string()
-      .required('Password is required')
+      .required(t('forms.validators.passwordRequired'))
       .matches(
         /^[\s\S]{6,30}$/,
-        'Password must be at least 6 and no more than 30 characters'
+        t('forms.validators.passwordLength')
       ),
     password_confirmation: yup
       .string()
-      .required('Password confirmation is required')
-      .oneOf([yup.ref('password'), null], 'Passwords must be equal')
+      .required(t('forms.validators.passwordConfirmRequired'))
+      .oneOf([yup.ref('password'), null], t('forms.validators.passwordUnequal'))
   })
   return (
     <div>
@@ -103,7 +103,11 @@ const RegisterForm = ({ onSubmit, registerError }) => {
             <div className={styles.formSummaryError}>{registerError}</div>
           )}
 
-          <Button text={t('forms.buttons.singUp')} type="submit" stylish="Primary" />
+          <Button
+            text={t('forms.buttons.singUp')}
+            type="submit"
+            stylish="Primary"
+          />
         </Form>
       </Formik>
     </div>
