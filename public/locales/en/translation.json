@@ -6,6 +6,14 @@
       "part2": "Create your photosessions"
     }
   },
+  "login": {
+    "title": "Sign in to Photobooking system",
+    "accountQuestion": "Dont have an account yet?"
+  },
+  "register": {
+    "title": "Sign up to Photobooking system",
+    "accountQuestion": "Already have an account?"
+  },
   "components": {
     "links": {
       "main": "Main",

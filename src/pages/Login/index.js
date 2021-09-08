@@ -1,14 +1,17 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 import { login } from '../../redux/authReducer'
 // prettier-ignore
 import { selectIsAuth, selectType, selectLoginError } from '../../redux/authSelectors'
 import classes from '../Register/Register.module.scss'
 import { RegisterLink } from '../../const/Url'
 import LoginForm from './LoginForm'
+import ChangeLanguageBlock from '../../components/ChangeLanguageBlock'
 
 const Login = () => {
+  const { t } = useTranslation()
   const isAuth = useSelector(selectIsAuth)
   const userType = useSelector(selectType)
   const loginError = useSelector(selectLoginError)
@@ -36,10 +39,13 @@ const Login = () => {
       <div className={classes.Logo}>
         <NavLink to="/">LOGO</NavLink>
       </div>
-      <div className={classes.Title}>Sign in to Photobooking system</div>
+      <div className={classes.LangBlock}>
+        <ChangeLanguageBlock />
+      </div>
+      <div className={classes.Title}>{t('login.title')}</div>
       <LoginForm onSubmit={onSubmit} loginError={loginError} />
       <div className={classes.RegBlock}>
-        <div>Dont have an account yet?</div>
+        <div>{t('login.accountQuestion')}</div>
         <RegisterLink />
       </div>
     </div>
