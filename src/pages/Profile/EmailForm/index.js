@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { Button } from '../../../components/Button'
 import styles from '../../../components/FormsControls.module.scss'
@@ -12,6 +13,8 @@ const EmailForm = ({
   changeEmailSuccess,
   changeEmailError
 }) => {
+  const { t } = useTranslation()
+
   const initialValues = {
     email: `${userEmail}`,
     password: ''
@@ -65,7 +68,7 @@ const EmailForm = ({
   return (
     <form onSubmit={handleSumbit} className={classes.Form}>
       <div className={classes.FieldContainer}>
-        <div className={classes.FieldTitle}>Email:</div>
+        <div className={classes.FieldTitle}>{t('forms.titles.email')}</div>
         <div
           className={classNames(
             styles.formsControls,
@@ -95,7 +98,7 @@ const EmailForm = ({
       {editMode && (
         <div className={classes.Form}>
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>Enter your password: </div>
+            <div className={classes.FieldTitle}>{t('forms.titles.passwordEnter')}</div>
             <div
               className={classNames(
                 styles.formsControls,
@@ -123,7 +126,7 @@ const EmailForm = ({
           {changeEmailError && (
             <div className={styles.formSummaryError}>{changeEmailError}</div>
           )}
-          <Button text="Update email" type="submit" stylish="Primary" />
+          <Button text={t('forms.buttons.emailUpdate')} type="submit" stylish="Primary" />
         </div>
       )}
     </form>

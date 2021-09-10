@@ -1,9 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
 
 const NameForm = ({ userName, onSubmitName }) => {
+  const { t } = useTranslation()
+
   const changeNameHandler = (formData) => {
     const name = formData.target.value
     if (userName !== name) {
@@ -12,7 +15,7 @@ const NameForm = ({ userName, onSubmitName }) => {
   }
   return (
     <div className={classes.FieldContainer}>
-      <div className={classes.FieldTitle}>Name: </div>
+      <div className={classes.FieldTitle}>{t('forms.titles.name')}</div>
       <div className={styles.formsControls}>
         <input onBlur={changeNameHandler} defaultValue={userName} />
       </div>

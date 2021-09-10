@@ -1,9 +1,11 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { Button } from '../../../components/Button'
 import classes from '../Profile.module.scss'
 
 const PhotoForm = ({ avatarUrl, onSubmitPhoto }) => {
+  const { t } = useTranslation()
   const inputPhoto = useRef()
 
   const onBtnClickLoadPhoto = () => {
@@ -29,7 +31,7 @@ const PhotoForm = ({ avatarUrl, onSubmitPhoto }) => {
           className={classes.InputFile}
         />
         <Button
-          text="Load photo"
+          text={t('forms.buttons.loadPhoto')}
           onClick={onBtnClickLoadPhoto}
           stylish="Primary"
         />

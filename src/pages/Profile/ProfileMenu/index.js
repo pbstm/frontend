@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux'
 import { selectType } from '../../../redux/authSelectors'
 import { MainLink, СabinetLink, СustomerCabinetLink } from '../../../const/Url'
 import UserInfoBlock from '../../../components/UserInfoBlock'
+import ChangeLanguageBlock from '../../../components/ChangeLanguageBlock'
 import classes from './ProfileMenu.module.scss'
 
 const ProfileMenu = () => {
@@ -23,6 +24,7 @@ const ProfileMenu = () => {
         <div className={classes.UserInfoBlock}>
           <UserInfoBlock />
         </div>
+        <ChangeLanguageBlock />
       </div>
     </nav>
   )
