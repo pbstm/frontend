@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 // prettier-ignore
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 import { Provider, useDispatch } from 'react-redux'
@@ -25,14 +25,16 @@ const App = () => {
   }, [token])
 
   return (
-    <Switch>
-      <Route path="/cabinet" component={Cabinet} />
-      <Route path="/customercabinet" component={CustomerCabinet} />
-      <Route path="/login" component={Login} />
-      <Route path="/register" component={Register} />
-      <Route path="/profile" component={Profile} />
-      <Route path="/" component={Main} />
-    </Switch>
+    <Suspense fallback="loading">
+      <Switch>
+        <Route path="/cabinet" component={Cabinet} />
+        <Route path="/customercabinet" component={CustomerCabinet} />
+        <Route path="/login" component={Login} />
+        <Route path="/register" component={Register} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/" component={Main} />
+      </Switch>
+    </Suspense>
   )
 }
 

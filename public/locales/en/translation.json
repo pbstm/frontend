@@ -8,7 +8,7 @@
   },
   "login": {
     "title": "Sign in to Photobooking system",
-    "accountQuestion": "Dont have an account yet?"
+    "accountQuestion": "Don`t have an account yet?"
   },
   "register": {
     "title": "Sign up to Photobooking system",
@@ -30,29 +30,42 @@
   },
   "forms": {
     "titles": {
+      "name": "Name: ",
+      "email": "Email: ",
       "nameEnter": "Enter your name: ",
       "emailEnter": "Enter your email: ",
       "passwordEnter": "Enter your password: ",
+      "passwordCurrentEnter": "Enter current password: ",
+      "passwordNewEnter": "Enter new password: ",
       "passwordConfirm": "Confirm password: ",
-      "loginCheckbox": "Sign in as photographer: "
+      "passwordNewConfirm": "Confirm new password: ",
+      "loginCheckbox": "Sign in as photographer: ",
+      "changePassword": "Change password"
     },
     "placeholders": {
       "name": "Name",
       "email": "Email",
-      "password": "Password"
+      "password": "Password",
+      "passwordCurrent": "Current password",
+      "passwordNew": "New password"
     },
     "validators": {
       "nameRequired": "Name is required",
       "emailRequired": "Email is required",
       "emailInvalid": "Invalid email address",
       "passwordRequired": "Password is required",
+      "passwordCurrentRequired": "Current password is required",
+      "passwordNewRequired": "New password is required",
       "passwordConfirmRequired": "Password confirmation is required",
       "passwordLength": "Password must be at least 6 and no more than 30 characters",
       "passwordUnequal": "Passwords must be equal"
     },
     "buttons": {
       "singIn": "Sing in",
-      "singUp": "Sing up"
+      "singUp": "Sing up",
+      "emailUpdate": "Update email",
+      "passwordUpdate": "Update password",
+      "loadPhoto": "Load photo"
     }
   }
 }

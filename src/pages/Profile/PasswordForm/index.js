@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
+import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import classNames from 'classnames'
@@ -13,6 +14,8 @@ const PasswordForm = ({
   changePasswordError,
   changePasswordSuccess
 }) => {
+  const { t } = useTranslation()
+
   const [editMode, setEditMode] = useState(false)
 
   const activateEditMode = () => {
@@ -26,18 +29,20 @@ const PasswordForm = ({
   }
 
   const validationsSchema = yup.object().shape({
-    current_password: yup.string().required('Field is required'),
+    current_password: yup
+      .string()
+      .required(t('forms.validators.passwordCurrentRequired')),
     password: yup
       .string()
-      .required('Field is required')
+      .required(t('forms.validators.passwordNewRequired'))
       .matches(
         /^[\s\S]{6,30}$/,
-        'Password must be at least 6 and no more than 30 characters'
+        t('forms.validators.passwordLength')
       ),
     password_confirmation: yup
       .string()
-      .required('Field is required')
-      .oneOf([yup.ref('password'), null], 'Passwords must be equal')
+      .required(t('forms.validators.passwordConfirmRequired'))
+      .oneOf([yup.ref('password'), null], t('forms.validators.passwordUnequal'))
   })
   return (
     <div className={classes.Form}>
@@ -53,7 +58,7 @@ const PasswordForm = ({
         role="link"
         tabIndex={0}
       >
-        Change password
+        {t('forms.titles.changePassword')}
       </div>
       {editMode && (
         <Formik
@@ -66,29 +71,29 @@ const PasswordForm = ({
         >
           <Form className={classes.Form} data-testid="form">
             <div className={classes.FieldContainer}>
-              <div className={classes.FieldTitle}>Enter current password: </div>
+              <div className={classes.FieldTitle}>{t('forms.titles.passwordCurrentEnter')}</div>
               <FormikInput
                 name="current_password"
                 type="password"
-                placeholder="Current password"
+                placeholder={t('forms.placeholders.passwordCurrent')}
                 data-testid="current_password"
               />
             </div>
             <div className={classes.FieldContainer}>
-              <div className={classes.FieldTitle}>Enter new password: </div>
+              <div className={classes.FieldTitle}>{t('forms.titles.passwordNewEnter')}</div>
               <FormikInput
                 name="password"
                 type="password"
-                placeholder="New password"
+                placeholder={t('forms.placeholders.passwordNew')}
                 data-testid="password"
               />
             </div>
             <div className={classes.FieldContainer}>
-              <div className={classes.FieldTitle}>Confirm new password: </div>
+              <div className={classes.FieldTitle}>{t('forms.titles.passwordNewConfirm')}</div>
               <FormikInput
                 name="password_confirmation"
                 type="password"
-                placeholder="New password"
+                placeholder={t('forms.placeholders.passwordNew')}
                 data-testid="password_confirmation"
               />
             </div>
@@ -102,7 +107,7 @@ const PasswordForm = ({
                 {changePasswordSuccess}
               </div>
             )}
-            <Button text="Update password" type="submit" stylish="Primary" />
+            <Button text={t('forms.buttons.passwordUpdate')} type="submit" stylish="Primary" />
           </Form>
         </Formik>
       )}

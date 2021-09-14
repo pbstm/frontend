@@ -30,29 +30,42 @@
   },
   "forms": {
     "titles": {
+      "name": "Имя: ",
+      "email": "Email: ",
       "nameEnter": "Введите ваше имя: ",
       "emailEnter": "Введите ваш email: ",
       "passwordEnter": "Введите ваш пароль: ",
+      "passwordCurrentEnter": "Введите текущий пароль: ",
+      "passwordNewEnter": "Введите новый пароль: ",
       "passwordConfirm": "Подтвердите пароль: ",
-      "loginCheckbox": "Войти как фотограф: "
+      "passwordNewConfirm": "Подтвердите новый пароль: ",
+      "loginCheckbox": "Войти как фотограф: ",
+      "changePassword": "Изменить пароль"
     },
     "placeholders": {
       "name": "Имя",
       "email": "Email",
-      "password": "Пароль"
+      "password": "Пароль",
+      "passwordCurrent": "Текущий пароль",
+      "passwordNew": "Новый пароль"
     },
     "validators": {
       "nameRequired": "Имя обязательно для заполнения",
       "emailRequired": "Email обязателен для заполнения",
       "emailInvalid": "Неверный формат email",
       "passwordRequired": "Пароль обязателен для заполнения",
+      "passwordCurrentRequired": "Текущий пароль обязателен для заполнения",
+      "passwordNewRequired": "Новый пароль обязателен для заполнения",
       "passwordConfirmRequired": "Подтверждение пароля обязательно для заполнения",
       "passwordLength": "Длина пароля должна быть не менее 6 и не более 30 символов",
       "passwordUnequal": "Введенные пароли должны совпадать"
     },
     "buttons": {
       "singIn": "Войти",
-      "singUp": "Зарегистрироваться"
+      "singUp": "Зарегистрироваться",
+      "emailUpdate": "Обновить email",
+      "passwordUpdate": "Обновить пароль",
+      "loadPhoto": "Загрузить фото"
     }
   }
 }
