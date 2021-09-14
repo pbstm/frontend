@@ -23,7 +23,9 @@ const EmailForm = ({
 
   const [values, setValues] = useState(initialValues)
 
-  const [errors, setErrors] = useState({})
+  const [errors, setErrors] = useState({
+
+  })
 
   const passwordRequired = (value) => {
     if (value) return undefined
