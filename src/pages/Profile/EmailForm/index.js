@@ -5,7 +5,6 @@ import classNames from 'classnames'
 import { Button } from '../../../components/Button'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
-import { validate } from '../../../components/validators'
 
 const EmailForm = ({
   onSubmitEmail,
@@ -24,9 +23,27 @@ const EmailForm = ({
 
   const [values, setValues] = useState(initialValues)
 
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState({})
 
-  })
+  const passwordRequired = (value) => {
+    if (value) return undefined
+    return t('forms.validators.passwordRequired')
+  }
+
+  const validEmailRequired = (email) => {
+    if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
+      return null
+    }
+    if (email.trim() === '') {
+      return t('forms.validators.emailRequired')
+    }
+    return t('forms.validators.emailInvalid')
+  }
+
+  const validate = {
+    email: validEmailRequired,
+    password: passwordRequired
+  }
 
   useEffect(() => {
     if (changeEmailSuccess) {
@@ -98,7 +115,9 @@ const EmailForm = ({
       {editMode && (
         <div className={classes.Form}>
           <div className={classes.FieldContainer}>
-            <div className={classes.FieldTitle}>{t('forms.titles.passwordEnter')}</div>
+            <div className={classes.FieldTitle}>
+              {t('forms.titles.passwordEnter')}
+            </div>
             <div
               className={classNames(
                 styles.formsControls,
@@ -126,7 +145,11 @@ const EmailForm = ({
           {changeEmailError && (
             <div className={styles.formSummaryError}>{changeEmailError}</div>
           )}
-          <Button text={t('forms.buttons.emailUpdate')} type="submit" stylish="Primary" />
+          <Button
+            text={t('forms.buttons.emailUpdate')}
+            type="submit"
+            stylish="Primary"
+          />
         </div>
       )}
     </form>
