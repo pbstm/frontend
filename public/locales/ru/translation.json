@@ -14,6 +14,37 @@
     "title": "Зарегистрироваться в системе Фотобукинг",
     "accountQuestion": "Уже есть аккаунт?"
   },
+  "cabinet": {
+    "header": {
+      "cards": {
+        "photosessions": {
+          "create": "Создавай",
+          "manage": "и управляй",
+          "your": "своими ",
+          "photosessions": "фото сессиями"
+        },
+        "locations": {
+          "add": "Добавляй новые",
+          "interesting": "интересные",
+          "locations": "локации",
+          "cities": "в разных городах"
+        },
+        "schedule": {
+          "manage": "Управляй своим",
+          "schedule": "расписанием",
+          "and": "и ",
+          "celltickets": "билетами",
+          "tosession": "на фото сессии"
+        },
+        "accessories": {
+          "suggest": "Предлагай",
+          "awesome": "классные",
+          "accessories": "аксессуары",
+          "to": "к своим фото"
+        }
+      }
+    }
+  },
   "components": {
     "links": {
       "main": "Главная",
