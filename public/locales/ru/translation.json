@@ -21,7 +21,11 @@
       "customerCabinet": "Кабинет",
       "profile": "Профиль",
       "login": "Вход",
-      "register": "Регистрация"
+      "register": "Регистрация",
+      "photosessions": "ФОТОСЕССИИ",
+      "locations": "ЛОКАЦИИ",
+      "schedule": "РАСПИСАНИЕ",
+      "accessories": "АКСЕССУАРЫ"
     },
     "userInfoBlock": {
       "loggedAs": "Зарегистрирован как: ",

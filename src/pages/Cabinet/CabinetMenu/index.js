@@ -2,11 +2,13 @@ import React, { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Link } from 'react-scroll'
 import * as Scroll from 'react-scroll'
+import { useTranslation } from 'react-i18next'
 import classes from './CabinetMenu.module.scss'
 import UserInfoBlock from '../../../components/UserInfoBlock'
 import ChangeLanguageBlock from '../../../components/ChangeLanguageBlock'
 
 const CabinetMenu = () => {
+  const { t } = useTranslation()
   const { scrollSpy } = Scroll
 
   useEffect(() => {
@@ -31,7 +33,7 @@ const CabinetMenu = () => {
             offset={-70}
             duration={500}
           >
-            PHOTOSESSIONS
+            {t('components.links.photosessions')}
           </Link>
         </li>
         <li className={classes.Section}>
@@ -43,7 +45,7 @@ const CabinetMenu = () => {
             offset={-70}
             duration={500}
           >
-            LOCATIONS
+            {t('components.links.locations')}
           </Link>
         </li>
         <li className={classes.Section}>
@@ -55,7 +57,7 @@ const CabinetMenu = () => {
             offset={-70}
             duration={500}
           >
-            SCHEDULE
+            {t('components.links.schedule')}
           </Link>
         </li>
         <li className={classes.Section}>
@@ -67,7 +69,7 @@ const CabinetMenu = () => {
             offset={-70}
             duration={500}
           >
-            ACCESSORIES
+            {t('components.links.accessories')}
           </Link>
         </li>
       </ul>

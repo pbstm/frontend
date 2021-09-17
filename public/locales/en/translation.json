@@ -21,7 +21,11 @@
       "customerCabinet": "Cabinet",
       "profile": "Profile",
       "login": "Sign in",
-      "register": "Sign up"
+      "register": "Sign up",
+      "photosessions": "PHOTOSESSIONS",
+      "locations": "LOCATIONS",
+      "schedule": "SCHEDULE",
+      "accessories": "ACCESSORIES"
     },
     "userInfoBlock": {
       "loggedAs": "Logged as: ",
