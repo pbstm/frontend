@@ -14,6 +14,37 @@
     "title": "Sign up to Photobooking system",
     "accountQuestion": "Already have an account?"
   },
+  "cabinet": {
+    "header": {
+      "cards": {
+        "photosessions": {
+          "create": "Create",
+          "manage": "and manage",
+          "your": "your ",
+          "photosessions": "photo sessions"
+        },
+        "locations": {
+          "add": "Add new",
+          "interesting": "interesting",
+          "locations": "locations",
+          "cities": "in different cities"
+        },
+        "schedule": {
+          "manage": "Manage your",
+          "schedule": "schedule",
+          "and": "and ",
+          "celltickets": "cell tickets",
+          "tosession": "to a photo session"
+        },
+        "accessories": {
+          "suggest": "Suggest",
+          "awesome": "awesome",
+          "accessories": "accessories",
+          "to": "to your photos"
+        }
+      }
+    }
+  },
   "components": {
     "links": {
       "main": "Main",
@@ -21,7 +52,11 @@
       "customerCabinet": "Cabinet",
       "profile": "Profile",
       "login": "Sign in",
-      "register": "Sign up"
+      "register": "Sign up",
+      "photosessions": "PHOTOSESSIONS",
+      "locations": "LOCATIONS",
+      "schedule": "SCHEDULE",
+      "accessories": "ACCESSORIES"
     },
     "userInfoBlock": {
       "loggedAs": "Logged as: ",

@@ -2,9 +2,11 @@ import React, { useEffect } from 'react'
 import classNames from 'classnames'
 import { Link } from 'react-scroll'
 import * as Scroll from 'react-scroll'
+import { useTranslation } from 'react-i18next'
 import classes from './CabinetHeader.module.scss'
 
 const CabinetHeader = () => {
+  const { t } = useTranslation()
   const { scrollSpy } = Scroll
 
   useEffect(() => {
@@ -17,12 +19,16 @@ const CabinetHeader = () => {
           <div className={classNames(classes.Card, classes.Sessions)}>
             <div className={classes.Darker}>
               <p>
-                <span className={classes.BigText}>Create</span>
+                <span className={classes.BigText}>
+                  {t('cabinet.header.cards.photosessions.create')}
+                </span>
                 <br />
-                and manage
+                {t('cabinet.header.cards.photosessions.manage')}
                 <br />
-                your
-                <span className={classes.MidText}> photo sessions</span>
+                {t('cabinet.header.cards.photosessions.your')}
+                <span className={classes.MidText}>
+                  {t('cabinet.header.cards.photosessions.photosessions')}
+                </span>
               </p>
             </div>
           </div>
@@ -32,13 +38,17 @@ const CabinetHeader = () => {
           <div className={classNames(classes.Card, classes.Locations)}>
             <div className={classes.Darker}>
               <p>
-                Add new
+                {t('cabinet.header.cards.locations.add')}
                 <br />
-                interesting
+                <span className={classes.MidText}>
+                  {t('cabinet.header.cards.locations.interesting')}
+                </span>
                 <br />
-                <span className={classes.BigText}>locations</span>
+                <span className={classes.BigText}>
+                  {t('cabinet.header.cards.locations.locations')}
+                </span>
                 <br />
-                in different cities
+                {t('cabinet.header.cards.locations.cities')}
               </p>
             </div>
           </div>
@@ -48,14 +58,18 @@ const CabinetHeader = () => {
           <div className={classNames(classes.Card, classes.Schedule)}>
             <div className={classes.Darker}>
               <p>
-                Manage your
+                {t('cabinet.header.cards.schedule.manage')}
                 <br />
-                <span className={classes.BigText}>schedule</span>
+                <span className={classes.BigText}>
+                  {t('cabinet.header.cards.schedule.schedule')}
+                </span>
                 <br />
-                and
-                <span className={classes.MidText}> cell tickets</span>
+                {t('cabinet.header.cards.schedule.and')}
+                <span className={classes.MidText}>
+                  {t('cabinet.header.cards.schedule.celltickets')}
+                </span>
                 <br />
-                to a photo session
+                {t('cabinet.header.cards.schedule.tosession')}
               </p>
             </div>
           </div>
@@ -65,13 +79,17 @@ const CabinetHeader = () => {
           <div className={classNames(classes.Card, classes.Accessories)}>
             <div className={classes.Darker}>
               <p>
-                Suggest cool
+                {t('cabinet.header.cards.accessories.suggest')}
                 <br />
-                <span className={classes.BigText}>accessories</span>
+                <span className={classes.MidText}>
+                  {t('cabinet.header.cards.accessories.awesome')}
+                </span>
                 <br />
-                for the
+                <span className={classes.BigText}>
+                  {t('cabinet.header.cards.accessories.accessories')}
+                </span>
                 <br />
-                photo shoot
+                {t('cabinet.header.cards.accessories.to')}
               </p>
             </div>
           </div>
