@@ -5,9 +5,15 @@
   background-color: $color-black-transparent-07;
   height: 40px;
   display: grid;
-  grid-template-columns: 70px 1fr 70px;
+  grid-template-columns: 90px 1fr 90px;
   position: sticky;
   top: 0;
+}
+
+.UserBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .Link {

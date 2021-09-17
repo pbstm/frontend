@@ -4,6 +4,7 @@ import { Link } from 'react-scroll'
 import * as Scroll from 'react-scroll'
 import classes from './CabinetMenu.module.scss'
 import UserInfoBlock from '../../../components/UserInfoBlock'
+import ChangeLanguageBlock from '../../../components/ChangeLanguageBlock'
 
 const CabinetMenu = () => {
   const { scrollSpy } = Scroll
@@ -70,8 +71,10 @@ const CabinetMenu = () => {
           </Link>
         </li>
       </ul>
-
-      <UserInfoBlock />
+      <div className={classes.UserBlock}>
+        <UserInfoBlock />
+        <ChangeLanguageBlock />
+      </div>
     </nav>
   )
 }
