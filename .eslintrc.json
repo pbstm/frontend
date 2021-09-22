@@ -55,18 +55,17 @@
             "required": {
               "some": ["nesting", "id"]
             }
-          }],
-          "jsx-a11y/label-has-for": ["error", {
+        }],
+        "jsx-a11y/label-has-for": ["error", {
             "required": {
               "some": ["nesting", "id"]
             }
-          }],
-          "import/no-extraneous-dependencies": ["error", {
+        }],
+        "import/no-extraneous-dependencies": ["error", {
             "devDependencies": true,
             "optionalDependencies": false,
             "peerDependencies": false
-            }]
-
-        
+        }],
+        "no-param-reassign": 0
     }
 }

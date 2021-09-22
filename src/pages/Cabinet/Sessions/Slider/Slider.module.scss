@@ -1,0 +1,59 @@
+@import '../../../../scss/vars.scss';
+
+.Slider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Track {
+  width: 1596px;
+  height: 300px;
+  display: flex;
+  overflow: hidden;
+}
+
+.Item {
+  min-width: 226px;
+  height: 100%;
+  border-radius: 10%;
+  background-color: $color-main;
+  text-align: center;
+  vertical-align: middle;
+  margin: 0px 20px;
+  transition: 1s;
+}
+
+.Btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 40%;
+  width: 60px;
+  height: 60px;
+  color: $color-white;
+  background-color: $color-black-transparent-03;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  user-select: none;
+  &:hover {
+    background-color: $color-black-transparent-05;
+  }
+}
+
+.Prev {
+  left: 3%;
+}
+
+.Next {
+  right: 3%;
+}
+
+.Disable {
+  display: none;
+}
