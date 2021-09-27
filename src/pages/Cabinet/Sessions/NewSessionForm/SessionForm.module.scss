@@ -1,0 +1,35 @@
+@import '../../../../scss/vars.scss';
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  & h2 {
+    font-size: 2rem;
+    color: $color-main;
+    padding-bottom: 2rem;
+  }
+}
+
+.FieldContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 1.5rem;
+
+  & input {
+    flex: 1 1 auto
+  }
+}
+
+.FieldTitle {
+  padding-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: $color-gray-dark;
+}
+
+.Field {
+  width: 1000px;
+}
