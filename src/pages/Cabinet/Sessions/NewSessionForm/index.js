@@ -63,7 +63,7 @@ const NewSessionForm = () => {
 
   return (
     <form onSubmit={handleSumbit} className={classes.Form}>
-      <h2>{t('cabinet.sessions.forms.titles.formTitle')}</h2>
+      <h2>{t('cabinet.sessions.forms.titles.formNewTitle')}</h2>
       <div className={classes.FieldContainer}>
         <div className={classes.FieldTitle}>
           {t('cabinet.sessions.forms.titles.title')}
@@ -79,6 +79,7 @@ const NewSessionForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             name="title"
+            placeholder={t('cabinet.sessions.forms.placeholders.title')}
             required
           />
           {errors.title && (
@@ -105,6 +106,7 @@ const NewSessionForm = () => {
             onChange={handleChange}
             onBlur={handleBlur}
             name="description"
+            placeholder={t('cabinet.sessions.forms.placeholders.description')}
             required
           />
           {errors.description && (

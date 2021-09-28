@@ -53,11 +53,14 @@
       },
       "forms": {
         "titles": {
+          "formNewTitle" : "New photosession",
           "formTitle" : "Photosession",
           "title" : "Photosession title",
           "description": "Description for this photosession"
         },
         "placeholders": {
+          "title" : "Enter photosession title",
+          "description": "Enter short description for this photosession"
         },
         "validators": {
           "fieldRequired": "Field is required"
