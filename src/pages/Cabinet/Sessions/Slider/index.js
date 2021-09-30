@@ -24,7 +24,7 @@ const Slider = () => {
   const visibleGroup = 6
 
   const itemsShift = itemLength * shift
-  const extremeItems = length % shift
+  const extremeItems = (length - visibleGroup) % shift
   const arrayWithoutExtreme = length - extremeItems
   const extremeShift = itemLength * extremeItems
 
