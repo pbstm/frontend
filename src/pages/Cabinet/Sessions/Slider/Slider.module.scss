@@ -8,10 +8,45 @@
 }
 
 .Track {
-  width: 1596px;
   height: 300px;
   display: flex;
   overflow: hidden;
+}
+
+@media screen and (min-width: 500px) {
+  .Track {
+    width: 266px
+  }
+}
+
+@media screen and (min-width: 766px) {
+  .Track {
+    width: 532px
+  }
+}
+
+@media screen and (min-width: 1032px) {
+  .Track {
+    width: 798px
+  }
+}
+
+@media screen and (min-width: 1298px) {
+  .Track {
+    width: 1064px
+  }
+}
+
+@media screen and (min-width: 1564px) {
+  .Track {
+    width: 1330px
+  }
+}
+
+@media screen and (min-width: 1830px) {
+  .Track {
+    width: 1596px
+  }
 }
 
 .Item {

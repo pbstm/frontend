@@ -2,10 +2,12 @@ import React, { useRef, useState, useEffect } from 'react'
 import cn from 'classnames'
 import classes from './Slider.module.scss'
 import { items } from './SliderData'
+import WindowDimensions from '../../../../utils/windowDimensions'
 
 const Slider = () => {
   const slider = useRef(null)
   const [position, setPosition] = useState(0)
+  const windowWidth = WindowDimensions();
 
   const translateSlides = () => {
     slider.current.childNodes.forEach((element) => {
@@ -20,11 +22,33 @@ const Slider = () => {
 
   const itemLength = 266 // item width + margin left & right
   const { length } = items
-  const shift = 3
-  const visibleGroup = 6
+  let shift = 3
+  let visibleGroup = 6
+
+  if (windowWidth.width < 1830) {
+    visibleGroup = 5
+  }
+
+  if (windowWidth.width < 1564) {
+    visibleGroup = 4
+  }
+
+  if (windowWidth.width < 1298) {
+    visibleGroup = 3
+  }
+
+  if (windowWidth.width < 1032) {
+    visibleGroup = 2
+    shift = 2
+  }
+
+  if (windowWidth.width < 766) {
+    visibleGroup = 1
+    shift = 1
+  }
 
   const itemsShift = itemLength * shift
-  const extremeItems = length % shift
+  const extremeItems = (length - visibleGroup) % shift
   const arrayWithoutExtreme = length - extremeItems
   const extremeShift = itemLength * extremeItems
 
