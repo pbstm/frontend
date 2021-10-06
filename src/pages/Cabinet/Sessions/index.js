@@ -15,6 +15,15 @@ const Sessions = () => {
     setEditMode(true)
   }
 
+  const onSubmitNewSessionForm = (values) => {
+    setEditMode(false)
+    console.log(values)
+  }
+
+  const onCloseNewSessionForm = () => {
+    setEditMode(false)
+  }
+
   return (
     <Element id="sessions" className="element">
       <div className={classes.Sessions}>
@@ -35,7 +44,10 @@ const Sessions = () => {
         </div>
         {editMode && (
           <div className={classes.SessionForm}>
-            <NewSessionForm />
+            <NewSessionForm
+              onSubmit={onSubmitNewSessionForm}
+              onClose={onCloseNewSessionForm}
+            />
           </div>
         )}
       </div>

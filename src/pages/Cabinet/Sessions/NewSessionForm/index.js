@@ -1,23 +1,27 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { Button } from '../../../../components/Button'
 import classes from './SessionForm.module.scss'
 import styles from '../../../../components/FormsControls.module.scss'
 
-const NewSessionForm = () => {
+const NewSessionForm = ({ onSubmit, onClose }) => {
   const { t } = useTranslation()
+  const inputPhoto = useRef()
 
   const initialValues = {
-    title: `Session 1`,
-    description: 'Description 1'
+    title: ``,
+    description: '',
+    cover: null
   }
 
   const [values, setValues] = useState(initialValues)
-
+  // prettier-ignore
   const [errors, setErrors] = useState({
 
   })
+  const [url, setUrl] = useState()
 
   const titleRequired = (value) => {
     if (value) return undefined
@@ -58,7 +62,48 @@ const NewSessionForm = () => {
 
   const handleSumbit = (event) => {
     event.preventDefault()
-    console.log(values)
+    if (values.cover !== null) {
+      onSubmit(values)
+    } else {
+      const name = 'cover'
+      const error = t('cabinet.sessions.forms.validators.coverRequired')
+      const { [name]: oldError, ...rest } = errors
+
+      setErrors({
+        ...rest,
+        ...(error && {
+          [name]: error
+        })
+      })
+      console.log(errors)
+    }
+  }
+
+  const onBtnClickLoadCover = () => {
+    if (inputPhoto && inputPhoto.current) {
+      inputPhoto.current.click()
+    }
+  }
+
+  const handleFile = (e) => {
+    const content = e.target.result
+    setUrl(content)
+    // You can set content in state and show it in render.
+  }
+
+  const onCoverSelected = (event) => {
+    const { name } = event.target
+    const file = event.target.files[0]
+    const fileData = new FileReader()
+    fileData.onloadend = handleFile
+    if (event.target.files[0]) {
+      fileData.readAsDataURL(file)
+    }
+
+    setValues({
+      ...values,
+      [name]: file
+    })
   }
 
   return (
@@ -118,13 +163,62 @@ const NewSessionForm = () => {
           )}
         </div>
       </div>
-      <Button
-        text={t('cabinet.sessions.forms.buttons.save')}
-        type="submit"
-        stylish="Primary"
-      />
+      <div className={classes.CoverContainer}>
+        <input
+          ref={inputPhoto}
+          type="file"
+          name="cover"
+          onChange={onCoverSelected}
+          className={classes.InputFile}
+        />
+        <div>
+          {values.cover !== null ? (
+            <div className={classes.Cover}>
+              <img src={url} alt="" />
+            </div>
+          ) : (
+            <div className={classes.CoverBlank}>
+              <div>{t('cabinet.sessions.forms.titles.cover')}</div>
+              <div>{t('cabinet.sessions.forms.titles.coverClick')}</div>
+              {errors.cover && (
+                <div className={styles.warning} tooltip={errors.cover}>
+                  !
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+        <Button
+          text={t('cabinet.sessions.forms.buttons.loadCover')}
+          type="button"
+          stylish="PrimarySmall"
+          onClick={onBtnClickLoadCover}
+        />
+      </div>
+      <div className={classes.Btns}>
+        <div>
+          <Button
+            text={t('cabinet.sessions.forms.buttons.save')}
+            type="submit"
+            stylish="Primary"
+          />
+        </div>
+        <div>
+          <Button
+            text={t('cabinet.sessions.forms.buttons.cancel')}
+            type="reset"
+            stylish="Secondary"
+            onClick={onClose}
+          />
+        </div>
+      </div>
     </form>
   )
 }
 
 export default NewSessionForm
+
+NewSessionForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired
+}

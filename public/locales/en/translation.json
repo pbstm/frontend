@@ -56,18 +56,23 @@
           "formNewTitle" : "New photosession",
           "formTitle" : "Photosession",
           "title" : "Photosession title",
-          "description": "Description for this photosession"
+          "description": "Description for this photosession",
+          "cover": "Add cover",
+          "coverClick": "click on the button below"
         },
         "placeholders": {
           "title" : "Enter photosession title",
           "description": "Enter short description for this photosession"
         },
         "validators": {
-          "fieldRequired": "Field is required"
+          "fieldRequired": "Field is required",
+          "coverRequired": "You need to upload a cover"
         },
         "buttons": {
           "createPhotoSession": "Create photosession",
-          "save": "Save"
+          "save": "Save",
+          "cancel": "Cancel",
+          "loadCover": "Load cover"
         }
       }
     }

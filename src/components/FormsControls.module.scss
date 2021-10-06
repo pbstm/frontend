@@ -28,16 +28,20 @@
 }
 
 .formsControls.error .warning {
+  position: absolute;
+  margin-top: 7px;
+  margin-left: -25px;
+}
+
+.warning {
   background-color: $color-error;
   color: $color-white;
   font-size: 0.9rem;
   font-weight: 700;
-  position: absolute;
+  text-align: center;
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  margin-top: 7px;
-  margin-left: -25px;
   &:hover {
     cursor: pointer;
   }
