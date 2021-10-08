@@ -105,6 +105,27 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
     })
   }
 
+  const Cover = () => {
+    if (values.cover !== null) {
+      return (
+        <div className={classes.Cover}>
+          <img src={url} alt="" />
+        </div>
+      )
+    }
+    return (
+      <div className={classes.CoverBlank}>
+        <div>{t('cabinet.sessions.forms.titles.cover')}</div>
+        <div>{t('cabinet.sessions.forms.titles.coverClick')}</div>
+        {errors.cover && (
+          <div className={styles.warning} tooltip={errors.cover}>
+            !
+          </div>
+        )}
+      </div>
+    )
+  }
+
   return (
     <form onSubmit={handleSumbit} className={classes.Form}>
       <h2>{t('cabinet.sessions.forms.titles.formNewTitle')}</h2>
@@ -170,23 +191,7 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
           onChange={onCoverSelected}
           className={classes.InputFile}
         />
-        <div>
-          {values.cover !== null ? (
-            <div className={classes.Cover}>
-              <img src={url} alt="" />
-            </div>
-          ) : (
-            <div className={classes.CoverBlank}>
-              <div>{t('cabinet.sessions.forms.titles.cover')}</div>
-              <div>{t('cabinet.sessions.forms.titles.coverClick')}</div>
-              {errors.cover && (
-                <div className={styles.warning} tooltip={errors.cover}>
-                  !
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+        <Cover />
         <Button
           text={t('cabinet.sessions.forms.buttons.loadCover')}
           type="button"
