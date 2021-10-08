@@ -75,7 +75,6 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
           [name]: error
         })
       })
-      console.log(errors)
     }
   }
 
@@ -147,7 +146,7 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
             errors.description ? styles.error : ''
           )}
         >
-          <input
+          <textarea
             onChange={handleChange}
             onBlur={handleBlur}
             name="description"
@@ -219,6 +218,11 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
 export default NewSessionForm
 
 NewSessionForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired
+  onSubmit: PropTypes.func,
+  onClose: PropTypes.func
+}
+
+NewSessionForm.defaultProps = {
+  onSubmit: PropTypes.func,
+  onClose: PropTypes.func
 }
