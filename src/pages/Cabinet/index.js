@@ -16,7 +16,6 @@ const Cabinet = () => {
 
   return (
     <CabinetContainer>
-      <h1>Cabinet page</h1>
       <Sessions />
       <Locations />
     </CabinetContainer>

@@ -43,6 +43,38 @@
           "to": "to your photos"
         }
       }
+    },
+    "sessions": {
+      "title": "Manage photo sessions",
+      "description": {
+        "part1": "Create your photosession or edit existing,",
+        "part2": "select the location where you will have a photo session,",
+        "part3": "add presentation photos, set the price of the session and other additional options"
+      },
+      "forms": {
+        "titles": {
+          "formNewTitle" : "New photosession",
+          "formTitle" : "Photosession",
+          "title" : "Photosession title",
+          "description": "Description for this photosession",
+          "cover": "Add cover",
+          "coverClick": "click on the button below"
+        },
+        "placeholders": {
+          "title" : "Enter photosession title",
+          "description": "Enter short description for this photosession"
+        },
+        "validators": {
+          "fieldRequired": "Field is required",
+          "coverRequired": "You need to upload a cover"
+        },
+        "buttons": {
+          "createPhotoSession": "Create photosession",
+          "save": "Save",
+          "cancel": "Cancel",
+          "loadCover": "Load cover"
+        }
+      }
     }
   },
   "components": {

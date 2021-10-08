@@ -2,17 +2,16 @@
 
 .Button {
   cursor: pointer;
-  color: $color-white;
   border: none;
   border-radius: 20px;
-  padding: 10px 20px;
-  font-size: 1.3rem;
+  padding: 10px 30px;
   transition: all 0.5s ease;
-  margin: 1rem 0rem;
 }
 
 .Primary {
   background-color: $color-main;
+  color: $color-white;
+  font-size: 1.3rem;
 
   &:hover {
     background-color: lighten($color-main, 15%);
@@ -24,13 +23,53 @@
 }
 
 .Secondary {
-  background-color: $color-secondary;
+  background-color: $color-white;
+  color: $color-main;
+  box-shadow: inset 0px 0px 2px 2px $color-main;
+  font-size: 1.3rem;
 
   &:hover {
-    background-color: lighten($color-secondary, 15%);
+    color: lighten($color-main, 15%);
+    box-shadow: inset 0px 0px 2px 2px lighten($color-main, 15%);
   }
 
   &:active {
-    background-color: darken($color-secondary, 3%);
+    color: darken($color-main, 3%);
+    box-shadow: inset 0px 0px 2px 2px darken($color-main, 3%);
+  }
+}
+
+.PrimarySmall {
+  background-color: $color-main;
+  color: $color-white;
+  border-radius: 15px;
+  padding: 7px 15px;
+  font-size: 1rem;
+
+  &:hover {
+    background-color: lighten($color-main, 15%);
+  }
+
+  &:active {
+    background-color: darken($color-main, 3%);
+  }
+}
+
+.SecondarySmall {
+  background-color: $color-white;
+  color: $color-main;
+  box-shadow: inset 0px 0px 2px 2px $color-main;
+  border-radius: 15px;
+  padding: 7px 15px;
+  font-size: 1rem;
+
+  &:hover {
+    color: lighten($color-main, 15%);
+    box-shadow: inset 0px 0px 2px 2px lighten($color-main, 15%);
+  }
+
+  &:active {
+    color: darken($color-main, 3%);
+    box-shadow: inset 0px 0px 2px 2px darken($color-main, 3%);
   }
 }
