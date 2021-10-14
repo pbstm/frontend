@@ -1,5 +1,17 @@
 @import '../../../../scss/vars.scss';
 
+.Container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Session {
+  margin-top: 4rem;
+}
+
 .Slider {
   position: relative;
   display: flex;

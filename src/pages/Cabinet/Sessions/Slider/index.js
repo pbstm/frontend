@@ -3,11 +3,18 @@ import cn from 'classnames'
 import classes from './Slider.module.scss'
 import { items } from './SliderData'
 import WindowDimensions from '../../../../utils/windowDimensions'
+import Session from '../../../../components/Session'
 
 const Slider = () => {
   const slider = useRef(null)
   const [position, setPosition] = useState(0)
-  const windowWidth = WindowDimensions();
+  const windowWidth = WindowDimensions()
+  const [activeSlide, setActiveSlide] = useState()
+  const [sessionMode, setSessionMode] = useState(false)
+
+  const closeSession = () => {
+    setSessionMode(false)
+  }
 
   const translateSlides = () => {
     slider.current.childNodes.forEach((element) => {
@@ -55,7 +62,8 @@ const Slider = () => {
   const lastPosition = -(length - visibleGroup) * itemLength
   // 1 2 3 4 5 6 7 8 9 10 [11 12 13 14 15 16]
 
-  const lastPosBeforeExtreme = -(arrayWithoutExtreme - visibleGroup) * itemLength
+  const lastPosBeforeExtreme =
+    -(arrayWithoutExtreme - visibleGroup) * itemLength
   // 1 2 3 4 5 6 7 8 9 [10 11 12 13 14 15] 16
 
   const firstPosBeforeExtreme = -extremeItems * itemLength
@@ -86,41 +94,62 @@ const Slider = () => {
     }
   }
 
+  const slideHandler = (item) => {
+    setActiveSlide(item)
+    setSessionMode(true)
+  }
+
   return (
-    <div className={classes.Slider}>
-      <div className={classes.Track} ref={slider}>
-        {items.map((item) => (
-          <div className={classes.Item} key={item}>
-            {item}
-          </div>
-        ))}
+    <div className={classes.Container}>
+      <div className={classes.Slider}>
+        <div className={classes.Track} ref={slider}>
+          {items.map((item) => (
+            <div
+              className={classes.Item}
+              key={item}
+              onClick={() => slideHandler(item)}
+              onKeyPress={() => slideHandler(item)}
+              role="link"
+              tabIndex={0}
+            >
+              <div>
+                {item}
+              </div>
+            </div>
+          ))}
+        </div>
+        <div
+          className={
+            position === 0 ?
+              cn(classes.Btn, classes.Prev, classes.Disable) :
+              cn(classes.Btn, classes.Prev)
+          }
+          onClick={prevHandler}
+          onKeyPress={prevHandler}
+          role="link"
+          tabIndex={0}
+        >
+          {'<'}
+        </div>
+        <div
+          className={
+            position === lastPosition ?
+              cn(classes.Btn, classes.Next, classes.Disable) :
+              cn(classes.Btn, classes.Next)
+          }
+          onClick={nextHandler}
+          onKeyPress={nextHandler}
+          role="link"
+          tabIndex={0}
+        >
+          {'>'}
+        </div>
       </div>
-      <div
-        className={
-          position === 0 ?
-            cn(classes.Btn, classes.Prev, classes.Disable) :
-            cn(classes.Btn, classes.Prev)
-        }
-        onClick={prevHandler}
-        onKeyPress={prevHandler}
-        role="link"
-        tabIndex={0}
-      >
-        {'<'}
-      </div>
-      <div
-        className={
-          position === lastPosition ?
-            cn(classes.Btn, classes.Next, classes.Disable) :
-            cn(classes.Btn, classes.Next)
-        }
-        onClick={nextHandler}
-        onKeyPress={nextHandler}
-        role="link"
-        tabIndex={0}
-      >
-        {'>'}
-      </div>
+      {sessionMode && (
+        <div className={classes.Session}>
+          <Session onClose={closeSession} id={activeSlide} />
+        </div>
+      )}
     </div>
   )
 }
