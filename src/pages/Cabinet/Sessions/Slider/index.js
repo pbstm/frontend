@@ -99,6 +99,17 @@ const Slider = () => {
     setSessionMode(true)
   }
 
+  const PhotoSession = () => {
+    if (sessionMode) {
+      return (
+        <div className={classes.Session}>
+          <Session onClose={closeSession} id={activeSlide} />
+        </div>
+      )
+    }
+    return null
+  }
+
   return (
     <div className={classes.Container}>
       <div className={classes.Slider}>
@@ -112,9 +123,7 @@ const Slider = () => {
               role="link"
               tabIndex={0}
             >
-              <div>
-                {item}
-              </div>
+              <div>{item}</div>
             </div>
           ))}
         </div>
@@ -145,11 +154,7 @@ const Slider = () => {
           {'>'}
         </div>
       </div>
-      {sessionMode && (
-        <div className={classes.Session}>
-          <Session onClose={closeSession} id={activeSlide} />
-        </div>
-      )}
+      <PhotoSession />
     </div>
   )
 }
