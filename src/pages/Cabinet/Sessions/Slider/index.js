@@ -110,6 +110,20 @@ const Slider = () => {
     return null
   }
 
+  const prevStyle = () => {
+    if (position === 0) {
+      return cn(classes.Btn, classes.Prev, classes.Disable)
+    }
+    return cn(classes.Btn, classes.Prev)
+  }
+
+  const nextStyle = () => {
+    if (position === lastPosition) {
+      return cn(classes.Btn, classes.Next, classes.Disable)
+    }
+    return cn(classes.Btn, classes.Next)
+  }
+
   return (
     <div className={classes.Container}>
       <div className={classes.Slider}>
@@ -128,11 +142,7 @@ const Slider = () => {
           ))}
         </div>
         <div
-          className={
-            position === 0 ?
-              cn(classes.Btn, classes.Prev, classes.Disable) :
-              cn(classes.Btn, classes.Prev)
-          }
+          className={prevStyle}
           onClick={prevHandler}
           onKeyPress={prevHandler}
           role="link"
@@ -141,11 +151,7 @@ const Slider = () => {
           {'<'}
         </div>
         <div
-          className={
-            position === lastPosition ?
-              cn(classes.Btn, classes.Next, classes.Disable) :
-              cn(classes.Btn, classes.Next)
-          }
+          className={nextStyle}
           onClick={nextHandler}
           onKeyPress={nextHandler}
           role="link"
