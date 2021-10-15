@@ -110,19 +110,41 @@ const Slider = () => {
     return null
   }
 
-  const prevStyle = () => {
-    if (position === 0) {
-      return cn(classes.Btn, classes.Prev, classes.Disable)
-    }
-    return cn(classes.Btn, classes.Prev)
-  }
+  const prevClass = (
+    position === 0 ?
+      cn(classes.Btn, classes.Prev, classes.Disable) :
+      cn(classes.Btn, classes.Prev)
+  )
 
-  const nextStyle = () => {
-    if (position === lastPosition) {
-      return cn(classes.Btn, classes.Next, classes.Disable)
-    }
-    return cn(classes.Btn, classes.Next)
-  }
+  const nextClass = (
+    position === lastPosition ?
+      cn(classes.Btn, classes.Next, classes.Disable) :
+      cn(classes.Btn, classes.Next)
+  )
+
+  const PrevBtn = (
+    <div
+      className={prevClass}
+      onClick={prevHandler}
+      onKeyPress={prevHandler}
+      role="link"
+      tabIndex={0}
+    >
+      {'<'}
+    </div>
+  )
+
+  const NextBtn = (
+    <div
+      className={nextClass}
+      onClick={nextHandler}
+      onKeyPress={nextHandler}
+      role="link"
+      tabIndex={0}
+    >
+      {'>'}
+    </div>
+  )
 
   return (
     <div className={classes.Container}>
@@ -141,24 +163,8 @@ const Slider = () => {
             </div>
           ))}
         </div>
-        <div
-          className={prevStyle}
-          onClick={prevHandler}
-          onKeyPress={prevHandler}
-          role="link"
-          tabIndex={0}
-        >
-          {'<'}
-        </div>
-        <div
-          className={nextStyle}
-          onClick={nextHandler}
-          onKeyPress={nextHandler}
-          role="link"
-          tabIndex={0}
-        >
-          {'>'}
-        </div>
+        {PrevBtn}
+        {NextBtn}
       </div>
       <PhotoSession />
     </div>
