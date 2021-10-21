@@ -1,0 +1,42 @@
+@import '../../scss/vars.scss';
+
+.Hamburger {
+  display: block;
+  cursor: pointer;
+  z-index: 90;
+
+  & span {
+    transition: all 0.3s ease;
+  }
+
+  &:hover {
+    & span:nth-of-type(odd) {
+      width: 27px;
+    }
+  }
+
+  &.Active {
+
+    & span:nth-of-type(1) {
+      transform: rotate(45deg) translate(7px, 7px);
+      width: 30px;
+    }
+
+    & span:nth-of-type(2) {
+      opacity: 0;
+    }
+
+    & span:nth-of-type(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+      width: 30px;
+    }
+  }
+}
+
+.Span {
+  display: block;
+  width: 30px;
+  height: 4px;
+  margin-bottom: 5px;
+  background-color: $color-white;
+}
