@@ -4,8 +4,8 @@ import { compose } from "redux";
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/authSelectors'
 import CabinetContainer from '../../hoc/CabinetContainer'
-import Sessions from './Sessions'
-import Locations from './Locations'
+// import Sessions from './Sessions'
+// import Locations from './Locations'
 
 const Cabinet = () => {
   const isAuth = useSelector(selectIsAuth)
@@ -16,8 +16,8 @@ const Cabinet = () => {
 
   return (
     <CabinetContainer>
-      <Sessions />
-      <Locations />
+      {/* <Sessions /> */}
+      {/* <Locations /> */}
     </CabinetContainer>
   )
 }

@@ -1,31 +1,196 @@
 @import '../../../scss/vars.scss';
 
-.Header {
-  background-image: url('../../../assets/img/Header_cabinet_bgr.png');
-  height: 800px;
-  min-width: 1400px;
-  margin-bottom: -40px;
-  color: $color-white;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding-top: 200px;
-  padding-left: 100px;
-  padding-right: 100px;
+@media screen and (min-width: 1280px) {
+  .Header {
+    background-image: url('../../../assets/img/Cabinet/Header/Header_cabinet_bgr.png');
+    background-position: center;
+    margin-bottom: -40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
+    height: 800px;
+  }
+
+  .Card {
+    width: 280px;
+    height: 400px;
+    padding-top: 170px;
+  }
+
+  .Darker {
+    height: 200px;
+
+    & p {
+      color: $color-white;
+      font-size: 28px;
+      line-height: 1.4em;
+
+      & span.BigText {
+        font-size: 44px;
+      }
+
+      & span.MidText {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .Sessions {
+    background-position: bottom;
+  }
+
+  .Locations {
+    background-position: center;
+  }
+
+  .Schedule {
+    background-position: center;
+  }
+
+  .Accessories {
+    background-position: left;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .Header {
+    background-image: url('../../../assets/img/Cabinet/Header/Header_cabinet_bgr.png');
+    background-position: center;
+    margin-bottom: -40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    padding-top: 50px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-bottom: 80px;
+    height: 800px;
+  }
+
+  .Card1 {
+    justify-self: end;
+  }
+
+  .Card2 {
+    justify-self: start;
+  }
+
+  .Card3 {
+    justify-self: end;
+  }
+
+  .Card4 {
+    justify-self: start;
+  }
+
+  .Card {
+    width: 350px;
+    height: 300px;
+    padding-top: 120px;
+  }
+
+  .Darker {
+    height: 180px;
+    border-radius: 0 0 30px 30px;
+
+    & p {
+      color: $color-white;
+      font-size: 26px;
+      line-height: 1.35em;
+
+      & span.BigText {
+        font-size: 40px;
+      }
+
+      & span.MidText {
+        font-size: 30px;
+      }
+    }
+  }
+
+  .Sessions {
+    background-position: 50% 40%;
+  }
+
+  .Locations {
+    background-position: 0% 30%;
+  }
+
+  .Schedule {
+    background-position: 0% 30%;
+  }
+
+  .Accessories {
+    background-position: 0% 50%;
+  }
+}
+
+@media screen and (max-width: 846px) {
+  .Header {
+    background-image: none;
+    display: flex;
+    flex-direction: column;
+    padding-top: 30px;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .Card {
+    width: 280px;
+    height: 400px;
+    padding-top: 170px;
+  }
+
+  .Darker {
+    height: 200px;
+    border-radius: 0;
+
+    & p {
+      color: $color-white;
+      font-size: 28px;
+      line-height: 1.4em;
+
+      & span.BigText {
+        font-size: 44px;
+      }
+
+      & span.MidText {
+        font-size: 32px;
+      }
+    }
+  }
+
+  .Sessions {
+    background-position: bottom;
+  }
+
+  .Locations {
+    background-position: center;
+  }
+
+  .Schedule {
+    background-position: center;
+  }
+
+  .Accessories {
+    background-position: left;
+  }
 }
 
 .Card {
-  width: 300px;
-  height: 400px;
   cursor: pointer;
-  margin: 10px;
+  margin: 12px;
   border-radius: 30px;
-  padding-top: 170px;
 }
 
 .Darker {
-  height: 200px;
-  padding: 15px;
+  padding: 12px;
   text-align: center;
   background-color: $color-black-transparent-04;
   transition: all 0.5s ease;
@@ -36,8 +201,6 @@
 
   & p {
     color: $color-white;
-    font-size: 28px;
-    line-height: 1.4em;
 
     &:hover {
       & span.BigText {
@@ -49,26 +212,24 @@
     }
 
     & span.BigText {
-      font-size: 44px;
       transition: all 0.3s ease;
     }
 
     & span.MidText {
-      font-size: 32px;
       transition: all 0.5s ease-in-out;
     }
   }
 }
 
 .Sessions {
-  background-image: url('../../../assets/img/sessions.png');
+  background-image: url('../../../assets/img/Cabinet/Header/sessions.png');
 }
 .Locations {
-  background-image: url('../../../assets/img/locations.png');
+  background-image: url('../../../assets/img/Cabinet/Header/locations.png');
 }
 .Schedule {
-  background-image: url('../../../assets/img/shedule.png');
+  background-image: url('../../../assets/img/Cabinet/Header/shedule.png');
 }
 .Accessories {
-  background-image: url('../../../assets/img/accessories.png');
+  background-image: url('../../../assets/img/Cabinet/Header/accessories.png');
 }
