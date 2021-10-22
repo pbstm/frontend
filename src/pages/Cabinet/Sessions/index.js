@@ -43,12 +43,10 @@ const Sessions = () => {
           />
         </div>
         {editMode && (
-          <div className={classes.SessionForm}>
-            <NewSessionForm
-              onSubmit={onSubmitNewSessionForm}
-              onClose={onCloseNewSessionForm}
-            />
-          </div>
+          <NewSessionForm
+            onSubmit={onSubmitNewSessionForm}
+            onClose={onCloseNewSessionForm}
+          />
         )}
       </div>
     </Element>

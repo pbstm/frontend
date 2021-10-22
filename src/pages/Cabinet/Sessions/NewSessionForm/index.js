@@ -136,7 +136,6 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
         <div
           className={classNames(
             styles.formsControls,
-            classes.Field,
             errors.title ? styles.error : ''
           )}
         >
@@ -163,7 +162,6 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
         <div
           className={classNames(
             styles.formsControls,
-            classes.Field,
             errors.description ? styles.error : ''
           )}
         >
