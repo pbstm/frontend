@@ -7,6 +7,7 @@ import { selectName, selectType, selectEmail, selectAvatarUrl } from '../../redu
 import { logout } from '../../redux/authReducer'
 import { ProfileLink } from '../../const/Url'
 import classes from './UserInfoBlock.module.scss'
+import Backdrop from '../Backdrop'
 
 const UserInfoBlock = () => {
   const { t } = useTranslation()
@@ -81,15 +82,7 @@ const UserInfoBlock = () => {
         )}
       </div>
       {isMenuOpen ? (
-        <div
-          className={classes.Backdrop}
-          onClick={closeMenuMode}
-          onKeyPress={closeMenuMode}
-          role="link"
-          tabIndex={0}
-        >
-          .
-        </div>
+        <Backdrop closeMenuMode={closeMenuMode} />
       ) : null}
     </div>
   )

@@ -4,11 +4,24 @@
   color: $color-white;
   background-color: $color-black-transparent-07;
   height: 40px;
+  z-index: 100;
+  top: 0;
+}
+
+.GeneralNav {
   display: grid;
   grid-template-columns: 90px 1fr 90px;
   position: sticky;
-  top: 0;
-  z-index: 100;
+}
+
+.HamburgerNav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  padding: 0.5rem 0.7rem;
 }
 
 .UserBlock {
@@ -17,24 +30,14 @@
   align-items: center;
 }
 
-.Link {
-  color: $color-white;
-}
-
 .MainLink {
   justify-self: start;
   align-self: center;
   padding-left: 1rem;
 }
 
-.ProfileLink {
-  justify-self: end;
-  align-self: center;
-  padding-right: 1rem;
-}
-
-.ScrollLink {
-  color: $color-main;
+.ActiveScrollLink {
+  color: lighten($color-main, 30%);
 }
 
 .Sections {
@@ -43,12 +46,42 @@
   align-items: center;
 }
 
+.FloatSections {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .Section {
   cursor: pointer;
   transition: all 0.5s ease;
   font-size: 1.15rem;
+}
 
-  &:hover {
-    color: lighten($color-main, 10%);
+.FloatSection {
+  cursor: pointer;
+  transition: all 0.5s ease;
+  font-size: 1.15rem;
+  margin: 0.5rem 0rem;
+}
+
+.FloatMenu {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  box-sizing: border-box;
+  display: block;
+  z-index: 80;
+  width: 100%;
+
+  &.Close {
+    display: none;
   }
+}
+
+.NavFloatMenu {
+  background-color: $color-black-transparent-08;
+  padding: 1.2rem;
+  text-align: center;
 }
