@@ -27,29 +27,32 @@ const Slider = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [position])
 
+  const sliderMargins = 234 // margins slider left + right
   const itemLength = 266 // item width + margin left & right
+  const maxVisibleGroup = 6
+  const maxShift = 3
   const { length } = items
-  let shift = 3
-  let visibleGroup = 6
+  let shift = maxShift
+  let visibleGroup = maxVisibleGroup
 
-  if (windowWidth.width < 1830) {
+  if (windowWidth.width < 6 * itemLength + sliderMargins) {
     visibleGroup = 5
   }
 
-  if (windowWidth.width < 1564) {
+  if (windowWidth.width < 5 * itemLength + sliderMargins) {
     visibleGroup = 4
   }
 
-  if (windowWidth.width < 1298) {
+  if (windowWidth.width < 4 * itemLength + sliderMargins) {
     visibleGroup = 3
   }
 
-  if (windowWidth.width < 1032) {
+  if (windowWidth.width < 3 * itemLength + sliderMargins) {
     visibleGroup = 2
     shift = 2
   }
 
-  if (windowWidth.width < 766) {
+  if (windowWidth.width < 2 * itemLength + sliderMargins) {
     visibleGroup = 1
     shift = 1
   }
