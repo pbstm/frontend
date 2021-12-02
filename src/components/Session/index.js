@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import SessionSlider from './SessionSlider/SessionSlider'
 
 const Session = ({ onClose, id }) => {
   const { t } = useTranslation()
@@ -10,6 +11,7 @@ const Session = ({ onClose, id }) => {
         {t('cabinet.sessions.forms.titles.formTitle')}
         {id}
       </div>
+      <SessionSlider />
       <div onClick={onClose} onKeyPress={onClose} role="link" tabIndex={0}>
         Close
       </div>
