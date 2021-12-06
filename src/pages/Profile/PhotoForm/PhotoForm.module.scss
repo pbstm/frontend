@@ -1,0 +1,31 @@
+@import '../../../scss/vars.scss';
+
+.AvatarContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.InputFile {
+  display: none;
+}
+
+.Avatar {
+  & img {
+    border-radius: 1rem;
+  }
+  margin-bottom: 1.5rem;
+}
+
+.AvatarBlank {
+  width: 250px;
+  height: 250px;
+  border-radius: 1rem;
+  margin-bottom: 1.5rem;
+  background-image:
+    url('../../../assets/img/Profile/avatar.svg');
+  background-position: 50% 10%;
+  color: $color-white;
+  border: 1px solid $color-black-transparent-02;
+}
