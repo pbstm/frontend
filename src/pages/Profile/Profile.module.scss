@@ -7,6 +7,15 @@
   margin-top: 5rem;
 }
 
+@media screen and (max-width: 700px) {
+  .Container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 3rem;
+  }
+}
+
 .Form {
   display: flex;
   flex-direction: column;
