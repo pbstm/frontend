@@ -93,6 +93,9 @@
     "userInfoBlock": {
       "loggedAs": "Зарегистрирован как: ",
       "logout": "Выйти"
+    },
+    "dropzone": {
+      "drop": "Перемести файл сюда"
     }
   },
   "forms": {

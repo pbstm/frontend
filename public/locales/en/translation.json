@@ -93,6 +93,9 @@
     "userInfoBlock": {
       "loggedAs": "Logged as: ",
       "logout": "Log out"
+    },
+    "dropzone": {
+      "drop": "Drop file here"
     }
   },
   "forms": {

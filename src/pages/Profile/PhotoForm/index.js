@@ -1,6 +1,7 @@
 import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
+import Dropzone from 'react-dropzone'
 import { Button } from '../../../components/Button'
 import classes from './PhotoForm.module.scss'
 
@@ -20,15 +21,39 @@ const PhotoForm = ({ avatarUrl, onSubmitPhoto }) => {
     }
   }
 
+  const onMainPhotoDropped = (files) => {
+    if (files?.length) {
+      onSubmitPhoto(files[0])
+    }
+  }
+
   const Avatar = () => {
     if (avatarUrl !== null) {
       return (
         <div className={classes.Avatar}>
-          <img src={avatarUrl} alt="" />
+          <Dropzone onDrop={(files) => onMainPhotoDropped(files)}>
+            {({ getRootProps, getInputProps }) => (
+              <div {...getRootProps()}>
+                <input {...getInputProps()} />
+                <img src={avatarUrl} alt="" />
+              </div>
+            )}
+          </Dropzone>
         </div>
       )
     }
-    return <div className={classes.AvatarBlank} />
+    return (
+      <div className={classes.AvatarBlank}>
+        <Dropzone onDrop={(files) => onMainPhotoDropped(files)}>
+          {({ getRootProps, getInputProps }) => (
+            <div {...getRootProps()}>
+              <input {...getInputProps()} />
+              <div>{t('components.dropzone.drop')}</div>
+            </div>
+          )}
+        </Dropzone>
+      </div>
+    )
   }
 
   return (

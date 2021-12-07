@@ -19,6 +19,9 @@
 }
 
 .AvatarBlank {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   width: 250px;
   height: 250px;
   border-radius: 1rem;
@@ -28,4 +31,10 @@
   background-position: 50% 10%;
   color: $color-white;
   border: 1px solid $color-black-transparent-02;
+
+  & div:first-child {
+    font-size: 1rem;
+    padding-bottom: 70px;
+    padding-top: 180px;
+  }
 }
