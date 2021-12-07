@@ -7,13 +7,6 @@
   margin-top: 5rem;
 }
 
-.AvatarContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-right: 2rem;
-}
-
 .Form {
   display: flex;
   flex-direction: column;
@@ -68,8 +61,4 @@
   &::after {
     border-top: 15px solid $color-main;
   }
-}
-
-.InputFile {
-  display: none;
 }
