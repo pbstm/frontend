@@ -15,9 +15,8 @@ const Sessions = () => {
     setEditMode(true)
   }
 
-  const onSubmitNewSessionForm = (values) => {
+  const onSubmitNewSessionForm = () => {
     setEditMode(false)
-    console.log(values)
   }
 
   const onCloseNewSessionForm = () => {
