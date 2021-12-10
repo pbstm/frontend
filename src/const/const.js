@@ -1,9 +1,11 @@
 import axios from 'axios'
 
+require('dotenv').config()
+
 export const getAccessToken = () => localStorage.token
 
 export const instance = axios.create({
-  baseURL: 'http://localhost:3000/api/v1',
+  baseURL: process.env.REACT_APP_API,
   headers: {
     Accept: 'application/json',
     Authorization: getAccessToken()
