@@ -47,14 +47,12 @@ const Profile = () => {
     dispatch(updateEmailData(values.email, values.password))
   }
 
-  const onSubmitPassword = (values, { setSubmitting, resetForm }) => {
+  const onSubmitPassword = (values) => {
     dispatch(
       updatePasswordData(
         values.current_password,
         values.password,
-        values.password_confirmation,
-        setSubmitting,
-        resetForm
+        values.password_confirmation
       )
     )
   }

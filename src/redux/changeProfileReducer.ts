@@ -109,23 +109,19 @@ export const updatePasswordData =
   (
     current_password: string,
     password: string,
-    password_confirmation: string,
-    setSubmitting: any,
-    resetForm: any
+    password_confirmation: string
   ): ThunkType => async (dispatch: DispatchType) => {
     await Api.updatePassword(current_password, password, password_confirmation)
       .then((response) => {
         if (response.success === true) {
           dispatch(actions.setChangePasswordError(''))
           dispatch(actions.setChangePasswordSuccess('Password changed successful'))
-          resetForm()
         }
       })
       .catch((error) => {
         const formError = error.response.data.errors[0].messages[0]
         dispatch(actions.setChangePasswordError(formError))
         dispatch(actions.setChangePasswordSuccess(''))
-        setSubmitting(false)
       })
   }
 
