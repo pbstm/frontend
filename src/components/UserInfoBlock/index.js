@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 // prettier-ignore
 import { selectName, selectType, selectEmail, selectAvatarUrl } from '../../redux/authSelectors'
-import { logout } from '../../redux/authReducer'
+// @ts-ignore
+import { logout } from '../../redux/authReducer.ts'
 import { ProfileLink } from '../../const/Url'
 import classes from './UserInfoBlock.module.scss'
 import Backdrop from '../Backdrop'

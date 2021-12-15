@@ -3,8 +3,10 @@ import React, { useEffect, Suspense } from 'react'
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 import { Provider, useDispatch } from 'react-redux'
 import { compose } from 'redux'
-import store from './redux/redux-store'
-import { getProfileData } from './redux/authReducer'
+// @ts-ignore
+import store from './redux/redux-store.ts'
+// @ts-ignore
+import { getProfileData } from './redux/authReducer.ts'
 import { getAccessToken } from './const/const'
 import Main from './pages/Main'
 import Cabinet from './pages/Cabinet'
