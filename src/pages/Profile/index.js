@@ -5,7 +5,8 @@ import { compose } from 'redux'
 import ProfileContainer from '../../hoc/ProfileContainer'
 import { getAccessToken } from '../../const/const'
 // prettier-ignore
-import { updateNameData, updateEmailData, updatePasswordData, updatePhotoData } from '../../redux/changeProfileReducer'
+// @ts-ignore
+import { updateNameData, updateEmailData, updatePasswordData, updatePhotoData } from '../../redux/changeProfileReducer.ts'
 // prettier-ignore
 import { selectName, selectEmail, selectAvatarUrl } from '../../redux/authSelectors'
 // prettier-ignore

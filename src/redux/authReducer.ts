@@ -1,7 +1,23 @@
+import { Dispatch } from 'redux'
 import Api from '../api/api'
+// @ts-ignore
+import { BaseThunkType, InferActionsTypes } from "./redux-store.ts";
 
 /* eslint-disable camelcase */
-const initialState = {
+export type InitialStateType = {
+  id: number | null,
+  name: string | null,
+  email: string | null,
+  createdAt: number | null,
+  updatedAt: number | null,
+  avatarUrl: string | null,
+  type: string | null,
+  isAuth: boolean,
+  loginError: string,
+  registerError: string
+}
+
+const initialState: InitialStateType = {
   id: null,
   name: null,
   email: null,
@@ -14,7 +30,42 @@ const initialState = {
   registerError: ''
 }
 
-const authReducer = (state = initialState, action) => {
+export const actions = {
+  setProfileData: (
+    id: number | null,
+    name: string | null,
+    email: string | null,
+    createdAt: number | null,
+    updatedAt: number | null,
+    avatarUrl: string | null,
+    type: string | null,
+    isAuth: boolean
+  ) => ({
+    type: 'SET_PROFILE_DATA',
+    payload: {
+      id,
+      name,
+      email,
+      createdAt,
+      updatedAt,
+      avatarUrl,
+      type,
+      isAuth
+    }
+  }),
+  setLoginError: (loginError: string) => ({
+    type: 'SET_LOGIN_ERROR',
+    loginError
+  }),
+  setRegisterError: (registerError: string) => ({
+    type: 'SET_REGISTER_ERROR',
+    registerError
+  })
+}
+
+type ActionsTypes = InferActionsTypes<typeof actions>;
+
+const authReducer = (state = initialState, action: ActionsTypes): InitialStateType => {
   switch (action.type) {
     case 'SET_PROFILE_DATA':
       return {
@@ -36,40 +87,10 @@ const authReducer = (state = initialState, action) => {
   }
 }
 
-export const actions = {
-  setProfileData: (
-    id,
-    name,
-    email,
-    createdAt,
-    updatedAt,
-    avatarUrl,
-    type,
-    isAuth
-  ) => ({
-    type: 'SET_PROFILE_DATA',
-    payload: {
-      id,
-      name,
-      email,
-      createdAt,
-      updatedAt,
-      avatarUrl,
-      type,
-      isAuth
-    }
-  }),
-  setLoginError: (loginError) => ({
-    type: 'SET_LOGIN_ERROR',
-    loginError
-  }),
-  setRegisterError: (registerError) => ({
-    type: 'SET_REGISTER_ERROR',
-    registerError
-  })
-}
+type ThunkType = BaseThunkType<ActionsTypes>;
+type DispatchType = Dispatch<ActionsTypes>
 
-export const getProfileData = () => async (dispatch) => {
+export const getProfileData = (): ThunkType => async (dispatch: DispatchType) => {
   await Api.getProfile()
     .then((response) => {
       if (response.success === true) {
@@ -89,14 +110,18 @@ export const getProfileData = () => async (dispatch) => {
     })
     .catch(() => {
       dispatch(
-        actions.setProfileData(null, null, null, null, null, null, null, false),
-        localStorage.removeItem('token'),
-        window.location.replace('./login')
+        actions.setProfileData(null, null, null, null, null, null, null, false)
       )
+      localStorage.removeItem('token')
+      window.location.replace('./login')
     })
 }
 
-export const login = (email, password, type) => async (dispatch) => {
+export const login = (
+  email: string,
+  password: string,
+  type: string
+): ThunkType => async (dispatch: DispatchType) => {
   await Api.login(email, password, type)
     .then((response) => {
       localStorage.setItem('token', response.token)
@@ -112,7 +137,12 @@ export const login = (email, password, type) => async (dispatch) => {
 }
 
 export const register =
-  (name, email, password, passwordConfirmation) => async (dispatch) => {
+  (
+    name: string,
+    email: string,
+    password: string,
+    passwordConfirmation: string
+  ): ThunkType => async (dispatch: DispatchType) => {
     await Api.register(name, email, password, passwordConfirmation)
       .then((response) => {
         if (response.success === true) {
@@ -128,9 +158,9 @@ export const register =
       })
   }
 
-export const logout = () => async (dispatch) => {
+export const logout = (): ThunkType => async (dispatch: DispatchType) => {
   localStorage.removeItem('token')
-  dispatch(actions.setProfileData(null, null, null, null, null, null, false))
+  dispatch(actions.setProfileData(null, null, null, null, null, null, null, false))
   window.location.replace('./login')
 }
 

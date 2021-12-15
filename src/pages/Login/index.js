@@ -2,7 +2,8 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Redirect, NavLink } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
-import { login } from '../../redux/authReducer'
+// @ts-ignore
+import { login } from '../../redux/authReducer.ts'
 // prettier-ignore
 import { selectIsAuth, selectType, selectLoginError } from '../../redux/authSelectors'
 import classes from '../Register/Register.module.scss'
