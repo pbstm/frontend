@@ -1,9 +1,7 @@
 import { Action, combineReducers, createStore, applyMiddleware, compose } from 'redux'
 import thunkMiddleware, { ThunkAction } from 'redux-thunk'
-// @ts-ignore
-import authReducer from './authReducer.ts'
-// @ts-ignore
-import changeProfileReducer from './changeProfileReducer.ts'
+import authReducer from './authReducer'
+import changeProfileReducer from './changeProfileReducer'
 
 const rootReducer = combineReducers({
   auth: authReducer,
