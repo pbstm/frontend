@@ -7,7 +7,8 @@ import { compose } from 'redux'
 import store from './redux/redux-store.ts'
 // @ts-ignore
 import { getProfileData } from './redux/authReducer.ts'
-import { getAccessToken } from './const/const'
+// @ts-ignore
+import { getAccessToken } from './const/const.ts'
 import Main from './pages/Main'
 import Cabinet from './pages/Cabinet'
 import CustomerCabinet from './pages/CustomerCabinet'
