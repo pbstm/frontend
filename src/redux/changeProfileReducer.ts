@@ -1,5 +1,7 @@
 import { Dispatch } from 'redux'
-import Api from '../api/api'
+import request, { AxiosError } from 'axios';
+// @ts-ignore
+import Api, { ErrorType } from '../api/api.ts'
 // @ts-ignore
 import { getProfileData } from './authReducer.ts'
 // @ts-ignore
@@ -75,14 +77,16 @@ export const updateNameData = (
   name: string
 ): ThunkType => async (dispatch: DispatchType) => {
   await Api.updateName(name)
-    .then((response) => {
+    .then((response: any) => {
       if (response.success === true) {
         dispatch(getProfileData())
       }
     })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error.response.data)
+    .catch((error: AxiosError<ErrorType>) => {
+      if (request.isAxiosError(error) && error.response) {
+        // eslint-disable-next-line no-console
+        console.log(error.response.data)
+      }
     })
 }
 
@@ -91,17 +95,19 @@ export const updateEmailData = (
   current_password: string
 ): ThunkType => async (dispatch: DispatchType) => {
   await Api.updateEmail(email, current_password)
-    .then((response) => {
+    .then((response: any) => {
       if (response.success === true) {
         dispatch(getProfileData())
         dispatch(actions.setChangeEmailError(''))
         dispatch(actions.setChangeEmailSuccess('Email changed successful'))
       }
     })
-    .catch((error) => {
-      const formError = error.response.data.errors[0].messages[0]
-      dispatch(actions.setChangeEmailError(formError))
-      dispatch(actions.setChangeEmailSuccess(''))
+    .catch((error: AxiosError<ErrorType>) => {
+      if (request.isAxiosError(error) && error.response) {
+        const formError = error.response.data.errors[0].messages[0]
+        dispatch(actions.setChangeEmailError(formError))
+        dispatch(actions.setChangeEmailSuccess(''))
+      }
     })
 }
 
@@ -112,16 +118,18 @@ export const updatePasswordData =
     password_confirmation: string
   ): ThunkType => async (dispatch: DispatchType) => {
     await Api.updatePassword(current_password, password, password_confirmation)
-      .then((response) => {
+      .then((response: any) => {
         if (response.success === true) {
           dispatch(actions.setChangePasswordError(''))
           dispatch(actions.setChangePasswordSuccess('Password changed successful'))
         }
       })
-      .catch((error) => {
-        const formError = error.response.data.errors[0].messages[0]
-        dispatch(actions.setChangePasswordError(formError))
-        dispatch(actions.setChangePasswordSuccess(''))
+      .catch((error: AxiosError<ErrorType>) => {
+        if (request.isAxiosError(error) && error.response) {
+          const formError = error.response.data.errors[0].messages[0]
+          dispatch(actions.setChangePasswordError(formError))
+          dispatch(actions.setChangePasswordSuccess(''))
+        }
       })
   }
 
@@ -129,14 +137,16 @@ export const updatePhotoData = (
   avatar: string
 ): ThunkType => async (dispatch: DispatchType) => {
   await Api.updatePhoto(avatar)
-    .then((response) => {
+    .then((response: any) => {
       if (response.success === true) {
         dispatch(getProfileData())
       }
     })
-    .catch((error) => {
-      // eslint-disable-next-line no-console
-      console.log(error.response.data)
+    .catch((error: AxiosError<ErrorType>) => {
+      if (request.isAxiosError(error) && error.response) {
+        // eslint-disable-next-line no-console
+        console.log(error.response.data)
+      }
     })
 }
 
