@@ -1,7 +1,7 @@
 import { Dispatch } from 'redux'
 import request, { AxiosError } from 'axios';
 // @ts-ignore
-import Api from '../api/api.ts'
+import Api, { ErrorType } from '../api/api.ts'
 // @ts-ignore
 import { BaseThunkType, InferActionsTypes } from "./redux-store.ts";
 
@@ -91,16 +91,6 @@ const authReducer = (state = initialState, action: ActionsTypes): InitialStateTy
 
 type ThunkType = BaseThunkType<ActionsTypes>;
 type DispatchType = Dispatch<ActionsTypes>
-
-type Error = {
-  key: string,
-  messages: Array<string>
-}
-
-type ErrorType = {
-  success: boolean,
-  errors: Array<Error>
-}
 
 export const getProfileData = (): ThunkType => async (dispatch: DispatchType) => {
   await Api.getProfile()
