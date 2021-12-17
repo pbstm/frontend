@@ -1,5 +1,7 @@
 import { Dispatch } from 'redux'
-import Api from '../api/api'
+import request, { AxiosError } from 'axios';
+// @ts-ignore
+import Api from '../api/api.ts'
 // @ts-ignore
 import { BaseThunkType, InferActionsTypes } from "./redux-store.ts";
 
@@ -90,9 +92,19 @@ const authReducer = (state = initialState, action: ActionsTypes): InitialStateTy
 type ThunkType = BaseThunkType<ActionsTypes>;
 type DispatchType = Dispatch<ActionsTypes>
 
+type Error = {
+  key: string,
+  messages: Array<string>
+}
+
+type ErrorType = {
+  success: boolean,
+  errors: Array<Error>
+}
+
 export const getProfileData = (): ThunkType => async (dispatch: DispatchType) => {
   await Api.getProfile()
-    .then((response) => {
+    .then((response: any) => {
       if (response.success === true) {
         dispatch(
           actions.setProfileData(
@@ -123,16 +135,18 @@ export const login = (
   type: string
 ): ThunkType => async (dispatch: DispatchType) => {
   await Api.login(email, password, type)
-    .then((response) => {
+    .then((response: any) => {
       localStorage.setItem('token', response.token)
       dispatch(actions.setLoginError(''))
     })
     .then(() => {
       window.location.replace('./cabinet')
     })
-    .catch((error) => {
-      const formError = error.response.data.errors[0].messages[0]
-      dispatch(actions.setLoginError(formError))
+    .catch((error: AxiosError<ErrorType>) => {
+      if (request.isAxiosError(error) && error.response) {
+        const formError = error.response.data.errors[0].messages[0]
+        dispatch(actions.setLoginError(formError))
+      }
     })
 }
 
@@ -144,17 +158,17 @@ export const register =
     passwordConfirmation: string
   ): ThunkType => async (dispatch: DispatchType) => {
     await Api.register(name, email, password, passwordConfirmation)
-      .then((response) => {
+      .then((response: any) => {
         if (response.success === true) {
           dispatch(actions.setRegisterError(''))
-          // eslint-disable-next-line no-console
-          console.log(response.user)
           window.location.replace('./login')
         }
       })
-      .catch((error) => {
-        const formError = error.response.data.errors[0].messages[0]
-        dispatch(actions.setRegisterError(formError))
+      .catch((error: AxiosError<ErrorType>) => {
+        if (request.isAxiosError(error) && error.response) {
+          const formError = error.response.data.errors[0].messages[0]
+          dispatch(actions.setRegisterError(formError))
+        }
       })
   }
 
