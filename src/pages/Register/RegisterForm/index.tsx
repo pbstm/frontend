@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
@@ -8,7 +7,19 @@ import { Button } from '../../../components/Button'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Register.module.scss'
 
-const RegisterForm = ({ onSubmit, registerError }) => {
+export type RegisterFormValuesType = {
+  name: string,
+  email: string,
+  password: string,
+  password_confirmation: string
+};
+
+type RegisterFormPropsType = {
+  registerError: string,
+  onSubmit: (values: RegisterFormValuesType) => void;
+};
+
+const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit, registerError }) => {
   const { t } = useTranslation()
 
   const initialValues = {
@@ -115,12 +126,3 @@ const RegisterForm = ({ onSubmit, registerError }) => {
 }
 
 export default RegisterForm
-
-RegisterForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  registerError: PropTypes.string
-}
-
-RegisterForm.defaultProps = {
-  registerError: ''
-}
