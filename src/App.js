@@ -11,7 +11,8 @@ import { getAccessToken } from './const/const'
 import Main from './pages/Main'
 import Cabinet from './pages/Cabinet'
 import CustomerCabinet from './pages/CustomerCabinet'
-import Login from './pages/Login'
+// @ts-ignore
+import Login from './pages/Login/index.tsx'
 import Register from './pages/Register'
 import Profile from './pages/Profile'
 

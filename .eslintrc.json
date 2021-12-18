@@ -32,7 +32,7 @@
         "react"
     ],
     "rules": {
-        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
         "react/jsx-props-no-spreading": "off",
         "jsx-a11y/anchor-is-valid": [ "error", {
             "components": [ "Link" ],
@@ -66,6 +66,7 @@
             "optionalDependencies": false,
             "peerDependencies": false
         }],
-        "no-param-reassign": 0
+        "no-param-reassign": 0,
+        "react/prop-types": 0
     }
 }

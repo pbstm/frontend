@@ -8,17 +8,18 @@ import { login } from '../../redux/authReducer.ts'
 import { selectIsAuth, selectType, selectLoginError } from '../../redux/authSelectors'
 import classes from '../Register/Register.module.scss'
 import { RegisterLink } from '../../const/Url'
-import LoginForm from './LoginForm'
+// @ts-ignore
+import LoginForm, { LoginFormValuesType } from './LoginForm/index.tsx'
 import ChangeLanguageBlock from '../../components/ChangeLanguageBlock'
 
-const Login = () => {
+const Login: React.FC = () => {
   const { t } = useTranslation()
   const isAuth = useSelector(selectIsAuth)
   const userType = useSelector(selectType)
   const loginError = useSelector(selectLoginError)
   const dispatch = useDispatch()
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: LoginFormValuesType) => {
     let type
     if (values.type === true) {
       type = 'Photographer'
