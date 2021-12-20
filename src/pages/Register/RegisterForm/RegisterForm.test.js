@@ -1,7 +1,8 @@
 import React from 'react'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import RegisterForm from './index.js'
+// @ts-ignore
+import RegisterForm from './index.tsx'
 
 describe('Basic render tests', () => {
   let component, mockCallback

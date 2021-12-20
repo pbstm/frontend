@@ -11,8 +11,10 @@ import { getAccessToken } from './const/const'
 import Main from './pages/Main'
 import Cabinet from './pages/Cabinet'
 import CustomerCabinet from './pages/CustomerCabinet'
-import Login from './pages/Login'
-import Register from './pages/Register'
+// @ts-ignore
+import Login from './pages/Login/index.tsx'
+// @ts-ignore
+import Register from './pages/Register/index.tsx'
 import Profile from './pages/Profile'
 
 const App = () => {

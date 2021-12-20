@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
@@ -8,7 +7,18 @@ import { Button } from '../../../components/Button'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../../Register/Register.module.scss'
 
-const LoginForm = ({ onSubmit, loginError }) => {
+export type LoginFormValuesType = {
+  email: string;
+  password: string;
+  type: boolean
+};
+
+type LoginFormPropsType = {
+  loginError: string,
+  onSubmit: (values: LoginFormValuesType) => void;
+};
+
+const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit, loginError }) => {
   const { t } = useTranslation()
 
   const initialValues = {
@@ -88,12 +98,3 @@ const LoginForm = ({ onSubmit, loginError }) => {
 }
 
 export default LoginForm
-
-LoginForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  loginError: PropTypes.string
-}
-
-LoginForm.defaultProps = {
-  loginError: ''
-}

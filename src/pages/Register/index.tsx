@@ -7,16 +7,17 @@ import { register } from '../../redux/authReducer.ts'
 import { selectIsAuth, selectRegisterError } from '../../redux/authSelectors'
 import classes from './Register.module.scss'
 import { LoginLink } from '../../const/Url'
-import RegisterForm from './RegisterForm'
+// @ts-ignore
+import RegisterForm, { RegisterFormValuesType } from './RegisterForm/index.tsx'
 import ChangeLanguageBlock from '../../components/ChangeLanguageBlock'
 
-const Register = () => {
+const Register: React.FC = () => {
   const { t } = useTranslation()
   const isAuth = useSelector(selectIsAuth)
   const registerError = useSelector(selectRegisterError)
   const dispatch = useDispatch()
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: RegisterFormValuesType) => {
     dispatch(
       register(
         values.name,
