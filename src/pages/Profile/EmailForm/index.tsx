@@ -1,12 +1,23 @@
-import React, { useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { Button } from '../../../components/Button'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
 
-const EmailForm = ({
+export type EmailFormValuesType = {
+  email: string;
+  password: string
+}
+
+type EmailFormPropsType = {
+  onSubmitEmail: (values: EmailFormValuesType) => void,
+  userEmail: string,
+  changeEmailSuccess: string,
+  changeEmailError: string
+}
+
+const EmailForm: React.FC<EmailFormPropsType> = ({
   onSubmitEmail,
   userEmail,
   changeEmailSuccess,
@@ -23,16 +34,21 @@ const EmailForm = ({
 
   const [values, setValues] = useState(initialValues)
 
-  const [errors, setErrors] = useState({
+  interface ErrorsType{
+    email?: string,
+    password?: string
+  }
+
+  const [errors, setErrors] = useState<ErrorsType>({
 
   })
 
-  const passwordRequired = (value) => {
+  const passwordRequired = (value: string) => {
     if (value) return undefined
     return t('forms.validators.passwordRequired')
   }
 
-  const validEmailRequired = (email) => {
+  const validEmailRequired = (email: string) => {
     if (/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)) {
       return null
     }
@@ -55,7 +71,7 @@ const EmailForm = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userEmail])
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
 
     setValues({
@@ -66,9 +82,11 @@ const EmailForm = ({
     setEditMode(true)
   }
 
-  const handleBlur = (event) => {
+  const handleBlur = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target
+    // @ts-ignore
     const error = validate[name](value)
+    // @ts-ignore
     const { [name]: oldError, ...rest } = errors
 
     setErrors({
@@ -79,7 +97,7 @@ const EmailForm = ({
     })
   }
 
-  const handleSumbit = (event) => {
+  const handleSumbit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     onSubmitEmail(values)
   }
@@ -104,6 +122,7 @@ const EmailForm = ({
           />
           {errors.email && (
             <div>
+              {/* @ts-ignore */}
               <div className={styles.warning} tooltip={errors.email}>
                 !
               </div>
@@ -137,6 +156,7 @@ const EmailForm = ({
               />
               {errors.password && (
                 <div>
+                  {/* @ts-ignore */}
                   <div className={styles.warning} tooltip={errors.password}>
                     !
                   </div>
@@ -159,17 +179,3 @@ const EmailForm = ({
 }
 
 export default EmailForm
-
-EmailForm.propTypes = {
-  onSubmitEmail: PropTypes.func,
-  userEmail: PropTypes.string,
-  changeEmailSuccess: PropTypes.string,
-  changeEmailError: PropTypes.string
-}
-
-EmailForm.defaultProps = {
-  onSubmitEmail: PropTypes.func,
-  userEmail: PropTypes.string,
-  changeEmailSuccess: '',
-  changeEmailError: ''
-}

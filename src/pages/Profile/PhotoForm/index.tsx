@@ -1,13 +1,18 @@
-import React, { useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useRef, ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import Dropzone from 'react-dropzone'
 import { Button } from '../../../components/Button'
 import classes from './PhotoForm.module.scss'
 
-const PhotoForm = ({ avatarUrl, onSubmitPhoto }) => {
+type PhotoFormPropsType = {
+  onSubmitPhoto: (file: File) => void,
+  avatarUrl: string
+}
+
+const PhotoForm: React.FC<PhotoFormPropsType> = ({ avatarUrl, onSubmitPhoto }) => {
   const { t } = useTranslation()
-  const inputPhoto = useRef()
+
+  const inputPhoto = useRef<HTMLInputElement>(null)
 
   const onBtnClickLoadPhoto = () => {
     if (inputPhoto && inputPhoto.current) {
@@ -15,13 +20,13 @@ const PhotoForm = ({ avatarUrl, onSubmitPhoto }) => {
     }
   }
 
-  const onMainPhotoSelected = (e) => {
+  const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.length) {
       onSubmitPhoto(e.target.files[0])
     }
   }
 
-  const onMainPhotoDropped = (files) => {
+  const onMainPhotoDropped = (files: any) => {
     if (files?.length) {
       onSubmitPhoto(files[0])
     }
@@ -77,12 +82,3 @@ const PhotoForm = ({ avatarUrl, onSubmitPhoto }) => {
 }
 
 export default PhotoForm
-
-PhotoForm.propTypes = {
-  onSubmitPhoto: PropTypes.func.isRequired,
-  avatarUrl: PropTypes.string
-}
-
-PhotoForm.defaultProps = {
-  avatarUrl: PropTypes.string
-}
