@@ -6,7 +6,7 @@ import Slider from './Slider'
 import { Button } from '../../../components/Button'
 import NewSessionForm from './NewSessionForm'
 
-const Sessions = () => {
+const Sessions: React.FC = () => {
   const { t } = useTranslation()
 
   const [editMode, setEditMode] = useState(false)
@@ -24,7 +24,7 @@ const Sessions = () => {
   }
 
   return (
-    <Element id="sessions" className="element">
+    <Element id="sessions" className="element" name="sessions">
       <div className={classes.Sessions}>
         <div className={classes.TextBlock}>
           <h1>{t('cabinet.sessions.title')}</h1>

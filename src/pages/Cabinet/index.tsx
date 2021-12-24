@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/authSelectors'
 // @ts-ignore
 import CabinetContainer from '../../hoc/CabinetContainer.tsx'
-import Sessions from './Sessions'
+// @ts-ignore
+import Sessions from './Sessions/index.tsx'
 // @ts-ignore
 import Locations from './Locations/index.tsx'
 
