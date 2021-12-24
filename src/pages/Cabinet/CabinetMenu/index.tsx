@@ -11,7 +11,7 @@ import ButtonHamburger from '../../../components/ButtonHamburger'
 import ChangeLanguageBlock from '../../../components/ChangeLanguageBlock'
 import WindowDimensions from '../../../utils/windowDimensions'
 
-const CabinetMenu = () => {
+const CabinetMenu: React.FC = () => {
   const { t } = useTranslation()
   const { scrollSpy } = Scroll
   const [isMenuOpen, toggleMenu] = useState(false)

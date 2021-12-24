@@ -1,6 +1,8 @@
 import React from 'react'
-import CabinetMenu from '../pages/Cabinet/CabinetMenu'
-import CabinetHeader from '../pages/Cabinet/CabinetHeader'
+// @ts-ignore
+import CabinetMenu from '../pages/Cabinet/CabinetMenu/index.tsx'
+// @ts-ignore
+import CabinetHeader from '../pages/Cabinet/CabinetHeader/index.tsx'
 
 interface ContainerProps {
   children?: React.ReactNode
