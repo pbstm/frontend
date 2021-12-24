@@ -16,23 +16,29 @@ type NewSessionFormPropsType = {
   onClose: () => void,
 }
 
+type InitialValuesType = {
+  title: string;
+  description: string,
+  cover: null
+}
+
+interface ErrorsType{
+  title?: string,
+  description?: string,
+  cover?: string
+}
+
 const NewSessionForm: React.FC<NewSessionFormPropsType> = ({ onSubmit, onClose }) => {
   const { t } = useTranslation()
   const inputPhoto = useRef<HTMLInputElement>(null)
 
-  const initialValues = {
+  const initialValues: InitialValuesType = {
     title: ``,
     description: '',
     cover: null
   }
 
-  const [values, setValues] = useState(initialValues)
-
-  interface ErrorsType{
-    title?: string,
-    description?: string,
-    cover?: string
-  }
+  const [values, setValues] = useState<InitialValuesType>(initialValues)
 
   // prettier-ignore
   const [errors, setErrors] = useState<ErrorsType>({
