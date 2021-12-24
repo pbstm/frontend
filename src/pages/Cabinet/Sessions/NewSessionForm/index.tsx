@@ -1,34 +1,58 @@
-import React, { useState, useRef } from 'react'
-import PropTypes from 'prop-types'
+import React, { useState, useRef, ChangeEvent, FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
 import { Button } from '../../../../components/Button'
 import classes from './SessionForm.module.scss'
 import styles from '../../../../components/FormsControls.module.scss'
 
-const NewSessionForm = ({ onSubmit, onClose }) => {
-  const { t } = useTranslation()
-  const inputPhoto = useRef()
+type NewSessionFormValuesType = {
+  title: string;
+  description: string,
+  cover: File | null
+}
 
-  const initialValues = {
+type NewSessionFormPropsType = {
+  onSubmit: (values: NewSessionFormValuesType) => void,
+  onClose: () => void,
+}
+
+type InitialValuesType = {
+  title: string;
+  description: string,
+  cover: null
+}
+
+interface ErrorsType{
+  title?: string,
+  description?: string,
+  cover?: string
+}
+
+const NewSessionForm: React.FC<NewSessionFormPropsType> = ({ onSubmit, onClose }) => {
+  const { t } = useTranslation()
+  const inputPhoto = useRef<HTMLInputElement>(null)
+
+  const initialValues: InitialValuesType = {
     title: ``,
     description: '',
     cover: null
   }
 
-  const [values, setValues] = useState(initialValues)
+  const [values, setValues] = useState<InitialValuesType>(initialValues)
+
   // prettier-ignore
-  const [errors, setErrors] = useState({
+  const [errors, setErrors] = useState<ErrorsType>({
 
   })
+
   const [url, setUrl] = useState()
 
-  const titleRequired = (value) => {
+  const titleRequired = (value: string) => {
     if (value) return undefined
     return t('cabinet.sessions.forms.validators.fieldRequired')
   }
 
-  const descriptionRequired = (value) => {
+  const descriptionRequired = (value: string) => {
     if (value) return undefined
     return t('cabinet.sessions.forms.validators.fieldRequired')
   }
@@ -38,7 +62,7 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
     description: descriptionRequired
   }
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = event.target
 
     setValues({
@@ -47,9 +71,13 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
     })
   }
 
-  const handleBlur = (event) => {
+  const handleBlur = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = event.target
+    // @ts-ignore
     const error = validate[name](value)
+    // @ts-ignore
     const { [name]: oldError, ...rest } = errors
 
     setErrors({
@@ -60,7 +88,7 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
     })
   }
 
-  const handleSumbit = (event) => {
+  const handleSumbit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault()
     if (values.cover !== null) {
       onSubmit(values)
@@ -84,25 +112,24 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
     }
   }
 
-  const handleFile = (e) => {
+  const handleFile = (e: any) => {
     const content = e.target.result
     setUrl(content)
-    // You can set content in state and show it in render.
   }
 
-  const onCoverSelected = (event) => {
-    const { name } = event.target
-    const file = event.target.files[0]
-    const fileData = new FileReader()
-    fileData.onloadend = handleFile
-    if (event.target.files[0]) {
+  const onCoverSelected = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files?.length) {
+      const { name } = event.target
+      const file = event.target.files[0]
+      const fileData = new FileReader()
+      fileData.onloadend = handleFile
       fileData.readAsDataURL(file)
-    }
 
-    setValues({
-      ...values,
-      [name]: file
-    })
+      setValues({
+        ...values,
+        [name]: file
+      })
+    }
   }
 
   const Cover = () => {
@@ -118,6 +145,7 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
         <div>{t('cabinet.sessions.forms.titles.cover')}</div>
         <div>{t('cabinet.sessions.forms.titles.coverClick')}</div>
         {errors.cover && (
+          // @ts-ignore
           <div className={styles.warning} tooltip={errors.cover}>
             !
           </div>
@@ -148,6 +176,7 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
           />
           {errors.title && (
             <div>
+              {/* @ts-ignore */}
               <div className={styles.warning} tooltip={errors.title}>
                 !
               </div>
@@ -174,6 +203,7 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
           />
           {errors.description && (
             <div>
+              {/* @ts-ignore */}
               <div className={styles.warning} tooltip={errors.description}>
                 !
               </div>
@@ -219,13 +249,3 @@ const NewSessionForm = ({ onSubmit, onClose }) => {
 }
 
 export default NewSessionForm
-
-NewSessionForm.propTypes = {
-  onSubmit: PropTypes.func,
-  onClose: PropTypes.func
-}
-
-NewSessionForm.defaultProps = {
-  onSubmit: PropTypes.func,
-  onClose: PropTypes.func
-}

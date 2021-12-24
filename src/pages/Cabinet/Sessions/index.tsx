@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { Element } from 'react-scroll'
 import { useTranslation } from 'react-i18next'
 import classes from './Sessions.module.scss'
-import Slider from './Slider'
+// @ts-ignore
+import Slider from './Slider/index.tsx'
 import { Button } from '../../../components/Button'
-import NewSessionForm from './NewSessionForm'
+// @ts-ignore
+import NewSessionForm from './NewSessionForm/index.tsx'
 
-const Sessions = () => {
+const Sessions: React.FC = () => {
   const { t } = useTranslation()
 
-  const [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState<boolean>(false)
 
   const handleChange = () => {
     setEditMode(true)
@@ -24,7 +26,7 @@ const Sessions = () => {
   }
 
   return (
-    <Element id="sessions" className="element">
+    <Element id="sessions" className="element" name="sessions">
       <div className={classes.Sessions}>
         <div className={classes.TextBlock}>
           <h1>{t('cabinet.sessions.title')}</h1>
