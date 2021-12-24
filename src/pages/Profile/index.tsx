@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { compose } from 'redux'
-import ProfileContainer from '../../hoc/ProfileContainer'
+// @ts-ignore
+import ProfileContainer from '../../hoc/ProfileContainer.tsx'
 import { getAccessToken } from '../../const/const'
 // prettier-ignore
 // @ts-ignore
