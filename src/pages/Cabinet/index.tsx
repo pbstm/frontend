@@ -6,7 +6,8 @@ import { selectIsAuth } from '../../redux/authSelectors'
 // @ts-ignore
 import CabinetContainer from '../../hoc/CabinetContainer.tsx'
 import Sessions from './Sessions'
-import Locations from './Locations'
+// @ts-ignore
+import Locations from './Locations/index.tsx'
 
 const Cabinet: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
