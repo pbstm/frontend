@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next'
 import classes from './Sessions.module.scss'
 import Slider from './Slider'
 import { Button } from '../../../components/Button'
-import NewSessionForm from './NewSessionForm'
+// @ts-ignore
+import NewSessionForm from './NewSessionForm/index.tsx'
 
 const Sessions: React.FC = () => {
   const { t } = useTranslation()
