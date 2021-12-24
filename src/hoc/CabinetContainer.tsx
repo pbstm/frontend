@@ -1,9 +1,12 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import CabinetMenu from '../pages/Cabinet/CabinetMenu'
 import CabinetHeader from '../pages/Cabinet/CabinetHeader'
 
-const CabinetContainer = ({ children }) => (
+interface ContainerProps {
+  children?: React.ReactNode
+}
+
+const CabinetContainer: React.FC = ({ children }: ContainerProps) => (
   <div>
     <CabinetHeader />
     <CabinetMenu />
@@ -12,10 +15,3 @@ const CabinetContainer = ({ children }) => (
 )
 
 export default CabinetContainer
-
-CabinetContainer.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.element),
-    PropTypes.element
-  ]).isRequired
-}

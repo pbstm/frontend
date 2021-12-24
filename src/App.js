@@ -9,7 +9,8 @@ import store from './redux/redux-store.ts'
 import { getProfileData } from './redux/authReducer.ts'
 import { getAccessToken } from './const/const'
 import Main from './pages/Main'
-import Cabinet from './pages/Cabinet'
+// @ts-ignore
+import Cabinet from './pages/Cabinet/index.tsx'
 import CustomerCabinet from './pages/CustomerCabinet'
 // @ts-ignore
 import Login from './pages/Login/index.tsx'
