@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Element } from 'react-scroll'
 import { useTranslation } from 'react-i18next'
 import classes from './Sessions.module.scss'
-import Slider from './Slider'
+// @ts-ignore
+import Slider from './Slider/index.tsx'
 import { Button } from '../../../components/Button'
 // @ts-ignore
 import NewSessionForm from './NewSessionForm/index.tsx'
