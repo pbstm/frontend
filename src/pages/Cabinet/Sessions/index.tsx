@@ -11,7 +11,7 @@ import NewSessionForm from './NewSessionForm/index.tsx'
 const Sessions: React.FC = () => {
   const { t } = useTranslation()
 
-  const [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState<boolean>(false)
 
   const handleChange = () => {
     setEditMode(true)
