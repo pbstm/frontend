@@ -1,14 +1,18 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React, { ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
 
-const NameForm = ({ userName, onSubmitName }) => {
+type NameFormPropsType = {
+  onSubmitName: (name: string) => void,
+  userName: string
+}
+
+const NameForm: React.FC<NameFormPropsType> = ({ userName, onSubmitName }) => {
   const { t } = useTranslation()
 
-  const changeNameHandler = (formData) => {
-    const name = formData.target.value
+  const changeNameHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    const name = event.currentTarget.value
     if (userName !== name) {
       onSubmitName(name)
     }
@@ -24,12 +28,3 @@ const NameForm = ({ userName, onSubmitName }) => {
 }
 
 export default NameForm
-
-NameForm.propTypes = {
-  onSubmitName: PropTypes.func.isRequired,
-  userName: PropTypes.string
-}
-
-NameForm.defaultProps = {
-  userName: PropTypes.string
-}

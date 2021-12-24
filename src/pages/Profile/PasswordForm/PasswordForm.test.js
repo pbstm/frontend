@@ -1,7 +1,8 @@
 import React from 'react'
 import { render, screen, waitFor, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import PasswordForm from './index.js'
+// @ts-ignore
+import PasswordForm from './index.tsx'
 
 describe('Basic render tests', () => {
   let component, mockCallback, link

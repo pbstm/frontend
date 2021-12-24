@@ -16,7 +16,8 @@ import CustomerCabinet from './pages/CustomerCabinet'
 import Login from './pages/Login/index.tsx'
 // @ts-ignore
 import Register from './pages/Register/index.tsx'
-import Profile from './pages/Profile'
+// @ts-ignore
+import Profile from './pages/Profile/index.tsx'
 
 const App = () => {
   const dispatch = useDispatch()

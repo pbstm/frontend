@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
@@ -9,7 +8,19 @@ import { Button } from '../../../components/Button'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
 
-const PasswordForm = ({
+export type PasswordFormValuesType = {
+  current_password: string,
+  password: string,
+  password_confirmation: string
+}
+
+type PasswordFormPropsType = {
+  onSubmit: (values: PasswordFormValuesType) => void,
+  changePasswordSuccess: string,
+  changePasswordError: string
+}
+
+const PasswordForm: React.FC<PasswordFormPropsType> = ({
   onSubmit,
   changePasswordError,
   changePasswordSuccess
@@ -117,14 +128,3 @@ const PasswordForm = ({
 }
 
 export default PasswordForm
-
-PasswordForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  changePasswordError: PropTypes.string,
-  changePasswordSuccess: PropTypes.string
-}
-
-PasswordForm.defaultProps = {
-  changePasswordError: '',
-  changePasswordSuccess: ''
-}

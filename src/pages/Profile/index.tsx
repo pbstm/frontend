@@ -2,7 +2,8 @@ import React, { useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { compose } from 'redux'
-import ProfileContainer from '../../hoc/ProfileContainer'
+// @ts-ignore
+import ProfileContainer from '../../hoc/ProfileContainer.tsx'
 import { getAccessToken } from '../../const/const'
 // prettier-ignore
 // @ts-ignore
@@ -11,13 +12,17 @@ import { updateNameData, updateEmailData, updatePasswordData, updatePhotoData } 
 import { selectName, selectEmail, selectAvatarUrl } from '../../redux/authSelectors'
 // prettier-ignore
 import { selectChangePasswordError, selectChangePasswordSuccess, selectChangeEmailError, selectChangeEmailSuccess } from '../../redux/changeProfileSelectors'
-import NameForm from './NameForm'
-import EmailForm from './EmailForm'
-import PasswordForm from './PasswordForm'
-import PhotoForm from './PhotoForm'
+// @ts-ignore
+import NameForm from './NameForm/index.tsx'
+// @ts-ignore
+import EmailForm, { EmailFormValuesType } from './EmailForm/index.tsx'
+// @ts-ignore
+import PasswordForm, { PasswordFormValuesType } from './PasswordForm/index.tsx'
+// @ts-ignore
+import PhotoForm from './PhotoForm/index.tsx'
 import classes from './Profile.module.scss'
 
-const Profile = () => {
+const Profile: React.FC = () => {
   const token = getAccessToken()
   const userName = useSelector(selectName)
   const userEmail = useSelector(selectEmail)
@@ -35,19 +40,19 @@ const Profile = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const onSubmitPhoto = (file) => {
+  const onSubmitPhoto = (file: File) => {
     dispatch(updatePhotoData(file))
   }
 
-  const onSubmitName = (name) => {
+  const onSubmitName = (name: string) => {
     dispatch(updateNameData(name))
   }
 
-  const onSubmitEmail = (values) => {
+  const onSubmitEmail = (values: EmailFormValuesType) => {
     dispatch(updateEmailData(values.email, values.password))
   }
 
-  const onSubmitPassword = (values) => {
+  const onSubmitPassword = (values: PasswordFormValuesType) => {
     dispatch(
       updatePasswordData(
         values.current_password,
