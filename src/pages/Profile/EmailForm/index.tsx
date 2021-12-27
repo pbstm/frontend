@@ -1,7 +1,8 @@
 import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
-import { Button } from '../../../components/Button'
+// @ts-ignore
+import { Button, ButtonStyles, ButtonTypes } from '../../../components/Button/index.tsx'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
 
@@ -169,8 +170,8 @@ const EmailForm: React.FC<EmailFormPropsType> = ({
           )}
           <Button
             text={t('forms.buttons.emailUpdate')}
-            type="submit"
-            stylish="Primary"
+            type={ButtonTypes.Submit}
+            stylish={ButtonStyles.Primary}
           />
         </div>
       )}
