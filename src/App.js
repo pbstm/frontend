@@ -11,7 +11,8 @@ import { getAccessToken } from './const/const'
 import Main from './pages/Main'
 // @ts-ignore
 import Cabinet from './pages/Cabinet/index.tsx'
-import CustomerCabinet from './pages/CustomerCabinet'
+// @ts-ignore
+import CustomerCabinet from './pages/CustomerCabinet/index.tsx'
 // @ts-ignore
 import Login from './pages/Login/index.tsx'
 // @ts-ignore

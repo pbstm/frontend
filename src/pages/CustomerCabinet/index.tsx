@@ -3,9 +3,10 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/authSelectors'
-import CustomerCabinetContainer from '../../hoc/CustomerCabinetContainer'
+// @ts-ignore
+import CustomerCabinetContainer from '../../hoc/CustomerCabinetContainer.tsx'
 
-const CustomerCabinet = () => {
+const CustomerCabinet: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
 
   if (!isAuth) {
