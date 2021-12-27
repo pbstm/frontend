@@ -8,7 +8,8 @@ import store from './redux/redux-store.ts'
 // @ts-ignore
 import { getProfileData } from './redux/authReducer.ts'
 import { getAccessToken } from './const/const'
-import Main from './pages/Main'
+// @ts-ignore
+import Main from './pages/Main/index.tsx'
 // @ts-ignore
 import Cabinet from './pages/Cabinet/index.tsx'
 // @ts-ignore
