@@ -1,6 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Button } from './index.js'
+// @ts-ignore
+import { Button } from './index.tsx'
 
 let component, mockCallback, text, stylish;
 
