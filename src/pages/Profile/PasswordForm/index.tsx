@@ -4,7 +4,8 @@ import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import classNames from 'classnames'
 import { FormikInput } from '../../../components/FormsControls'
-import { Button } from '../../../components/Button'
+// @ts-ignore
+import { Button, ButtonStyles, ButtonTypes } from '../../../components/Button/index.tsx'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Profile.module.scss'
 
@@ -119,7 +120,11 @@ const PasswordForm: React.FC<PasswordFormPropsType> = ({
                 {changePasswordSuccess}
               </div>
             )}
-            <Button text={t('forms.buttons.passwordUpdate')} type="submit" stylish="Primary" />
+            <Button
+              text={t('forms.buttons.passwordUpdate')}
+              type={ButtonTypes.Submit}
+              stylish={ButtonStyles.Primary}
+            />
           </Form>
         </Formik>
       )}

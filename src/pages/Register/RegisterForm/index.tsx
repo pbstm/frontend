@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import { FormikInput } from '../../../components/FormsControls'
-import { Button } from '../../../components/Button'
+// @ts-ignore
+import { Button, ButtonStyles, ButtonTypes } from '../../../components/Button/index.tsx'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../Register.module.scss'
 
@@ -116,8 +117,8 @@ const RegisterForm: React.FC<RegisterFormPropsType> = ({ onSubmit, registerError
 
           <Button
             text={t('forms.buttons.singUp')}
-            type="submit"
-            stylish="Primary"
+            type={ButtonTypes.Submit}
+            stylish={ButtonStyles.Primary}
           />
         </Form>
       </Formik>

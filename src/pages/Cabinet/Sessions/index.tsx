@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next'
 import classes from './Sessions.module.scss'
 // @ts-ignore
 import Slider from './Slider/index.tsx'
-import { Button } from '../../../components/Button'
+// @ts-ignore
+import { Button, ButtonStyles } from '../../../components/Button/index.tsx'
 // @ts-ignore
 import NewSessionForm from './NewSessionForm/index.tsx'
 
@@ -38,8 +39,7 @@ const Sessions: React.FC = () => {
         <div className={classes.CreateBtn}>
           <Button
             text={t('cabinet.sessions.forms.buttons.createPhotoSession')}
-            type="submit"
-            stylish="Primary"
+            stylish={ButtonStyles.Primary}
             onClick={handleChange}
           />
         </div>

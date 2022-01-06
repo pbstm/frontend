@@ -3,7 +3,8 @@ import { useTranslation } from 'react-i18next'
 import { Formik, Form } from 'formik'
 import * as yup from 'yup'
 import { FormikInput, FormikCheckbox } from '../../../components/FormsControls'
-import { Button } from '../../../components/Button'
+// @ts-ignore
+import { Button, ButtonStyles, ButtonTypes } from '../../../components/Button/index.tsx'
 import styles from '../../../components/FormsControls.module.scss'
 import classes from '../../Register/Register.module.scss'
 
@@ -88,8 +89,8 @@ const LoginForm: React.FC<LoginFormPropsType> = ({ onSubmit, loginError }) => {
 
           <Button
             text={t('forms.buttons.singIn')}
-            type="submit"
-            stylish="Primary"
+            type={ButtonTypes.Submit}
+            stylish={ButtonStyles.Primary}
           />
         </Form>
       </Formik>

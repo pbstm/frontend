@@ -1,7 +1,8 @@
 import React, { useState, useRef, ChangeEvent, FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
-import { Button } from '../../../../components/Button'
+// @ts-ignore
+import { Button, ButtonStyles, ButtonTypes } from '../../../../components/Button/index.tsx'
 import classes from './SessionForm.module.scss'
 import styles from '../../../../components/FormsControls.module.scss'
 
@@ -222,8 +223,8 @@ const NewSessionForm: React.FC<NewSessionFormPropsType> = ({ onSubmit, onClose }
         <Cover />
         <Button
           text={t('cabinet.sessions.forms.buttons.loadCover')}
-          type="button"
-          stylish="PrimarySmall"
+          type={ButtonTypes.Button}
+          stylish={ButtonStyles.PrimarySmall}
           onClick={onBtnClickLoadCover}
         />
       </div>
@@ -231,15 +232,15 @@ const NewSessionForm: React.FC<NewSessionFormPropsType> = ({ onSubmit, onClose }
         <div>
           <Button
             text={t('cabinet.sessions.forms.buttons.save')}
-            type="submit"
-            stylish="Primary"
+            type={ButtonTypes.Submit}
+            stylish={ButtonStyles.Primary}
           />
         </div>
         <div>
           <Button
             text={t('cabinet.sessions.forms.buttons.cancel')}
-            type="reset"
-            stylish="Secondary"
+            type={ButtonTypes.Reset}
+            stylish={ButtonStyles.Secondary}
             onClick={onClose}
           />
         </div>
