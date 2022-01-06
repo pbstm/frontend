@@ -14,7 +14,7 @@
         "plugin:import/warnings",
         "plugin:jsx-a11y/recommended",
         "plugin:react-hooks/recommended",
-        "airbnb-typescript"
+        "airbnb"
     ],
     "parserOptions": {
         "ecmaFeatures": {
