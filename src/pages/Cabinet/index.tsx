@@ -3,11 +3,14 @@ import { Redirect, withRouter } from 'react-router-dom'
 import { compose } from "redux";
 import { useSelector } from 'react-redux'
 import { selectIsAuth } from '../../redux/authSelectors'
-import CabinetContainer from '../../hoc/CabinetContainer'
-import Sessions from './Sessions'
-import Locations from './Locations'
+// @ts-ignore
+import CabinetContainer from '../../hoc/CabinetContainer.tsx'
+// @ts-ignore
+import Sessions from './Sessions/index.tsx'
+// @ts-ignore
+import Locations from './Locations/index.tsx'
 
-const Cabinet = () => {
+const Cabinet: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
 
   if (!isAuth) {

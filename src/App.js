@@ -10,13 +10,15 @@ import { getProfileData } from './redux/authReducer.ts'
 // @ts-ignore
 import { getAccessToken } from './const/const.ts'
 import Main from './pages/Main'
-import Cabinet from './pages/Cabinet'
+// @ts-ignore
+import Cabinet from './pages/Cabinet/index.tsx'
 import CustomerCabinet from './pages/CustomerCabinet'
 // @ts-ignore
 import Login from './pages/Login/index.tsx'
 // @ts-ignore
 import Register from './pages/Register/index.tsx'
-import Profile from './pages/Profile'
+// @ts-ignore
+import Profile from './pages/Profile/index.tsx'
 
 const App = () => {
   const dispatch = useDispatch()

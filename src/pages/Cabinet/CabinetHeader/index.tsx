@@ -5,7 +5,7 @@ import * as Scroll from 'react-scroll'
 import { useTranslation } from 'react-i18next'
 import classes from './CabinetHeader.module.scss'
 
-const CabinetHeader = () => {
+const CabinetHeader: React.FC = () => {
   const { t } = useTranslation()
   const { scrollSpy } = Scroll
 

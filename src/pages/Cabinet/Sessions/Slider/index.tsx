@@ -5,21 +5,24 @@ import { items } from './SliderData'
 import WindowDimensions from '../../../../utils/windowDimensions'
 import Session from '../../../../components/Session'
 
-const Slider = () => {
-  const slider = useRef(null)
-  const [position, setPosition] = useState(0)
+const Slider: React.FC = () => {
+  const slider = useRef<HTMLDivElement | null>(null)
+  const [position, setPosition] = useState<number>(0)
   const windowWidth = WindowDimensions()
-  const [activeSlide, setActiveSlide] = useState()
-  const [sessionMode, setSessionMode] = useState(false)
+  const [activeSlide, setActiveSlide] = useState<number>(0)
+  const [sessionMode, setSessionMode] = useState<boolean>(false)
 
   const closeSession = () => {
     setSessionMode(false)
   }
 
   const translateSlides = () => {
-    slider.current.childNodes.forEach((element) => {
-      element.style = `transform: translateX(${position}px)`
-    })
+    if (slider.current !== null) {
+      slider.current.childNodes.forEach((element) => {
+        // @ts-ignore
+        element.style = `transform: translateX(${position}px)`
+      })
+    }
   }
 
   useEffect(() => {
@@ -97,7 +100,7 @@ const Slider = () => {
     }
   }
 
-  const slideHandler = (item) => {
+  const slideHandler = (item: number) => {
     setActiveSlide(item)
     setSessionMode(true)
   }

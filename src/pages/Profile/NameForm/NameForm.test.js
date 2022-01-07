@@ -1,6 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import NameForm from './index.js'
+// @ts-ignore
+import NameForm from './index.tsx'
 
 let component, userName, mockCallback
 

@@ -6,7 +6,7 @@ import UserInfoBlock from '../../../components/UserInfoBlock'
 import ChangeLanguageBlock from '../../../components/ChangeLanguageBlock'
 import classes from './ProfileMenu.module.scss'
 
-const ProfileMenu = () => {
+const ProfileMenu: React.FC = () => {
   const userType = useSelector(selectType)
 
   const CabinetLinksBlock = () => {

@@ -1,6 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import EmailForm from './index.js'
+// @ts-ignore
+import EmailForm from './index.tsx'
 
 let component,
   emailInput,

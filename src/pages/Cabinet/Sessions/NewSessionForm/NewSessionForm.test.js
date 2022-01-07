@@ -1,6 +1,7 @@
 import React from 'react'
 import { mount } from 'enzyme'
-import NewSessionForm from './index.js'
+// @ts-ignore
+import NewSessionForm from './index.tsx'
 
 let component, titleInput, descriptionInput, coverInput, mockCallback, form
 
