@@ -3,8 +3,9 @@ import { withRouter } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { compose } from 'redux'
 // @ts-ignore
+import { getAccessToken } from '../../const/const.ts'
+// @ts-ignore
 import ProfileContainer from '../../hoc/ProfileContainer.tsx'
-import { getAccessToken } from '../../const/const'
 // prettier-ignore
 // @ts-ignore
 import { updateNameData, updateEmailData, updatePasswordData, updatePhotoData } from '../../redux/changeProfileReducer.ts'
