@@ -1,7 +1,8 @@
 import React, { Suspense } from 'react'
 import ReactDOM from 'react-dom'
 import './scss/index.scss'
-import App from './App'
+// @ts-ignore
+import App from './App.tsx'
 import reportWebVitals from './reportWebVitals'
 import './i18n'
 

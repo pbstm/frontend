@@ -1,8 +1,9 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import MainContainer from '../../hoc/MainContainer'
+// @ts-ignore
+import MainContainer from '../../hoc/MainContainer.tsx'
 
-const Main = () => {
+const Main: React.FC = () => {
   const { t } = useTranslation()
 
   return (

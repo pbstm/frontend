@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense } from 'react'
+import React, { useEffect, Suspense, ComponentType } from 'react'
 // prettier-ignore
 import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom'
 import { Provider, useDispatch } from 'react-redux'
@@ -9,10 +9,12 @@ import store from './redux/redux-store.ts'
 import { getProfileData } from './redux/authReducer.ts'
 // @ts-ignore
 import { getAccessToken } from './const/const.ts'
-import Main from './pages/Main'
+// @ts-ignore
+import Main from './pages/Main/index.tsx'
 // @ts-ignore
 import Cabinet from './pages/Cabinet/index.tsx'
-import CustomerCabinet from './pages/CustomerCabinet'
+// @ts-ignore
+import CustomerCabinet from './pages/CustomerCabinet/index.tsx'
 // @ts-ignore
 import Login from './pages/Login/index.tsx'
 // @ts-ignore
@@ -20,7 +22,7 @@ import Register from './pages/Register/index.tsx'
 // @ts-ignore
 import Profile from './pages/Profile/index.tsx'
 
-const App = () => {
+const App: React.FC = () => {
   const dispatch = useDispatch()
   const token = getAccessToken()
 
@@ -45,9 +47,9 @@ const App = () => {
   )
 }
 
-const AppContainer = compose(withRouter)(App)
+const AppContainer = compose<ComponentType>(withRouter)(App)
 
-const MyApp = () => (
+const MyApp: React.FC = () => (
   <BrowserRouter>
     <Provider store={store}>
       <AppContainer />

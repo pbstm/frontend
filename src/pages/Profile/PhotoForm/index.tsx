@@ -1,7 +1,8 @@
 import React, { useRef, ChangeEvent } from 'react'
 import { useTranslation } from 'react-i18next'
 import Dropzone from 'react-dropzone'
-import { Button } from '../../../components/Button'
+// @ts-ignore
+import { Button, ButtonStyles } from '../../../components/Button/index.tsx'
 import classes from './PhotoForm.module.scss'
 
 type PhotoFormPropsType = {
@@ -74,7 +75,7 @@ const PhotoForm: React.FC<PhotoFormPropsType> = ({ avatarUrl, onSubmitPhoto }) =
         <Button
           text={t('forms.buttons.loadPhoto')}
           onClick={onBtnClickLoadPhoto}
-          stylish="Primary"
+          stylish={ButtonStyles.Primary}
         />
       </div>
     </div>
