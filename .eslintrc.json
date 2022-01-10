@@ -10,6 +10,7 @@
     "extends": [
         "eslint:recommended",
         "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
         "plugin:import/errors",
         "plugin:import/warnings",
         "plugin:jsx-a11y/recommended",
@@ -41,7 +42,8 @@
             "components": [ "Link" ],
             "specialLink": [ "to" ]
           }],
-        "semi": 0,
+        "semi": "off",
+        "@typescript-eslint/semi": ["error"],
         "quotes": [0, "single"],
         "arrow-body-style": ["error", "as-needed"],
         "object-curly-newline": ["error", {
